@@ -1,0 +1,51 @@
+import { Component, EventEmitter, HostListener, OnInit, Output } from '@angular/core';
+import { navBarData } from './nav-data';
+import { Router } from '@angular/router';
+
+interface sideNavToggle {
+  screenWidth: number;
+  collapsed: boolean;
+}
+
+@Component({
+  selector: 'app-side-bar',
+  templateUrl: './side-bar.component.html',
+  styleUrls: ['./side-bar.component.scss']
+})
+export class SideBarComponent {
+  constructor(private router: Router) { }
+
+  @Output() onToggleSideNav: EventEmitter<sideNavToggle> = new EventEmitter();
+  collapsed = true;
+  screenWidth = 0;
+  navData = navBarData;
+  @HostListener('window:resize', ['$event'])
+  onreSize(event: any) {
+    this.screenWidth = window.innerWidth;
+    if (this.screenWidth <= 768) {
+      this.collapsed = false;
+      this.onToggleSideNav.emit({ collapsed: this.collapsed, screenWidth: this.screenWidth });
+    }
+  }
+
+  ngOnInit() {
+    this.screenWidth = window.innerWidth;
+  }
+
+
+  toggleCollapse(): void {
+    this.collapsed = !this.collapsed;
+    this.onToggleSideNav.emit({ collapsed: this.collapsed, screenWidth: this.screenWidth });
+  }
+  closeSideNav(): void {
+    this.collapsed = false;
+    this.onToggleSideNav.emit({ collapsed: this.collapsed, screenWidth: this.screenWidth });
+  }
+  logout() {
+    this.router.navigate(['/login']);
+  }
+  test(link:string){
+    console.log(link,"link");
+    
+  }
+}
