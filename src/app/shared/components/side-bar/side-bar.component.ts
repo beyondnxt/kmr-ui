@@ -14,11 +14,14 @@ interface sideNavToggle {
 })
 export class SideBarComponent {
   constructor(private router: Router) { }
-
   @Output() onToggleSideNav: EventEmitter<sideNavToggle> = new EventEmitter();
+  mainNavLinks: any = [];
+  adminNavLinks: any = [];
+  salesNavLinks: any = [];
   collapsed = true;
   screenWidth = 0;
   navData = navBarData;
+  filteredLinks: any;
   @HostListener('window:resize', ['$event'])
   onreSize(event: any) {
     this.screenWidth = window.innerWidth;
@@ -27,9 +30,13 @@ export class SideBarComponent {
       this.onToggleSideNav.emit({ collapsed: this.collapsed, screenWidth: this.screenWidth });
     }
   }
-
   ngOnInit() {
     this.screenWidth = window.innerWidth;
+    this.router.events.subscribe(() => {
+      this.updateNavLinks();
+    });
+    this.updateNavLinks();
+    this.mainNavLinks = navBarData.mainNav;
   }
 
 
@@ -44,8 +51,25 @@ export class SideBarComponent {
   logout() {
     this.router.navigate(['/login']);
   }
-  test(link:string){
-    console.log(link,"link");
-    
+  updateNavLinks(): void {
+    const routerUrl = this.router.url;
+    if (routerUrl.startsWith('/admin')) {
+      this.salesNavLinks = [];
+      this.mainNavLinks = [];
+      this.adminNavLinks = navBarData.adminNavLinks;
+    } else if (routerUrl.startsWith('/sales')) {
+      this.adminNavLinks = [];
+      this.mainNavLinks = [];
+      this.salesNavLinks = navBarData.salesNavLinks;
+    }
+  }
+  switch(url: string) {
+    if (url === 'sales') {
+      this.mainNavLinks = navBarData.mainNav;
+      this.salesNavLinks = [];
+    } else if(url === 'admin'){
+      this.mainNavLinks = navBarData.mainNav;
+      this.adminNavLinks = [];
+    }
   }
 }

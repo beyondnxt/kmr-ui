@@ -7,6 +7,12 @@ import { BodyComponent } from './components/body/body.component';
 import { LayoutComponent } from './components/layout/layout.component';
 import { SideBarComponent } from './components/side-bar/side-bar.component';
 import { LoginComponent } from './components/login/login.component';
+import { NgApexchartsModule } from "ng-apexcharts";
+import { AreaChartComponent } from './components/area-chart/area-chart.component';
+import { PieChartComponent } from './components/pie-chart/pie-chart.component';
+import { DashboardCardComponent } from './components/dashboard-card/dashboard-card.component';
+import { BarChartComponent } from './components/bar-chart/bar-chart.component';
+import { KmrTableComponent } from './components/kmr-table/kmr-table.component';
 
 
 
@@ -17,16 +23,19 @@ import { LoginComponent } from './components/login/login.component';
     BodyComponent,
     LayoutComponent,
     SideBarComponent,
-    LoginComponent
+    LoginComponent,
+    AreaChartComponent,
+    PieChartComponent,
+    DashboardCardComponent,
+    BarChartComponent,
+    KmrTableComponent
+    
   ],
   imports: [
     CommonModule,
-    MatModule
+    MatModule,
+    NgApexchartsModule
   ],
-  exports: [HeaderComponent,
-    DashboardComponent,
-    BodyComponent,
-    LayoutComponent,
-    SideBarComponent]
+  exports: [HeaderComponent, DashboardComponent, BodyComponent, LayoutComponent,SideBarComponent, MatModule, NgApexchartsModule,AreaChartComponent,PieChartComponent,DashboardCardComponent,BarChartComponent,KmrTableComponent]
 })
 export class SharedModule { }
