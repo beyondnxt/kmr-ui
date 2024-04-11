@@ -3,9 +3,12 @@
 html, body { height: 100%; }
 body { margin: 0; font-family: Roboto, "Helvetica Neue", sans-serif; }
 :root {
-    --primary:#6326f0;
+    --primary:#5c46dc;
     --secondary:#000000;
     --font-primary-color:#b0b4bf;
-    --bg:#ffff;
-    --main-bg:#f6f9fe;
+    --bg:#5c46dc;
+    --main-bg:#f3f7fc;
+    --active:#f6f5fd;
+    --active-bg:#8e79f1;
+
 }

@@ -38,25 +38,25 @@ export const navBarData = {
     masterNavLinks: [
         {
             routerlink: 'master/company',
-            icon: 'fal fa-user',
+            icon: 'fas fa-building',
             label: 'Company',
             menu: 'user'
         },
         {
             routerlink: 'master/customer',
-            icon: 'fal fa-user',
+            icon: 'fas fa-users',
             label: 'Customer',
             menu: 'user'
         },
         {
             routerlink: 'master/item',
-            icon: 'fal fa-user',
+            icon: 'fas fa-shopping-basket',
             label: 'Item',
             menu: 'user'
         },
         {
             routerlink: 'master/category',
-            icon: 'fal fa-user',
+            icon: 'fas fa-tag',
             label: 'Category',
             menu: 'user'
         },
