@@ -39,6 +39,27 @@ const routes: Routes = [
             loadChildren: () =>import('./admin/pages/user/user.module').then(m => m.UserModule)
           }
         ]
+      },
+      {
+        path:'master',
+        children:[
+          {
+            path:'company',
+            loadChildren: () =>import('./master/pages/company/company.module').then(m => m.CompanyModule)
+          },
+          {
+            path:'customer',
+            loadChildren: () =>import('./master/pages/customer/customer.module').then(m => m.CustomerModule)
+          },
+          {
+            path:'item',
+            loadChildren: () =>import('./master/pages/item/item.module').then(m => m.ItemModule)
+          },
+          {
+            path:'category',
+            loadChildren: () =>import('./master/pages/category/category.module').then(m => m.CategoryModule)
+          }
+        ]
       }
     ]
   }

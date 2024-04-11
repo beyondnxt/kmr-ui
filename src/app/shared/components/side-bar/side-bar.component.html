@@ -51,6 +51,16 @@
                 </a>
             </ng-container>
         </li>
+        <li class="sidenav-nav-item" *ngFor="let data of masterNavLinks; let i = index">
+            <p *ngIf="i===0" (click)="switch('master')"><i class="far fa-caret-left"></i> Master</p>
+            <ng-container>
+                <a class="sidenav-nav-link" [routerLink]="data.routerlink" routerLinkActive="active"
+                    [routerLinkActiveOptions]="{exact:true}" >
+                    <i class="sidenav-link-icon" [class]="data.icon"></i>
+                    <span class="sidenav-link-text" *ngIf="collapsed">{{data.label}}</span>
+                </a>
+            </ng-container>
+        </li>
     </ul>
     <button class="w-100" mat-button [matMenuTriggerFor]="menu"> <i class="fas fa-sign-out-alt"></i> <span
             *ngIf="collapsed">Ajay G S</span></button>

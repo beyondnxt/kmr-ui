@@ -18,6 +18,7 @@ export class SideBarComponent {
   mainNavLinks: any = [];
   adminNavLinks: any = [];
   salesNavLinks: any = [];
+  masterNavLinks: any = [];
   collapsed = true;
   screenWidth = 0;
   navData = navBarData;
@@ -56,20 +57,32 @@ export class SideBarComponent {
     if (routerUrl.startsWith('/admin')) {
       this.salesNavLinks = [];
       this.mainNavLinks = [];
+      this.masterNavLinks = [];
       this.adminNavLinks = navBarData.adminNavLinks;
     } else if (routerUrl.startsWith('/sales')) {
       this.adminNavLinks = [];
       this.mainNavLinks = [];
+      this.masterNavLinks = [];
       this.salesNavLinks = navBarData.salesNavLinks;
+    }
+    else if (routerUrl.startsWith('/master')) {
+      this.adminNavLinks = [];
+      this.mainNavLinks = [];
+      this.salesNavLinks = [];
+      this.masterNavLinks = navBarData.masterNavLinks;
     }
   }
   switch(url: string) {
     if (url === 'sales') {
       this.mainNavLinks = navBarData.mainNav;
       this.salesNavLinks = [];
-    } else if(url === 'admin'){
+    } else if (url === 'admin') {
       this.mainNavLinks = navBarData.mainNav;
       this.adminNavLinks = [];
+      this.masterNavLinks = [];
+    } else if (url === 'master') {
+      this.mainNavLinks = navBarData.mainNav;
+      this.masterNavLinks = [];
     }
   }
 }

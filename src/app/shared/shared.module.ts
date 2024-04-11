@@ -13,6 +13,7 @@ import { PieChartComponent } from './components/pie-chart/pie-chart.component';
 import { DashboardCardComponent } from './components/dashboard-card/dashboard-card.component';
 import { BarChartComponent } from './components/bar-chart/bar-chart.component';
 import { KmrTableComponent } from './components/kmr-table/kmr-table.component';
+import { TableComponent } from './components/table/table.component';
 
 
 
@@ -28,7 +29,8 @@ import { KmrTableComponent } from './components/kmr-table/kmr-table.component';
     PieChartComponent,
     DashboardCardComponent,
     BarChartComponent,
-    KmrTableComponent
+    KmrTableComponent,
+    TableComponent
     
   ],
   imports: [
@@ -36,6 +38,6 @@ import { KmrTableComponent } from './components/kmr-table/kmr-table.component';
     MatModule,
     NgApexchartsModule
   ],
-  exports: [HeaderComponent, DashboardComponent, BodyComponent, LayoutComponent,SideBarComponent, MatModule, NgApexchartsModule,AreaChartComponent,PieChartComponent,DashboardCardComponent,BarChartComponent,KmrTableComponent]
+  exports: [HeaderComponent, DashboardComponent, BodyComponent, LayoutComponent,SideBarComponent, MatModule, NgApexchartsModule,AreaChartComponent,PieChartComponent,DashboardCardComponent,BarChartComponent,KmrTableComponent,TableComponent]
 })
 export class SharedModule { }

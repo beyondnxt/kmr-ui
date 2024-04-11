@@ -1,1 +1,13 @@
-<p>login works!</p>
+<div class="login-container">
+    <div class="container">
+        <div class="heading">Sign In</div>
+        <form class="form" action="">
+            <input placeholder="E-mail" id="email" name="email" type="email" class="input" required="" />
+            <input placeholder="Password" id="password" name="password" type="password" class="input" required="" />
+            <span class="forgot-password"><a href="#">Forgot Password ?</a></span>
+            <div (click)="signIn()">
+            <input value="Sign In" type="submit" class="login-button"  />
+        </div>
+        </form>
+    </div>
+</div>
