@@ -1,9 +1,12 @@
 <div id="chart">
-  <p class="para">Order summary</p>
-  <apx-chart
-    [series]="chartOptions.series!"
-    [chart]="chartOptions.chart!"
-    [plotOptions]="chartOptions.plotOptions!"
-    [labels]="chartOptions.labels!"
-  ></apx-chart>
+  <div class="flex-head">
+    <div>
+      <p class="para">Order summary</p>
+    </div>
+    <div>
+      <span class="year">Today<i class="fas fa-angle-down ml"></i></span>
+    </div>
+  </div>
+  <apx-chart [series]="chartOptions.series!" [chart]="chartOptions.chart!" [plotOptions]="chartOptions.plotOptions!"
+    [labels]="chartOptions.labels!"></apx-chart>
 </div>

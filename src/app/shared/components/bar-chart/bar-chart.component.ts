@@ -17,7 +17,7 @@ export type ChartOptions = {
   series: ApexAxisChartSeries;
   chart: ApexChart;
   dataLabels: ApexDataLabels;
-  plotOptions: ApexPlotOptions;
+  plotOptions: ApexPlotOptions ;
   yaxis: ApexYAxis;
   xaxis: ApexXAxis;
   fill: ApexFill;
@@ -33,19 +33,19 @@ export type ChartOptions = {
 })
 export class BarChartComponent {
   @ViewChild("chart") chart: ChartComponent | undefined;
-  public chartOptions: Partial<ChartOptions>;
+  public chartOptions!: Partial<ChartOptions> | any;
 
   constructor() {
     this.chartOptions = {
       series: [
         {
           // name: "Net Profit",
-          data: [44, 55, 57, 56, 61, 58, 63, 60, 66]
+          data: [44, 55, 57, 56, 61]
         },
-        // {
-        //   name: "Revenue",
-        //   data: [76, 85, 101, 98, 87, 105, 91, 114, 94]
-        // },
+        {
+          // name: "Revenue",
+          data: [76, 85, 101, 98]
+        },
         // {
         //   name: "Free Cash Flow",
         //   data: [35, 41, 36, 26, 45, 48, 52, 53, 41]
@@ -53,12 +53,12 @@ export class BarChartComponent {
       ],
       legend:{
         markers:{
-          fillColors:['#6326f0','#edf1fb']
+          fillColors:['#6b50ff','#00e1d7']
         }
       },
       chart: {
         type: "bar",
-        height: 250,
+        height: 180,
         toolbar: {
           show:false
         },
@@ -67,7 +67,7 @@ export class BarChartComponent {
         bar: {
           horizontal: false,
           columnWidth: "55%",
-          // endingShape: "rounded"
+           endingShape: "rounded"
         }
       },
       
@@ -86,10 +86,6 @@ export class BarChartComponent {
           "Apr",
           "May",
           "Jun",
-          "Jul",
-          "Aug",
-          "Sep",
-          "Oct"
         ]
       },
       yaxis: {
@@ -99,11 +95,11 @@ export class BarChartComponent {
       },
       fill: {
         opacity: 1,
-        colors:['#6326f0','#edf1fb']
+        colors:['#6b50ff','#00e1d7']
       },
       tooltip: {
         y: {
-          formatter: function(val) {
+          formatter: function(val:any) {
             return "$ " + val + " thousands";
           }
         }

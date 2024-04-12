@@ -1,12 +1,29 @@
 #chart{
     background-color: white;
     border-radius: 10px;
-    box-shadow: 2px 10px 20px rgba(0, 0, 0, 0.1);
+    // box-shadow: 2px 10px 20px rgba(0, 0, 0, 0.1);
 
 }
 .para{
     padding-left: 10px;
-    font-size: 20px;
-    font-weight: bolder;
-    padding-top: 10px;
+    font-size: 14px;
+    padding-top: 20px;
+    margin-bottom: 0;
+    font-size: 14px;
+    color: black;
+    font-weight: 600;
+
+}
+.flex-head{
+    display: flex;
+    justify-content: space-between;
+    padding-right: 20px;
+    align-items: baseline;
+.year{
+    color: #c1bfca;
+    font-size: 12px;
+    .ml{
+        margin-left: 4px;
+    }
+}
 }

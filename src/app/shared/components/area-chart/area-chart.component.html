@@ -1,12 +1,13 @@
 <div id="chart">
-   <p class="para"> Revenue</p>
-    <apx-chart
-      [series]="chartOptions.series!"
-      [chart]="chartOptions.chart!"
-      [xaxis]="chartOptions.xaxis!"
-      [stroke]="chartOptions.stroke!"
-      [tooltip]="chartOptions.tooltip!"
-      [dataLabels]="chartOptions.dataLabels!"
-      [fill]="chartOptions.fill!"
-    ></apx-chart>
+  <div class="flex-head">
+    <div>
+      <p class="para">Revenue summary</p>
+    </div>
+    <div>
+      <span class="year">2023<i class="fas fa-angle-down ml"></i></span>
+    </div>
   </div>
+  <apx-chart [series]="chartOptions.series!" [chart]="chartOptions.chart!" [xaxis]="chartOptions.xaxis!"
+    [stroke]="chartOptions.stroke!" [tooltip]="chartOptions.tooltip!" [dataLabels]="chartOptions.dataLabels!"
+    [fill]="chartOptions.fill!"></apx-chart>
+</div>

@@ -36,24 +36,28 @@ export class AreaChartComponent {
           name: "",
           data: [31, 40, 28]
         },
+        {
+          name: "",
+          data: [20, 30, 20]
+        },
       ],
 
       chart: {
-        height: 250,
+        height: 180,
         type: "area",
         toolbar: {
           show: false
         },
       },
       fill: {
-        colors:['#beb2fe']
+        colors:['#beb2fe','#75ede7']
       },
       dataLabels: {
         enabled: false
       },
       stroke: {
         curve: "smooth",
-        colors: ["#6c52fe"],
+        colors: ["#6c52fe",'#00e1d7'],
       },
       xaxis: {
         type: "datetime",

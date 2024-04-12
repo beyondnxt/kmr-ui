@@ -144,4 +144,27 @@ export const tableValues = [
         updatedOn: '13-03-2022',
         action:'Action'
     },
+    {
+        companyName: 'BeyondNXT',
+        status:'Active',
+        mobile: '7401567040',
+        email: 'test@test.com',
+        createdBy: 'Ajay G S',
+        updatedBy: 'Ajay G S',
+        createdOn: '13-03-2022',
+        updatedOn: '13-03-2022',
+        action:'Action'
+    },
+    {
+        companyName: 'BeyondNXT',
+        status:'Active',
+        mobile: '7401567040',
+        email: 'test@test.com',
+        createdBy: 'Ajay G S',
+        updatedBy: 'Ajay G S',
+        createdOn: '13-03-2022',
+        updatedOn: '13-03-2022',
+        action:'Action'
+    },
+
 ]
