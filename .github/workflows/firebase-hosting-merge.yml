@@ -18,3 +18,5 @@ jobs:
           firebaseServiceAccount: "${{ secrets.FIREBASE_SERVICE_ACCOUNT_KMR_UI }}"
           channelId: live
           projectId: kmr-ui
+        env:
+          FIREBASE_CLI_EXPERIMENTS: webframeworks
