@@ -1,17 +1,17 @@
 export const navBarData = {
     mainNav: [
-        {
-            routerlink: 'admin/user',
-            icon: 'fal fa-user',
-            label: 'Admin',
-            menu: 'user'
-        },
-        {
-            routerlink: 'sales/dispatch',
-            icon: 'fal fa-user',
-            label: 'Sales',
-            menu: 'user'
-        },
+        // {
+        //     routerlink: 'admin/user',
+        //     icon: 'fal fa-user',
+        //     label: 'Admin',
+        //     menu: 'user'
+        // },
+        // {
+        //     routerlink: 'sales/dispatch',
+        //     icon: 'fal fa-user',
+        //     label: 'Sales',
+        //     menu: 'user'
+        // },
         {
             routerlink: 'master/company',
             icon: 'fal fa-user',
@@ -48,18 +48,18 @@ export const navBarData = {
             label: 'Customer',
             menu: 'user'
         },
-        {
-            routerlink: 'master/item',
-            icon: 'fas fa-shopping-basket',
-            label: 'Item',
-            menu: 'user'
-        },
-        {
-            routerlink: 'master/category',
-            icon: 'fas fa-tag',
-            label: 'Category',
-            menu: 'user'
-        },
+        // {
+        //     routerlink: 'master/item',
+        //     icon: 'fas fa-shopping-basket',
+        //     label: 'Item',
+        //     menu: 'user'
+        // },
+        // {
+        //     routerlink: 'master/category',
+        //     icon: 'fas fa-tag',
+        //     label: 'Category',
+        //     menu: 'user'
+        // },
     ]
 };
 
