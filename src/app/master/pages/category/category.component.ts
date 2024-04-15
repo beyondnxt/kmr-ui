@@ -1,4 +1,5 @@
 import { Component } from '@angular/core';
+import { MatDialog } from '@angular/material/dialog';
 
 @Component({
   selector: 'app-category',
@@ -6,5 +7,6 @@ import { Component } from '@angular/core';
   styleUrls: ['./category.component.scss']
 })
 export class CategoryComponent {
+  constructor(private dialog: MatDialog,) { }
 
 }
