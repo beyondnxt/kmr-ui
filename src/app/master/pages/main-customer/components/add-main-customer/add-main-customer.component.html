@@ -1,0 +1,52 @@
+<div class="dialog-container">
+    <div class="row">
+        <div class="col-lg-12 closeAlign">
+            <div class="head">
+            <h1>Create an Main Customer</h1>
+        </div>
+            <div>
+                <button mat-icon-button mat-dialog-close tabindex="-1" class="close-button">
+                    <mat-icon class="closeColor">close</mat-icon></button>
+            </div>
+        </div>
+    </div>
+    <div class="row">
+        <div class="col-lg-6">
+            <mat-form-field class="col-lg-12" >
+                <label class="labelName">Name</label>
+                <input type="text" matInput placeholder="Add Name">
+            </mat-form-field>
+        </div>
+       <div class="col-lg-6">
+            <mat-form-field class="col-lg-12">
+                <label class="labelName">Code</label>
+                <input type="text" matInput placeholder="Add code">
+            </mat-form-field>
+        </div>
+        <div class="col-lg-6">
+            <p class="labelName">Type</p>
+            <mat-radio-group aria-label="Select an option">
+                <mat-radio-button value="1">Domestic</mat-radio-button>
+                <mat-radio-button value="2">Export</mat-radio-button>
+            </mat-radio-group>
+        </div>
+        <div class="col-lg-6">
+            <mat-form-field class="col-lg-12">
+                <label class="Add main Customer">Country</label>
+                <mat-select placeholder="Select Country">
+                    <mat-option>India</mat-option>
+                    <mat-option>USA</mat-option>
+                    <mat-option>UK</mat-option>
+                    <mat-option>Singapore</mat-option>
+                    <mat-option>Malaysia</mat-option>
+                </mat-select>
+            </mat-form-field>
+        </div>
+    </div>
+    <div class="row m-0 p-0">
+        <div class="btnAlign">
+        <app-kmr-btn mat-dialog-close [label]="'Cancel'" [bgColor]="'#F2F4F6'" [color]="'black'"></app-kmr-btn>
+        <app-kmr-btn [label]="'Save'"></app-kmr-btn>
+    </div>
+    </div>
+</div>

@@ -48,6 +48,12 @@ export const navBarData = {
             label: 'Customer',
             menu: 'user'
         },
+        {
+            routerlink: 'master/main-customer',
+            icon: 'fas fa-clipboard-user',
+            label: 'Main Customer',
+            menu: 'user'
+        }
         // {
         //     routerlink: 'master/item',
         //     icon: 'fas fa-shopping-basket',
