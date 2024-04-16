@@ -10,7 +10,7 @@
             </div>
         </div>
     </div>
-    <div class="row">
+    <div class="row scrollSet">
         <div class="col-lg-6">
             <mat-form-field class="col-lg-12" >
                 <label class="labelName">Company Name</label>
@@ -27,6 +27,12 @@
             <mat-form-field class="col-lg-12">
                 <label class="labelName">Code</label>
                 <input type="text" matInput placeholder="Add code">
+            </mat-form-field>
+        </div>
+        <div class="col-lg-6">
+            <mat-form-field class="col-lg-12">
+                <label class="labelName">Company's VAT TIN</label>
+                <input type="text" matInput placeholder="Add Company's VAT TIN">
             </mat-form-field>
         </div>
         <div class="col-lg-6">
@@ -49,7 +55,7 @@
         </div>
         <div class="col-lg-6">
             <mat-form-field class="col-lg-12">
-                <label class="labelName">GSTINI</label>
+                <label class="labelName">GSTIN</label>
                 <input type="text" matInput placeholder="Add gstini">
             </mat-form-field>
         </div>
@@ -77,11 +83,11 @@
                 <textarea matInput placeholder="Add address"></textarea>
               </mat-form-field>
         </div>
-        <div class="row m-0 p-0">
-            <div class="btnAlign">
-            <app-kmr-btn mat-dialog-close [label]="'Cancel'" [bgColor]="'#F2F4F6'" [color]="'black'"></app-kmr-btn>
-            <app-kmr-btn [label]="'Save'"></app-kmr-btn>
-        </div>
-        </div>
+    </div>
+    <div class="row m-0 p-0">
+        <div class="btnAlign">
+        <app-kmr-btn mat-dialog-close [label]="'Cancel'" [bgColor]="'#F2F4F6'" [color]="'black'"></app-kmr-btn>
+        <app-kmr-btn [label]="'Save'"></app-kmr-btn>
+    </div>
     </div>
 </div>

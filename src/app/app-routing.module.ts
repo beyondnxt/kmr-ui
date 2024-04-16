@@ -52,6 +52,10 @@ const routes: Routes = [
             loadChildren: () =>import('./master/pages/customer/customer.module').then(m => m.CustomerModule)
           },
           {
+            path:'main-customer',
+            loadChildren: () =>import('./master/pages/main-customer/main-customer.module').then(m => m.MainCustomerModule)
+          },
+          {
             path:'item',
             loadChildren: () =>import('./master/pages/item/item.module').then(m => m.ItemModule)
           },
