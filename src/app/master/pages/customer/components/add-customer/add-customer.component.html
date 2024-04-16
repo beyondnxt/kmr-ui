@@ -10,11 +10,11 @@
             </div>
         </div>
     </div>
-    <div class="row scrollSet">
+    <div class="row scrollSet" [formGroup]="customerForm">
         <div class="col-lg-6">
             <mat-form-field class="col-lg-12">
                 <label class="Add main Customer">Main Customer</label>
-                <mat-select placeholder="Select main customer">
+                <mat-select placeholder="Select main customer" formControlName="mainCustomer">
                     <mat-option>KMR</mat-option>
                 </mat-select>
             </mat-form-field>
@@ -22,49 +22,43 @@
         <div class="col-lg-6">
             <mat-form-field class="col-lg-12">
                 <label class="labelName">Name</label>
-                <input type="text" matInput placeholder="Add Name">
+                <input type="text" matInput placeholder="Add Name" formControlName="name">
             </mat-form-field>
         </div>
         <div class="col-lg-6">
             <mat-form-field class="col-lg-12">
                 <label class="labelName">Code</label>
-                <input type="text" matInput placeholder="Add code">
+                <input type="text" matInput placeholder="Add code" formControlName="code">
             </mat-form-field>
         </div>
         <div class="col-lg-6">
             <p class="labelName">Type</p>
-            <mat-radio-group aria-label="Select an option">
+            <mat-radio-group aria-label="Select an option" formControlName="type">
                 <mat-radio-button value="1">Domestic</mat-radio-button>
                 <mat-radio-button value="2">Export</mat-radio-button>
             </mat-radio-group>
         </div>
         <div class="col-lg-6">
             <mat-form-field class="col-lg-12">
-                <label class="labelName">Company's PAN</label>
-                <input type="text" matInput placeholder="Add company's pan">
-            </mat-form-field>
-        </div>
-        <div class="col-lg-6">
-            <mat-form-field class="col-lg-12">
-                <label class="labelName">Email Address</label>
-                <input type="text" matInput placeholder="Add email">
-            </mat-form-field>
-        </div>
-        <div class="col-lg-6">
-            <mat-form-field class="col-lg-12">
                 <label class="labelName">Contact No</label>
-                <input type="text" matInput placeholder="Add contact no">
+                <input type="text" matInput placeholder="Add contact no" formControlName="contactNo">
             </mat-form-field>
         </div>
         <div class="col-lg-6">
             <mat-form-field class="col-lg-12">
                 <label class="labelName">Contact person</label>
-                <input type="text" matInput placeholder="Add contact person">
+                <input type="text" matInput placeholder="Add contact person" formControlName="contactPerson">
+            </mat-form-field>
+        </div>
+        <div class="col-lg-6">
+            <mat-form-field class="col-lg-12">
+                <label class="labelName">Email Address</label>
+                <input type="text" matInput placeholder="Add email" formControlName="email">
             </mat-form-field>
         </div>
         <div class="col-lg-6">
             <p class="labelName">Grade</p>
-            <mat-radio-group aria-label="Select an option">
+            <mat-radio-group aria-label="Select an option" formControlName="grade">
                 <mat-radio-button value="1">A</mat-radio-button>
                 <mat-radio-button value="2">B</mat-radio-button>
                 <mat-radio-button value="2">C</mat-radio-button>
@@ -75,7 +69,7 @@
         <div class="col-lg-6">
             <mat-form-field class="col-lg-12">
                 <label class="Add main Customer">Sales Lead Name</label>
-                <mat-select placeholder="Select sales lead name">
+                <mat-select placeholder="Select sales lead name" formControlName="salesLeadName">
                     <mat-option>KMR</mat-option>
                 </mat-select>
             </mat-form-field>
@@ -83,45 +77,63 @@
         <div class="col-lg-6">
             <mat-form-field class="col-lg-12">
                 <label class="labelName">Sales Code</label>
-                <input type="text" matInput placeholder="Add sales code">
+                <input type="text" matInput placeholder="Add sales code" formControlName="salesCode">
             </mat-form-field>
         </div>
         <div class="col-lg-6">
             <mat-form-field class="col-lg-12">
                 <label class="labelName">Destination Port</label>
-                <input type="text" matInput placeholder="Add destination Port">
+                <input type="text" matInput placeholder="Add destination Port" formControlName="destinationPort">
             </mat-form-field>
         </div>
         <div class="col-lg-6">
             <mat-form-field class="col-lg-12">
                 <label class="labelName">Final Destination</label>
-                <input type="text" matInput placeholder="Add final destination">
+                <input type="text" matInput placeholder="Add final destination" formControlName="finalDestination">
             </mat-form-field>
         </div>
         <div class="col-lg-6">
             <mat-form-field class="col-lg-12">
-                <label class="labelName">PieceWeight Tolerance</label>
-                <input type="text" matInput placeholder="Add pieceWeight tolerance">
+                <label class="labelName">Piece Weight Tolerance</label>
+                <input type="text" matInput placeholder="Add pieceWeight tolerance" formControlName="pieceWeightTolerance">
             </mat-form-field>
         </div>
         <div class="col-lg-6">
             <mat-form-field class="col-lg-12">
                 <label class="labelName">Invoice Tolerance</label>
-                <input type="text" matInput placeholder="Add invoice tolerance">
+                <input type="text" matInput placeholder="Add invoice tolerance" formControlName="invoiceTolerance">
             </mat-form-field>
         </div>
         <div class="col-lg-6">
             <mat-form-field class="col-lg-12">
                 <label class="labelName">State</label>
-                <mat-select placeholder="Select state">
+                <mat-select placeholder="Select state" formControlName="state">
                     <mat-option>Tamil Nadu</mat-option>
                 </mat-select>
             </mat-form-field>
         </div>
         <div class="col-lg-6">
             <mat-form-field class="col-lg-12">
+                <label class="labelName">GSTIN</label>
+                <input type="text" matInput placeholder="Add gstin" formControlName="gstIn">
+            </mat-form-field>
+        </div>
+        <div class="col-lg-6">
+            <mat-form-field class="col-lg-12">
+                <label class="labelName">Aadhaar Number</label>
+                <input type="text" matInput placeholder="Add aadhaar number" formControlName="aadhaarNumber">
+            </mat-form-field>
+        </div>
+        <div class="col-lg-6">
+            <mat-form-field class="col-lg-12">
+                <label class="labelName">PAN</label>
+                <input type="text" matInput placeholder="Add pan" formControlName="pan">
+            </mat-form-field>
+        </div>
+        <div class="col-lg-6">
+            <mat-form-field class="col-lg-12">
                 <label class="labelName">Country</label>
-                <mat-select placeholder="Select country">
+                <mat-select placeholder="Select country" formControlName="country">
                     <mat-option>India</mat-option>
                 </mat-select>
             </mat-form-field>
@@ -129,33 +141,15 @@
         <div class="col-lg-6">
             <mat-form-field class="col-lg-12">
                 <label class="labelName">Handled By</label>
-                <mat-select placeholder="Select handled by">
+                <mat-select placeholder="Select handled by" formControlName="handledBy">
                     <mat-option>India</mat-option>
                 </mat-select>
-            </mat-form-field>
-        </div>
-        <div class="col-lg-6">
-            <mat-form-field class="col-lg-12">
-                <label class="labelName">GSTIN</label>
-                <input type="text" matInput placeholder="Add gstin">
-            </mat-form-field>
-        </div>
-        <div class="col-lg-6">
-            <mat-form-field class="col-lg-12">
-                <label class="labelName">Aadhaar Number|</label>
-                <input type="text" matInput placeholder="Add aadhaar number|">
-            </mat-form-field>
-        </div>
-        <div class="col-lg-6">
-            <mat-form-field class="col-lg-12">
-                <label class="labelName">PAN</label>
-                <input type="text" matInput placeholder="Add pan">
             </mat-form-field>
         </div>
         <div class="col-lg-12">
             <mat-form-field class="col-lg-12">
                 <label class="labelName">Address</label>
-                <textarea matInput placeholder="Add address"></textarea>
+                <textarea matInput placeholder="Add address" formControlName="address"></textarea>
             </mat-form-field>
         </div>
     </div>

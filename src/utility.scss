@@ -38,6 +38,14 @@
     border-bottom-color: var(--primary) !important;
 
 }
+::ng-deep .mat-mdc-select-placeholder {
+    font-size: 14px;
+    color: black;
+    font-weight: 500;
+}
+::ng-deep .mdc-text-field--no-label:not(.mdc-text-field--outlined):not(.mdc-text-field--textarea) .mat-mdc-form-field-infix {
+    padding-top: 0px;
+}
 .labelName{
     font-size: 14px;
     color: #333333;

@@ -10,22 +10,24 @@
             </div>
         </div>
     </div>
-    <div class="row">
+    <div class="row" [formGroup]="mainCustomerForm">
         <div class="col-lg-6">
             <mat-form-field class="col-lg-12" >
-                <label class="labelName">Name</label>
-                <input type="text" matInput placeholder="Add Name">
+                <label class="labelName">Name
+                <input type="text" formControlName="name" matInput placeholder="Add Name">
+            </label>
             </mat-form-field>
         </div>
        <div class="col-lg-6">
             <mat-form-field class="col-lg-12">
-                <label class="labelName">Code</label>
-                <input type="text" matInput placeholder="Add code">
+                <label class="labelName">Code
+                <input type="text" formControlName="code" matInput placeholder="Add code">
+            </label>
             </mat-form-field>
         </div>
         <div class="col-lg-6">
             <p class="labelName">Type</p>
-            <mat-radio-group aria-label="Select an option">
+            <mat-radio-group aria-label="Select an option" formControlName="type">
                 <mat-radio-button value="1">Domestic</mat-radio-button>
                 <mat-radio-button value="2">Export</mat-radio-button>
             </mat-radio-group>
@@ -33,7 +35,7 @@
         <div class="col-lg-6">
             <mat-form-field class="col-lg-12">
                 <label class="Add main Customer">Country</label>
-                <mat-select placeholder="Select Country">
+                <mat-select placeholder="Select Country" formControlName="country">
                     <mat-option>India</mat-option>
                     <mat-option>USA</mat-option>
                     <mat-option>UK</mat-option>

@@ -29,7 +29,7 @@
                     <tr>
                         <ng-container *ngFor="let key of tableHeaders">
                             <td>
-                                <div class="score-value"> {{ value[key.key]}} </div>
+                                <div class="score-value" [style.color]="handleStatusColor(value[key.key])"> {{ value[key.key]}} </div>
                             </td>
                         </ng-container>
                     </tr>

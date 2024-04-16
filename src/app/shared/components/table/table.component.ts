@@ -21,4 +21,12 @@ export class TableComponent {
 
   handlePageEvent(e: PageEvent) {
   }
+  handleStatusColor(status: string) {
+    switch (status) {
+      case 'Active':
+        return '#4DB6AC';
+      default:
+        return '#000000';
+    }
+  }
 }
