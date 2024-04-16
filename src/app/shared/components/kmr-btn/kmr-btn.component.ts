@@ -7,5 +7,7 @@ import { Component, EventEmitter, Input, Output } from '@angular/core';
 })
 export class KmrBtnComponent {
   @Input() label = '';
+  @Input() bgColor = '#5c46dc';
+  @Input() color = '#ffff';
   @Output() action = new EventEmitter();
 }
