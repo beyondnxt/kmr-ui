@@ -79,13 +79,13 @@ table {
 		width: calc((100vw - 2 * 40px - 180px) / 5);
 		
 		@media (min-width: 900px) {
-			min-width: calc((100vw - 2 * 40px - 180px) / 5);
-			max-width: calc((100vw - 2 * 40px - 180px) / 5);
+			min-width: calc((100vw - 2 * 40px - 600px) / 5);
+			max-width: calc((100vw - 2 * 40px - 600px) / 5);
 		}
 		
 		@media (max-width: 1023px) {
-			min-width: calc((100vw - 2 * 40px - 180px) / 3);
-			max-width: calc((100vw - 2 * 40px - 180px) / 3);
+			min-width: calc((100vw - 2 * 40px - 600px) / 3);
+			max-width: calc((100vw - 2 * 40px - 600px) / 3);
 		}
 		
 		&:not(:last-child) {
