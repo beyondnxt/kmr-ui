@@ -33,12 +33,16 @@ export class AreaChartComponent {
     this.chartOptions = {
       series: [
         {
-          name: "",
+          name: "Rope",
           data: [31, 40, 28]
         },
         {
-          name: "",
+          name: "Twine",
           data: [20, 30, 20]
+        },
+        {
+          name: "Fish Net",
+          data: [25, 35, 45]
         },
       ],
 
@@ -50,20 +54,23 @@ export class AreaChartComponent {
         },
       },
       fill: {
-        colors:['#beb2fe','#75ede7']
+        colors:['rgb(0, 143, 251)','rgb(0, 227, 150)','rgb(254, 176, 25)']
       },
       dataLabels: {
-        enabled: false
+        enabled: false,
+        style: {
+          colors: ['#F44336', '#E91E63', '#9C27B0']
+        }
       },
       stroke: {
         curve: "smooth",
-        colors: ["#6c52fe",'#00e1d7'],
+        colors: ["rgb(0, 143, 251)",'rgb(0, 227, 150)', 'rgb(254, 176, 25)'],
       },
       xaxis: {
         type: "datetime",
         categories: [
-          "2018-09-19T00:00:00.000Z",
-          "2018-09-19T01:30:00.000Z",
+          "2018-07-17T00:00:00.000Z",
+          "2018-08-29T01:30:00.000Z",
           "2018-09-19T02:30:00.000Z",
         ]
       },
