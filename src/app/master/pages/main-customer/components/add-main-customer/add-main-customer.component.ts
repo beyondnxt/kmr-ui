@@ -1,5 +1,5 @@
 import { Component } from '@angular/core';
-import { FormBuilder } from '@angular/forms';
+import { FormBuilder, Validators } from '@angular/forms';
 
 @Component({
   selector: 'app-add-main-customer',
@@ -9,10 +9,10 @@ import { FormBuilder } from '@angular/forms';
 export class AddMainCustomerComponent {
   constructor(private fb: FormBuilder) { }
   mainCustomerForm = this.fb.group({
-    name:[''],
-    code:[''],
-    type:[''],
-    country:['']
+    name: ['', [Validators.required, Validators.pattern('[a-zA-Z ]*')]],
+    code: ['', [Validators.required]],
+    type: ['',[Validators.required]],
+    country: ['',[Validators.required]]
   })
 
 }

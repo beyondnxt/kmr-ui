@@ -16,6 +16,10 @@
                 <label class="labelName">First Name
                     <input type="text" formControlName="firstName" matInput placeholder="Add First Name">
                 </label>
+                <mat-error *ngIf="userForm.get('firstName')?.hasError('required')">
+                    <b> First name is required</b>
+                </mat-error>
+                <mat-error *ngIf="userForm.get('firstName')?.errors?.['pattern']"><b>Only alphabets are allowed.</b></mat-error>
             </mat-form-field>
         </div>
         <div class="col-lg-6">
@@ -23,6 +27,10 @@
                 <label class="labelName">Last Name
                     <input type="text" formControlName="lastName" matInput placeholder="Add last Name">
                 </label>
+                <mat-error *ngIf="userForm.get('lastName')?.hasError('required')">
+                    <b> Last name is required</b>
+                </mat-error>
+                <mat-error *ngIf="userForm.get('lastName')?.errors?.['pattern']"><b>Only alphabets are allowed.</b></mat-error>   
             </mat-form-field>
         </div>
         <div class="col-lg-6">
@@ -30,13 +38,25 @@
                 <label class="labelName">Phone Number
                     <input type="text" formControlName="phoneNumber" matInput placeholder="Add phone number">
                 </label>
+                <mat-error *ngIf="userForm.get('phoneNumber')?.hasError('required')">
+                    <b> Phone number is required</b>
+                </mat-error>
+                <mat-error *ngIf="userForm.get('phoneNumber')?.errors?.['pattern']"><b>Invalid phone number
+                    format.</b></mat-error>
             </mat-form-field>
         </div>
         <div class="col-lg-6">
             <mat-form-field class="col-lg-12">
-                <label class="labelName">Email</label>
+                <label class="labelName">Email
                     <input type="text" formControlName="email" matInput placeholder="Add email">
-                
+                </label>
+                    <mat-error
+                    *ngIf="userForm.get('email')?.hasError('email') && !userForm.get('email')?.hasError('required')">
+                  <b> Please enter a valid email address</b> 
+                </mat-error>
+                <mat-error *ngIf="userForm.get('email')?.hasError('required')">
+                    <b> Email is required</b>
+                </mat-error>
             </mat-form-field>
         </div>
         <div class="col-lg-6">
@@ -46,6 +66,9 @@
                     <mat-option>Admin</mat-option>
                     <mat-option>Super Admin</mat-option>
                 </mat-select>
+                <mat-error *ngIf="userForm.get('role')?.hasError('required')">
+                    <b> Role is required</b>
+                </mat-error>
             </mat-form-field>
         </div>
     </div>

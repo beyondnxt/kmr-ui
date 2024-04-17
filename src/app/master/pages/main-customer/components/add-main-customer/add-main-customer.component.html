@@ -16,6 +16,10 @@
                 <label class="labelName">Name
                 <input type="text" formControlName="name" matInput placeholder="Add Name">
             </label>
+            <mat-error *ngIf="mainCustomerForm.get('name')?.errors?.['pattern']"><b>Only alphabets are allowed.</b></mat-error>
+            <mat-error *ngIf="mainCustomerForm.get('name')?.hasError('required')">
+                <b>Name is required</b>
+            </mat-error> 
             </mat-form-field>
         </div>
        <div class="col-lg-6">
@@ -23,6 +27,9 @@
                 <label class="labelName">Code
                 <input type="text" formControlName="code" matInput placeholder="Add code">
             </label>
+            <mat-error *ngIf="mainCustomerForm.get('code')?.hasError('required')">
+                <b>Code is required</b>
+            </mat-error> 
             </mat-form-field>
         </div>
         <div class="col-lg-6">
@@ -42,6 +49,9 @@
                     <mat-option>Singapore</mat-option>
                     <mat-option>Malaysia</mat-option>
                 </mat-select>
+                <mat-error *ngIf="mainCustomerForm.get('country')?.hasError('required')">
+                    <b> Country is required</b>
+                </mat-error> 
             </mat-form-field>
         </div>
     </div>
