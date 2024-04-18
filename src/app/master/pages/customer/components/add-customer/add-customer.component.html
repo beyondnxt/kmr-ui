@@ -16,19 +16,31 @@
                 <label class="Add main Customer">Main Customer</label>
                 <mat-select placeholder="Select main customer" formControlName="mainCustomer">
                     <mat-option>KMR</mat-option>
-                </mat-select>
+                  </mat-select>
+                  <mat-error *ngIf="customerForm.get('mainCustomer')?.hasError('required')">
+                    <b> Main customer is required</b>
+                </mat-error>
             </mat-form-field>
         </div>
         <div class="col-lg-6">
             <mat-form-field class="col-lg-12">
-                <label class="labelName">Name</label>
-                <input type="text" matInput placeholder="Add Name" formControlName="name">
+                <label class="labelName">Name
+                    <input type="text" matInput placeholder="Add Name" formControlName="name">
+                </label>
+                <mat-error *ngIf="customerForm.get('name')?.errors?.['pattern']"><b>Only alphabets are allowed.</b></mat-error>
+                    <mat-error *ngIf="customerForm.get('name')?.hasError('required')">
+                        <b> Name is required</b>
+                    </mat-error> 
             </mat-form-field>
         </div>
         <div class="col-lg-6">
             <mat-form-field class="col-lg-12">
-                <label class="labelName">Code</label>
-                <input type="text" matInput placeholder="Add code" formControlName="code">
+                <label class="labelName">Code
+                    <input type="text" matInput placeholder="Add code" formControlName="code">
+                </label>
+                    <mat-error *ngIf="customerForm.get('code')?.hasError('required')">
+                        <b> Code is required</b>
+                    </mat-error>
             </mat-form-field>
         </div>
         <div class="col-lg-6">
@@ -40,20 +52,37 @@
         </div>
         <div class="col-lg-6">
             <mat-form-field class="col-lg-12">
-                <label class="labelName">Contact No</label>
-                <input type="text" matInput placeholder="Add contact no" formControlName="contactNo">
+                <label class="labelName">Contact No
+                    <input type="text" matInput placeholder="Add contact no" formControlName="contactNo">
+                </label>
+                    <mat-error *ngIf="customerForm.get('contactNo')?.hasError('required')">
+                        <b> Contact no is required</b>
+                    </mat-error> 
             </mat-form-field>
         </div>
         <div class="col-lg-6">
             <mat-form-field class="col-lg-12">
-                <label class="labelName">Contact person</label>
-                <input type="text" matInput placeholder="Add contact person" formControlName="contactPerson">
+                <label class="labelName">Contact person
+                    <input type="text" matInput placeholder="Add contact person" formControlName="contactPerson">
+                </label>
+                <mat-error *ngIf="customerForm.get('contactPerson')?.errors?.['pattern']"><b>Only alphabets are allowed.</b></mat-error>
+                    <mat-error *ngIf="customerForm.get('contactPerson')?.hasError('required')">
+                        <b> Contact person is required</b>
+                    </mat-error> 
             </mat-form-field>
         </div>
         <div class="col-lg-6">
             <mat-form-field class="col-lg-12">
-                <label class="labelName">Email Address</label>
-                <input type="text" matInput placeholder="Add email" formControlName="email">
+                <label class="labelName">Email Address
+                    <input type="text" matInput placeholder="Add email" formControlName="email">
+                </label>
+                <mat-error
+                *ngIf="customerForm.get('email')?.hasError('email') && !customerForm.get('email')?.hasError('required')">
+                <b> Please enter a valid email address</b>
+            </mat-error>
+                    <mat-error *ngIf="customerForm.get('email')?.hasError('required')">
+                        <b> Email is required</b>
+                    </mat-error>
             </mat-form-field>
         </div>
         <div class="col-lg-6">
@@ -71,37 +100,59 @@
                 <label class="Add main Customer">Sales Lead Name</label>
                 <mat-select placeholder="Select sales lead name" formControlName="salesLeadName">
                     <mat-option>KMR</mat-option>
-                </mat-select>
+                 </mat-select>
+                 <mat-error *ngIf="customerForm.get('salesLeadName')?.hasError('required')">
+                    <b> Sales lead name is required</b>
+                </mat-error>
             </mat-form-field>
         </div>
         <div class="col-lg-6">
             <mat-form-field class="col-lg-12">
-                <label class="labelName">Sales Code</label>
-                <input type="text" matInput placeholder="Add sales code" formControlName="salesCode">
+                <label class="labelName">Sales Code
+                    <input type="text" matInput placeholder="Add sales code" formControlName="salesCode"></label>
+                    <mat-error *ngIf="customerForm.get('salesCode')?.hasError('required')">
+                        <b> Sales code is required</b>
+                    </mat-error> 
             </mat-form-field>
         </div>
         <div class="col-lg-6">
             <mat-form-field class="col-lg-12">
-                <label class="labelName">Destination Port</label>
-                <input type="text" matInput placeholder="Add destination Port" formControlName="destinationPort">
+                <label class="labelName">Destination Port
+                    <input type="text" matInput placeholder="Add destination Port" formControlName="destinationPort">
+                </label>
+                    <mat-error *ngIf="customerForm.get('destinationPort')?.hasError('required')">
+                        <b> Destination is required</b>
+                    </mat-error>
             </mat-form-field>
         </div>
         <div class="col-lg-6">
             <mat-form-field class="col-lg-12">
-                <label class="labelName">Final Destination</label>
-                <input type="text" matInput placeholder="Add final destination" formControlName="finalDestination">
+                <label class="labelName">Final Destination
+                    <input type="text" matInput placeholder="Add final destination" formControlName="finalDestination">
+                </label>
+                    <mat-error *ngIf="customerForm.get('finalDestination')?.hasError('required')">
+                        <b> Final destination is required</b>
+                    </mat-error>
             </mat-form-field>
         </div>
         <div class="col-lg-6">
             <mat-form-field class="col-lg-12">
-                <label class="labelName">Piece Weight Tolerance</label>
-                <input type="text" matInput placeholder="Add pieceWeight tolerance" formControlName="pieceWeightTolerance">
+                <label class="labelName">Piece Weight Tolerance
+                    <input type="text" matInput placeholder="Add pieceWeight tolerance"
+                        formControlName="pieceWeightTolerance">
+                    </label>
+                    <mat-error *ngIf="customerForm.get('pieceWeightTolerance')?.hasError('required')">
+                        <b> Piece weight tolerance is required</b>
+                    </mat-error> 
             </mat-form-field>
         </div>
         <div class="col-lg-6">
             <mat-form-field class="col-lg-12">
-                <label class="labelName">Invoice Tolerance</label>
-                <input type="text" matInput placeholder="Add invoice tolerance" formControlName="invoiceTolerance">
+                <label class="labelName">Invoice Tolerance
+                    <input type="text" matInput placeholder="Add invoice tolerance" formControlName="invoiceTolerance"></label>
+                    <mat-error *ngIf="customerForm.get('invoiceTolerance')?.hasError('required')">
+                        <b> Invoice tolerance is required</b>
+                    </mat-error> 
             </mat-form-field>
         </div>
         <div class="col-lg-6">
@@ -109,25 +160,36 @@
                 <label class="labelName">State</label>
                 <mat-select placeholder="Select state" formControlName="state">
                     <mat-option>Tamil Nadu</mat-option>
-                </mat-select>
+                    <mat-error *ngIf="customerForm.get('state')?.hasError('required')">
+                        <b> State is required</b>
+                    </mat-error> </mat-select>
             </mat-form-field>
         </div>
         <div class="col-lg-6">
             <mat-form-field class="col-lg-12">
-                <label class="labelName">GSTIN</label>
-                <input type="text" matInput placeholder="Add gstin" formControlName="gstIn">
+                <label class="labelName">GSTIN
+                    <input type="text" matInput placeholder="Add gstin" formControlName="gstIn"></label>
+                    <mat-error *ngIf="customerForm.get('gstIn')?.hasError('required')">
+                        <b> GSTIN is required</b>
+                    </mat-error> 
             </mat-form-field>
         </div>
         <div class="col-lg-6">
             <mat-form-field class="col-lg-12">
-                <label class="labelName">Aadhaar Number</label>
-                <input type="text" matInput placeholder="Add aadhaar number" formControlName="aadhaarNumber">
+                <label class="labelName">Aadhaar Number
+                    <input type="text" matInput placeholder="Add aadhaar number" formControlName="aadhaarNumber"></label>
+                    <mat-error *ngIf="customerForm.get('aadhaarNumber')?.hasError('required')">
+                        <b> Aadhaar number is required</b>
+                    </mat-error> 
             </mat-form-field>
         </div>
         <div class="col-lg-6">
             <mat-form-field class="col-lg-12">
-                <label class="labelName">PAN</label>
-                <input type="text" matInput placeholder="Add pan" formControlName="pan">
+                <label class="labelName">PAN
+                    <input type="text" matInput placeholder="Add pan" formControlName="pan"></label>
+                    <mat-error *ngIf="customerForm.get('pan')?.hasError('required')">
+                        <b> PAN is required</b>
+                    </mat-error> 
             </mat-form-field>
         </div>
         <div class="col-lg-6">
@@ -135,7 +197,10 @@
                 <label class="labelName">Country</label>
                 <mat-select placeholder="Select country" formControlName="country">
                     <mat-option>India</mat-option>
-                </mat-select>
+                 </mat-select>
+                 <mat-error *ngIf="customerForm.get('country')?.hasError('required')">
+                    <b> Country is required</b>
+                </mat-error> 
             </mat-form-field>
         </div>
         <div class="col-lg-6">
@@ -143,13 +208,20 @@
                 <label class="labelName">Handled By</label>
                 <mat-select placeholder="Select handled by" formControlName="handledBy">
                     <mat-option>India</mat-option>
-                </mat-select>
+                 </mat-select>
+                 <mat-error *ngIf="customerForm.get('handledBy')?.hasError('required')">
+                    <b> Handled By is required</b>
+                </mat-error>
             </mat-form-field>
         </div>
         <div class="col-lg-12">
             <mat-form-field class="col-lg-12">
-                <label class="labelName">Address</label>
-                <textarea matInput placeholder="Add address" formControlName="address"></textarea>
+                <label class="labelName">Address
+                    <textarea matInput placeholder="Add address" formControlName="address"></textarea>
+                </label>
+                    <mat-error *ngIf="customerForm.get('address')?.hasError('required')">
+                        <b> Address is required</b>
+                    </mat-error> 
             </mat-form-field>
         </div>
     </div>

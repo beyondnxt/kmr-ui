@@ -1,5 +1,5 @@
 import { Component } from '@angular/core';
-import { FormBuilder } from '@angular/forms';
+import { FormBuilder, Validators } from '@angular/forms';
 
 @Component({
   selector: 'app-add-user',
@@ -9,10 +9,11 @@ import { FormBuilder } from '@angular/forms';
 export class AddUserComponent {
   constructor(private fb: FormBuilder) { }
   userForm = this.fb.group({
-    firstName: [''],
-    lastName: [''],
-    phoneNumber: [''],
-    email: [''],
-    role: ['']
+    firstName: ['',[Validators.required, Validators.pattern('[a-zA-Z ]*')]],
+    lastName: ['',[Validators.required, Validators.pattern('[a-zA-Z ]*')]],
+    phoneNumber: ['',[Validators.required,Validators.pattern('[0-9]{10}')]],
+    email: ['', [Validators.required, Validators.email]],
+    password: ['', [Validators.required]],
+    role: ['',[Validators.required]]
   })
 }

@@ -37,6 +37,10 @@ const routes: Routes = [
           {
             path:'user',
             loadChildren: () =>import('./admin/pages/user/user.module').then(m => m.UserModule)
+          },
+          {
+            path:'role',
+            loadChildren: () =>import('./admin/pages/role/role.module').then(m => m.RoleModule)
           }
         ]
       },
