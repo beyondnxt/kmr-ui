@@ -1,5 +1,5 @@
 import { Component } from '@angular/core';
-import { FormBuilder } from '@angular/forms';
+import { FormBuilder, Validators } from '@angular/forms';
 
 @Component({
   selector: 'app-add-customer',
@@ -9,26 +9,26 @@ import { FormBuilder } from '@angular/forms';
 export class AddCustomerComponent {
   constructor(private fb: FormBuilder) { }
   customerForm = this.fb.group({
-    mainCustomer: [''],
-    name: [''],
-    code: [''],
-    type: [''],
-    contactNo: [''],
-    contactPerson: [''],
-    email: [''],
-    grade: [],
-    salesLeadName: [''],
-    salesCode: [''],
-    destinationPort: [''],
-    finalDestination: [''],
-    pieceWeightTolerance: [''],
-    invoiceTolerance: [''],
-    state: [''],
-    gstIn: [''],
-    aadhaarNumber: [''],
-    pan: [''],
-    country: [''],
-    handledBy: [''],
-    address: ['']
+    mainCustomer: ['', [Validators.required]],
+    name: ['', [Validators.required, Validators.pattern('[a-zA-Z ]*')]],
+    code: ['', [Validators.required]],
+    type: ['', [Validators.required]],
+    contactNo: ['', [Validators.required, Validators.pattern('[0-9]{10}')]],
+    contactPerson: ['', [Validators.required, Validators.pattern('[a-zA-Z ]*')]],
+    email: ['', [Validators.required, Validators.email]],
+    grade: ['', [Validators.required]],
+    salesLeadName: ['', [Validators.required]],
+    salesCode: ['', [Validators.required]],
+    destinationPort: ['', [Validators.required]],
+    finalDestination: ['', [Validators.required]],
+    pieceWeightTolerance: ['', [Validators.required]],
+    invoiceTolerance: ['', [Validators.required]],
+    state: ['', [Validators.required]],
+    gstIn: ['', [Validators.required]],
+    aadhaarNumber: ['', [Validators.required]],
+    pan: ['', [Validators.required]],
+    country: ['', [Validators.required]],
+    handledBy: ['', [Validators.required]],
+    address: ['', [Validators.required]]
   })
 }

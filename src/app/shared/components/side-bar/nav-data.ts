@@ -26,6 +26,12 @@ export const navBarData = {
             label: 'Users',
             menu: 'user'
         },
+        {
+            routerlink: 'admin/role',
+            icon: 'fal fa-user',
+            label: 'Role',
+            menu: 'user'
+        },
     ],
     salesNavLinks: [
         {
