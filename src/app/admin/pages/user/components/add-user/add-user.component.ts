@@ -13,6 +13,7 @@ export class AddUserComponent {
     lastName: ['',[Validators.required, Validators.pattern('[a-zA-Z ]*')]],
     phoneNumber: ['',[Validators.required,Validators.pattern('[0-9]{10}')]],
     email: ['', [Validators.required, Validators.email]],
+    password: ['', [Validators.required]],
     role: ['',[Validators.required]]
   })
 }
