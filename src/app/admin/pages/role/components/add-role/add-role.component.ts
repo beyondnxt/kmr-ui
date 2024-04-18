@@ -1,5 +1,6 @@
-import { Component } from '@angular/core';
+import { Component, Inject } from '@angular/core';
 import { FormBuilder, Validators } from '@angular/forms';
+import { MAT_DIALOG_DATA, MatDialogRef } from '@angular/material/dialog';
 
 @Component({
   selector: 'app-add-role',
@@ -7,10 +8,12 @@ import { FormBuilder, Validators } from '@angular/forms';
   styleUrls: ['./add-role.component.scss']
 })
 export class AddRoleComponent {
-  constructor(private fb: FormBuilder) { }
+  constructor(private fb: FormBuilder,public dialogRef: MatDialogRef<AddRoleComponent>,@Inject(MAT_DIALOG_DATA) public dialogData: any) { }
   menus: string[] = ['Master', 'Admin', 'Sales', 'Production', 'Lead', ];
   roleForm = this.fb.group({
     roleName: ['',[Validators.required, Validators.pattern('[a-zA-Z ]*')]],
-
   })
+  save(){
+    this.roleForm.markAllAsTouched();
+  }
 }

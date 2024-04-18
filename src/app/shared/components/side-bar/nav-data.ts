@@ -28,7 +28,7 @@ export const navBarData = {
         },
         {
             routerlink: 'admin/role',
-            icon: 'fal fa-user',
+            icon: 'fas fa-key',
             label: 'Role',
             menu: 'user'
         },

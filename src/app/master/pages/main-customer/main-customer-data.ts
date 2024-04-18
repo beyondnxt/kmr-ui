@@ -21,7 +21,12 @@ export const tableHeaders = [
         name: 'Country',
         key: 'country',
         sort: true,
-    }
+    },
+    {
+        name: 'Action',
+        key: 'action',
+        edit: true
+    },
 ]
 
 export const tableValues = [
@@ -29,67 +34,78 @@ export const tableValues = [
         companyName: 'BeyondNXT',
         code:'NGL002',
         type: 'Domestic',
-        country: 'India'
+        country: 'India',
+        action:''
     },
     {
         companyName: 'BeyondNXT',
         code:'NGL002',
         type: 'Domestic',
-        country: 'India'
+        country: 'India',
+        action:''
     },
     {
         companyName: 'BeyondNXT',
         code:'NGL002',
         type: 'Domestic',
-        country: 'India'
+        country: 'India',
+        action:''
     },
     {
         companyName: 'BeyondNXT',
         code:'NGL002',
         type: 'Domestic',
-        country: 'India'
+        country: 'India',
+        action:''
     },
     {
         companyName: 'BeyondNXT',
         code:'NGL002',
         type: 'Domestic',
-        country: 'India'
+        country: 'India',
+        action:''
     },
     {
         companyName: 'BeyondNXT',
         code:'NGL002',
         type: 'Domestic',
-        country: 'India'
+        country: 'India',
+        action:''
     },
     {
         companyName: 'BeyondNXT',
         code:'NGL002',
         type: 'Domestic',
-        country: 'India'
+        country: 'India',
+        action:''
     },
     {
         companyName: 'BeyondNXT',
         code:'NGL002',
         type: 'Domestic',
-        country: 'India'
+        country: 'India',
+        action:''
     },
     {
         companyName: 'BeyondNXT',
         code:'NGL002',
         type: 'Domestic',
-        country: 'India'
+        country: 'India',
+        action:''
     },
     {
         companyName: 'BeyondNXT',
         code:'NGL002',
         type: 'Domestic',
-        country: 'India'
+        country: 'India',
+        action:''
     },
     {
         companyName: 'BeyondNXT',
         code:'NGL002',
         type: 'Domestic',
-        country: 'India'    
+        country: 'India',
+        action:''    
     },
 
 ]

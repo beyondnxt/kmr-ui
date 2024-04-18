@@ -8,6 +8,7 @@
 	white-space: nowrap;
 	text-overflow: ellipsis;
     font-weight: bolder;
+	cursor: move; 
 }
 
 .date {
@@ -120,4 +121,7 @@ tbody tr:not(:last-child) {
 
 tr:nth-child(even) {
 	background-color: #f8fbfc
+  }
+  .ml{
+	margin-left: 10px;
   }

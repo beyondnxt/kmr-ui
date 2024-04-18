@@ -3,7 +3,7 @@
         <thead>
             <tr>
                 <th>
-                    <div class="label">{{fixedTableHeader.name}} <i class="fas fa-sort"></i></div>
+                    <div class="label">{{fixedTableHeader.name}}</div>
                 </th>
             </tr>
         </thead>
@@ -18,9 +18,11 @@
     <div class="table-data-wrapper">
         <table class="table-data">
             <thead>
-                <tr>
-                    <th *ngFor="let header of tableHeaders">
-                        <div class="label">{{header.name}} <i class="fas fa-sort"></i>  </div>
+                <tr  cdkDropList cdkDropListOrientation="horizontal" [cdkDropListData]="tableHeaders" (cdkDragReleased)="release=true"
+                (cdkDropListDropped)="dropCol($event)">
+                    <th *ngFor="let header of tableHeaders" cdkDrag (mousedown)="mouseDown($event)" cdkDragLockAxis="x"
+                    (cdkDragReleased)="release=true">
+                        <div class="label">{{header.name}} <i *ngIf="header.sort" class="fas fa-sort"></i></div>
                     </th>
                 </tr>
             </thead>
@@ -31,7 +33,11 @@
                             <td>
                                 <i class="fas fa-check-circle" *ngIf="key.role"></i>
                                 <!-- <i class="fas fa-times-circle" *ngIf="!key.role"></i> -->
-                                <div class="score-value" [style.color]="handleStatusColor(value[key.key])"> {{ value[key.key]}} </div>
+                                <div class="score-value" [style.color]="handleStatusColor(value[key.key])"> {{
+                                    value[key.key]}} </div>
+                                <div class="score-value" *ngIf="key.edit"> <i class="fas fa-edit" (click)="edit.emit()"></i> <i
+                                        class="fas fa-trash-alt ml" (click)="delete.emit()"></i> </div>
+
                             </td>
                         </ng-container>
                     </tr>

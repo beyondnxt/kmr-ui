@@ -53,7 +53,7 @@ export const tableValues = [
         type: 'Domestic',
         contactPerson: 'T Suresh',
         grade: 'A',
-        action:'Action'
+        action:''
     },
     {
         companyName: 'BeyondNXT',
@@ -63,7 +63,7 @@ export const tableValues = [
         type: 'Domestic',
         contactPerson: 'T Suresh',
         grade: 'A',
-        action:'Action'
+        action:''
     },
     {
         companyName: 'BeyondNXT',
@@ -73,7 +73,7 @@ export const tableValues = [
         type: 'Domestic',
         contactPerson: 'T Suresh',
         grade: 'A',
-        action:'Action'
+        action:''
     },
     {
         companyName: 'BeyondNXT',
@@ -83,7 +83,7 @@ export const tableValues = [
         type: 'Domestic',
         contactPerson: 'T Suresh',
         grade: 'A',
-        action:'Action'
+        action:''
     },
     {
         companyName: 'BeyondNXT',
@@ -93,7 +93,7 @@ export const tableValues = [
         type: 'Domestic',
         contactPerson: 'T Suresh',
         grade: 'A',
-        action:'Action'
+        action:''
     },
     {
         companyName: 'BeyondNXT',
@@ -103,7 +103,7 @@ export const tableValues = [
         type: 'Domestic',
         contactPerson: 'T Suresh',
         grade: 'A',
-        action:'Action'
+        action:''
     },
     {
         companyName: 'BeyondNXT',
@@ -113,7 +113,7 @@ export const tableValues = [
         type: 'Domestic',
         contactPerson: 'T Suresh',
         grade: 'A',
-        action:'Action'
+        action:''
     },
     {
         companyName: 'BeyondNXT',
@@ -123,7 +123,7 @@ export const tableValues = [
         type: 'Domestic',
         contactPerson: 'T Suresh',
         grade: 'A',
-        action:'Action'
+        action:''
     },
     {
         companyName: 'BeyondNXT',
@@ -133,7 +133,7 @@ export const tableValues = [
         type: 'Domestic',
         contactPerson: 'T Suresh',
         grade: 'A',
-        action:'Action'
+        action:''
     },
     {
         companyName: 'BeyondNXT',
@@ -143,7 +143,7 @@ export const tableValues = [
         type: 'Domestic',
         contactPerson: 'T Suresh',
         grade: 'A',
-        action:'Action'
+        action:''
     },
     {
         companyName: 'BeyondNXT',
@@ -153,7 +153,7 @@ export const tableValues = [
         type: 'Domestic',
         contactPerson: 'T Suresh',
         grade: 'A',
-        action:'Action'
+        action:''
     },
 
 ]

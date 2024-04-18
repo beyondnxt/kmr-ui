@@ -17,6 +17,8 @@ import { TableComponent } from './components/table/table.component';
 import { SearchComponent } from './components/search/search.component';
 import { KmrBtnComponent } from './components/kmr-btn/kmr-btn.component';
 import { FooterComponent } from './components/footer/footer.component';
+import {DragDropModule} from '@angular/cdk/drag-drop';
+import { DeleteModalComponent } from './components/delete-modal/delete-modal.component';
 
 
 
@@ -36,13 +38,15 @@ import { FooterComponent } from './components/footer/footer.component';
     TableComponent,
     SearchComponent,
     KmrBtnComponent,
-    FooterComponent
+    FooterComponent,
+    DeleteModalComponent
     
   ],
   imports: [
     CommonModule,
     MatModule,
-    NgApexchartsModule
+    NgApexchartsModule,
+    DragDropModule
   ],
   exports: [HeaderComponent, DashboardComponent, BodyComponent, LayoutComponent,SideBarComponent, MatModule, NgApexchartsModule,AreaChartComponent,PieChartComponent,DashboardCardComponent,BarChartComponent,KmrTableComponent,TableComponent, SearchComponent, KmrBtnComponent, FooterComponent]
 })
