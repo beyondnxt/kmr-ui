@@ -1,5 +1,6 @@
-import { Component } from '@angular/core';
+import { Component, Inject } from '@angular/core';
 import { FormBuilder, Validators } from '@angular/forms';
+import { MAT_DIALOG_DATA, MatDialogRef } from '@angular/material/dialog';
 
 @Component({
   selector: 'app-add-user',
@@ -7,7 +8,7 @@ import { FormBuilder, Validators } from '@angular/forms';
   styleUrls: ['./add-user.component.scss']
 })
 export class AddUserComponent {
-  constructor(private fb: FormBuilder) { }
+  constructor(private fb: FormBuilder,public dialogRef: MatDialogRef<AddUserComponent>,@Inject(MAT_DIALOG_DATA) public dialogData: any) { }
   userForm = this.fb.group({
     firstName: ['',[Validators.required, Validators.pattern('[a-zA-Z ]*')]],
     lastName: ['',[Validators.required, Validators.pattern('[a-zA-Z ]*')]],
@@ -16,4 +17,7 @@ export class AddUserComponent {
     password: ['', [Validators.required]],
     role: ['',[Validators.required]]
   })
+  save(){
+    this.userForm.markAllAsTouched();
+  }
 }

@@ -1,5 +1,6 @@
-import { Component } from '@angular/core';
+import { Component, Inject } from '@angular/core';
 import { FormBuilder, Validators } from '@angular/forms';
+import { MAT_DIALOG_DATA, MatDialogRef } from '@angular/material/dialog';
 
 @Component({
   selector: 'app-add-customer',
@@ -7,7 +8,7 @@ import { FormBuilder, Validators } from '@angular/forms';
   styleUrls: ['./add-customer.component.scss']
 })
 export class AddCustomerComponent {
-  constructor(private fb: FormBuilder) { }
+  constructor(private fb: FormBuilder,public dialogRef: MatDialogRef<AddCustomerComponent>,@Inject(MAT_DIALOG_DATA) public dialogData: any) { }
   customerForm = this.fb.group({
     mainCustomer: ['', [Validators.required]],
     name: ['', [Validators.required, Validators.pattern('[a-zA-Z ]*')]],
@@ -31,4 +32,7 @@ export class AddCustomerComponent {
     handledBy: ['', [Validators.required]],
     address: ['', [Validators.required]]
   })
+  save(){
+    this.customerForm.markAllAsTouched();
+  }
 }

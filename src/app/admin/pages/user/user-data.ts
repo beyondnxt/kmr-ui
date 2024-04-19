@@ -53,7 +53,7 @@ export const tableValues = [
         email: 'test@test.com',
         role: 'Admin',
         createdOn: '13-03-2022',
-        action: 'Action'
+        action: ''
 
     },
     {
@@ -64,7 +64,7 @@ export const tableValues = [
         email: 'test@test.com',
         role: 'Admin',
         createdOn: '13-03-2022',
-        action: 'Action'
+        action: ''
 
 
     },
@@ -76,7 +76,7 @@ export const tableValues = [
         email: 'test@test.com',
         role: 'Admin',
         createdOn: '13-03-2022',
-        action: 'Action'
+        action: ''
 
     },
     {
@@ -87,7 +87,7 @@ export const tableValues = [
         email: 'test@test.com',
         role: 'Admin',
         createdOn: '13-03-2022',
-        action: 'Action'
+        action: ''
 
     },
     {
@@ -98,7 +98,7 @@ export const tableValues = [
         email: 'test@test.com',
         role: 'Admin',
         createdOn: '13-03-2022',
-        action: 'Action'
+        action: ''
 
     },
     {
@@ -109,7 +109,7 @@ export const tableValues = [
         email: 'test@test.com',
         role: 'Admin',
         createdOn: '13-03-2022',
-        action: 'Action'
+        action: ''
 
     },
     {
@@ -120,7 +120,7 @@ export const tableValues = [
         email: 'test@test.com',
         role: 'Admin',
         createdOn: '13-03-2022',
-        action: 'Action'
+        action: ''
 
     },
     {
@@ -131,7 +131,7 @@ export const tableValues = [
         email: 'test@test.com',
         role: 'Admin',
         createdOn: '13-03-2022',
-        action: 'Action'
+        action: ''
 
     },
     {
@@ -142,7 +142,7 @@ export const tableValues = [
         email: 'test@test.com',
         role: 'Admin',
         createdOn: '13-03-2022',
-        action: 'Action'
+        action: ''
 
     },
     {
@@ -153,7 +153,7 @@ export const tableValues = [
         email: 'test@test.com',
         role: 'Admin',
         createdOn: '13-03-2022',
-        action: 'Action'
+        action: ''
 
     },
     {
@@ -164,7 +164,7 @@ export const tableValues = [
         email: 'test@test.com',
         role: 'Admin',
         createdOn: '13-03-2022',
-        action: 'Action'
+        action: ''
 
     },
 ]

@@ -14,5 +14,5 @@
     </div>
 </div>
 <div class="pt-3">
-    <app-table [tableHeaders]="tableHeaders" [tableValues]="tableValues" [fixedTableHeader]="fixedTableHeader"></app-table>
+    <app-table [tableHeaders]="tableHeaders" [tableValues]="tableValues" [fixedTableHeader]="fixedTableHeader" (delete)="delete()" (edit)="edit()"></app-table>
 </div>
