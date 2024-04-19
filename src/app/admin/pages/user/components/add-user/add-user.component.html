@@ -2,7 +2,7 @@
     <div class="row">
         <div class="col-lg-12 closeAlign">
             <div class="head">
-                <h1>Create an user</h1>
+                <h1>{{dialogData ? 'Edit an user': 'Create an user'}}</h1>
             </div>
             <div>
                 <button mat-icon-button mat-dialog-close tabindex="-1" class="close-button">
@@ -62,12 +62,8 @@
         <div class="col-lg-6">
             <mat-form-field class="col-lg-12">
                 <label class="labelName">Password
-                    <input type="text" formControlName="password" matInput placeholder="Add password">
+                    <input type="password" formControlName="password" matInput placeholder="Add Password">
                 </label>
-                    <mat-error
-                    *ngIf="userForm.get('password')?.hasError('password') && !userForm.get('password')?.hasError('required')">
-                  <b> Please enter a valid email address</b> 
-                </mat-error>
                 <mat-error *ngIf="userForm.get('password')?.hasError('required')">
                     <b> Password is required</b>
                 </mat-error>
@@ -89,7 +85,7 @@
     <div class="row m-0 p-0">
         <div class="btnAlign">
             <app-kmr-btn mat-dialog-close [label]="'Cancel'" [bgColor]="'#F2F4F6'" [color]="'black'"></app-kmr-btn>
-            <app-kmr-btn [label]="'Save'"></app-kmr-btn>
+            <app-kmr-btn [label]="'Save'" (action)="save()"></app-kmr-btn>
         </div>
     </div>
 </div>

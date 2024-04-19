@@ -69,7 +69,7 @@ export const tableValues = [
         updatedBy: 'Ajay G S',
         createdOn: '13-03-2022',
         updatedOn: '13-03-2022',
-        action:'Action'
+        action:''
     },
     {
         companyName: 'BeyondNXT',
@@ -85,7 +85,7 @@ export const tableValues = [
         updatedBy: 'Ajay G S',
         createdOn: '13-03-2022',
         updatedOn: '13-03-2022',
-        action:'Action'
+        action:''
     },
     {
         companyName: 'BeyondNXT',
@@ -101,7 +101,7 @@ export const tableValues = [
         updatedBy: 'Ajay G S',
         createdOn: '13-03-2022',
         updatedOn: '13-03-2022',
-        action:'Action'
+        action:''
     },
     {
         companyName: 'BeyondNXT',
@@ -117,7 +117,7 @@ export const tableValues = [
         updatedBy: 'Ajay G S',
         createdOn: '13-03-2022',
         updatedOn: '13-03-2022',
-        action:'Action'
+        action:''
     },
     {
         companyName: 'BeyondNXT',
@@ -133,7 +133,7 @@ export const tableValues = [
         updatedBy: 'Ajay G S',
         createdOn: '13-03-2022',
         updatedOn: '13-03-2022',
-        action:'Action'
+        action:''
     },
     {
         companyName: 'BeyondNXT',
@@ -149,7 +149,7 @@ export const tableValues = [
         updatedBy: 'Ajay G S',
         createdOn: '13-03-2022',
         updatedOn: '13-03-2022',
-        action:'Action'
+        action:''
     },
     {
         companyName: 'BeyondNXT',
@@ -165,7 +165,7 @@ export const tableValues = [
         updatedBy: 'Ajay G S',
         createdOn: '13-03-2022',
         updatedOn: '13-03-2022',
-        action:'Action'
+        action:''
     },
     {
         companyName: 'BeyondNXT',
@@ -181,7 +181,7 @@ export const tableValues = [
         updatedBy: 'Ajay G S',
         createdOn: '13-03-2022',
         updatedOn: '13-03-2022',
-        action:'Action'
+        action:''
     },
     {
         companyName: 'BeyondNXT',
@@ -197,7 +197,7 @@ export const tableValues = [
         updatedBy: 'Ajay G S',
         createdOn: '13-03-2022',
         updatedOn: '13-03-2022',
-        action:'Action'
+        action:''
     },
     {
         companyName: 'BeyondNXT',
@@ -213,7 +213,7 @@ export const tableValues = [
         updatedBy: 'Ajay G S',
         createdOn: '13-03-2022',
         updatedOn: '13-03-2022',
-        action:'Action'
+        action:''
     },
     {
         companyName: 'BeyondNXT',
@@ -229,7 +229,7 @@ export const tableValues = [
         updatedBy: 'Ajay G S',
         createdOn: '13-03-2022',
         updatedOn: '13-03-2022',
-        action:'Action'
+        action:''
     },
 
 ]
