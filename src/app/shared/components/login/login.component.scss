@@ -1,152 +1,45 @@
-.container {
-    max-width: 350px;
-    background: #f8f9fd;
-    background: linear-gradient(
-      0deg,
-      rgb(255, 255, 255) 0%,
-      rgb(244, 247, 251) 100%
-    );
-    border-radius: 40px;
-    padding: 25px 35px;
-    border: 5px solid rgb(255, 255, 255);
-    box-shadow: rgba(133, 189, 215, 0.8784313725) 0px 30px 30px -20px;
-  }
-  
-  .heading {
-    text-align: center;
-    font-weight: 900;
-    font-size: 30px;
-    color: var(--primary);
-    opacity:1;
-  }
-  
-  .form {
-    margin-top: 20px;
-  }
-  
-  .form .input {
-    width: 100%;
-    background: white;
-    border: none;
-    padding: 15px 20px;
-    border-radius: 20px;
-    margin-top: 15px;
-    box-shadow: #cff0ff 0px 10px 10px -5px;
-    border-inline: 2px solid transparent;
-  }
-  
-  .form .input::-moz-placeholder {
-    color: rgb(170, 170, 170);
-  }
-  
-  .form .input::placeholder {
-    color: rgb(170, 170, 170);
-  }
-  
-  .form .input:focus {
-    outline: none;
-    border-inline: 2px solid var(--primary);
-  }
-  
-  .form .forgot-password {
-    display: block;
-    margin-top: 10px;
-    margin-left: 10px;
-  }
-  
-  .form .forgot-password a {
-    font-size: 11px;
-    color: var(--primary);
-    text-decoration: none;
-  }
-  
-  .form .login-button {
-    display: block;
-    width: 100%;
-    font-weight: bold;
-    background: linear-gradient(
-      45deg,
-      rgb(92, 70, 220) 0%,
-      rgb(40 63 240) 100%
-    );
-    color: white;
-    padding-block: 15px;
-    margin: 20px auto;
-    border-radius: 20px;
-    box-shadow: rgba(133, 189, 215, 0.8784313725) 0px 20px 10px -15px;
-    border: none;
-    transition: all 0.2s ease-in-out;
-  }
-  
-  .form .login-button:hover {
-    transform: scale(1.03);
-    box-shadow: rgba(133, 189, 215, 0.8784313725) 0px 23px 10px -20px;
-  }
-  
-  .form .login-button:active {
-    transform: scale(0.95);
-    box-shadow: rgba(133, 189, 215, 0.8784313725) 0px 15px 10px -10px;
-  }
-  
-  .social-account-container {
-    margin-top: 25px;
-  }
-  
-  .social-account-container .title {
-    display: block;
-    text-align: center;
-    font-size: 10px;
-    color: rgb(170, 170, 170);
-  }
-  
-  .social-account-container .social-accounts {
-    width: 100%;
-    display: flex;
-    justify-content: center;
-    gap: 15px;
-    margin-top: 5px;
-  }
-  
-  .social-account-container .social-accounts .social-button {
-    background: linear-gradient(45deg, rgb(92, 70, 220) 0%, rgb(112, 112, 112) 100%);
-    border: 5px solid white;
-    padding: 5px;
-    border-radius: 50%;
-    width: 40px;
-    aspect-ratio: 1;
-    display: grid;
-    place-content: center;
-    box-shadow: rgba(133, 189, 215, 0.8784313725) 0px 12px 10px -8px;
-    transition: all 0.2s ease-in-out;
-  }
-  
-  .social-account-container .social-accounts .social-button .svg {
-    fill: white;
-    margin: auto;
-  }
-  
-  .social-account-container .social-accounts .social-button:hover {
-    transform: scale(1.2);
-  }
-  
-  .social-account-container .social-accounts .social-button:active {
-    transform: scale(0.9);
-  }
-  
-  .agreement {
-    display: block;
-    text-align: center;
-    margin-top: 15px;
-  }
-  
-  .agreement a {
-    text-decoration: none;
-    color: var(--primary);
-    font-size: 9px;
-  }
-  
-.login-container{
-  display: flex;
-  align-items: center;
-  height: calc(100vh - 3rem);
+
+
+/*------------ Login container ------------*/
+
+.box-area{
+  width: 930px;
+}
+
+/*------------ Right box ------------*/
+
+.right-box{
+  padding: 40px 30px 40px 40px;
+}
+
+/*------------ Custom Placeholder ------------*/
+
+::placeholder{
+  font-size: 16px;
+}
+
+.rounded-4{
+  border-radius: 20px;
+}
+.rounded-5{
+  border-radius: 30px;
+}
+
+
+/*------------ For small screens------------*/
+
+@media only screen and (max-width: 768px){
+
+   .box-area{
+      margin: 0 10px;
+
+   }
+   .left-box{
+      height: 100px;
+      overflow: hidden;
+   }
+   .right-box{
+      padding: 20px;
+   }
+
 }
