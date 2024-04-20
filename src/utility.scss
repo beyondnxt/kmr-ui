@@ -4,6 +4,7 @@
 }
 .head h1{
     font-size: 20px;
+    font-weight: 600;
 }
 .dialog-container{
     padding: 10px 25px;
@@ -19,6 +20,7 @@
 }
 ::ng-deep .mat-mdc-dialog-container .mdc-dialog__surface {
     border-radius: 15px;
+    overflow-x: hidden;
 }
 ::ng-deep .mat-mdc-form-field:not(.mat-form-field-disabled) .mat-mdc-floating-label.mdc-floating-label {
     font-size: 14px;

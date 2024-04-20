@@ -8,12 +8,12 @@ import { MAT_DIALOG_DATA, MatDialogRef } from '@angular/material/dialog';
   styleUrls: ['./add-role.component.scss']
 })
 export class AddRoleComponent {
-  constructor(private fb: FormBuilder,public dialogRef: MatDialogRef<AddRoleComponent>,@Inject(MAT_DIALOG_DATA) public dialogData: any) { }
-  menus: string[] = ['Master', 'Admin', 'Sales', 'Production', 'Lead', ];
+  constructor(private fb: FormBuilder, public dialogRef: MatDialogRef<AddRoleComponent>, @Inject(MAT_DIALOG_DATA) public dialogData: any) { }
+  menus = [{ name: 'Master', checked: true },{ name: 'Admin', checked: false },{ name: 'Sales', checked: false }];
   roleForm = this.fb.group({
-    roleName: ['',[Validators.required, Validators.pattern('[a-zA-Z ]*')]],
+    roleName: ['', [Validators.required, Validators.pattern('[a-zA-Z ]*')]],
   })
-  save(){
+  save() {
     this.roleForm.markAllAsTouched();
   }
 }
