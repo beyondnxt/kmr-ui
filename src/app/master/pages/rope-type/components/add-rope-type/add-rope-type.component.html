@@ -1,0 +1,55 @@
+<div class="dialog-container">
+    <div class="row">
+        <div class="col-lg-12 closeAlign">
+            <div class="head">
+                <h1>{{dialogData ? 'Edit An Rope Type Master': 'Create An Rope Type Master'}}</h1>
+            </div>
+            <div>
+                <button mat-icon-button mat-dialog-close tabindex="-1" class="close-button">
+                    <mat-icon class="closeColor">close</mat-icon></button>
+            </div>
+        </div>
+    </div>
+    <div class="row" [formGroup]="ropeTypeForm">
+        <div class="col-lg-6">
+            <mat-form-field class="col-lg-12">
+                <label class="labelName" id="ropeType">Rope Type
+                    <input type="text" formControlName="ropeType" matInput placeholder="Add rope type "
+                        id="ropeType">
+                </label>
+                <mat-error *ngIf="ropeTypeForm.get('ropeType')?.hasError('required')">
+                    <b> Rope type  is required</b>
+                </mat-error>
+            </mat-form-field>
+        </div>
+        <div class="col-lg-6">
+            <mat-form-field class="col-lg-12">
+                <label class="labelName" id="shortCode">Short Code
+                    <input type="text" formControlName="shortCode" matInput placeholder="Add short code"
+                        id="shortCode">
+                </label>
+                <mat-error *ngIf="ropeTypeForm.get('shortCode')?.hasError('required')">
+                    <b> Short code is required</b>
+                </mat-error>
+            </mat-form-field>
+        </div>
+        <div class="col-lg-6">
+            <mat-form-field class="col-lg-12">
+                <label class="labelName" id="categoryName">Piece No Short Code
+                    <input type="text" formControlName="pieceNoShortCode" matInput placeholder="Add Piece no short code"
+                        id="pieceNoShortCode">
+                </label>
+                <mat-error *ngIf="ropeTypeForm.get('pieceNoShortCode')?.hasError('required')">
+                    <b> Piece no short code is required</b>
+                </mat-error>
+            </mat-form-field>
+        </div>
+
+    </div>
+    <div class="row m-0 p-0">
+        <div class="btnAlign">
+            <app-kmr-btn mat-dialog-close [label]="'Cancel'" [bgColor]="'#F2F4F6'" [color]="'black'"></app-kmr-btn>
+            <app-kmr-btn [label]="'Save'" (action)="save()"></app-kmr-btn>
+        </div>
+    </div>
+</div>

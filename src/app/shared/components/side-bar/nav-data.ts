@@ -14,7 +14,7 @@ export const navBarData = {
         // },
         {
             routerlink: 'master/company',
-            icon: 'fal fa-user',
+            icon: 'fab fa-medium',
             label: 'Master',
             menu: 'user'
         },
@@ -59,20 +59,30 @@ export const navBarData = {
             icon: 'fas fa-clipboard-user',
             label: 'Main Customer',
             menu: 'user'
-        }
+        },
         // {
         //     routerlink: 'master/item',
         //     icon: 'fas fa-shopping-basket',
         //     label: 'Item',
         //     menu: 'user'
         // },
-        // {
-        //     routerlink: 'master/category',
-        //     icon: 'fas fa-tag',
-        //     label: 'Category',
-        //     menu: 'user'
-        // },
+        {
+            routerlink: 'master/category',
+            icon: 'fas fa-tag',
+            label: 'Category',
+            menu: 'user'
+        },
+        {
+            routerlink: 'master/rope-type',
+            icon: 'fas fa-ribbon',
+            label: 'Rope Type',
+            menu: 'user'
+        },
+        {
+            routerlink: 'master/warehouse',
+            icon: 'fas fa-warehouse',
+            label: 'Warehouse',
+            menu: 'user'
+        },
     ]
 };
-
-

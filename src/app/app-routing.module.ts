@@ -66,6 +66,14 @@ const routes: Routes = [
           {
             path:'category',
             loadChildren: () =>import('./master/pages/category/category.module').then(m => m.CategoryModule)
+          },
+          {
+            path:'rope-type',
+            loadChildren: () =>import('./master/pages/rope-type/rope-type.module').then(m => m.RopeTypeModule)
+          },
+          {
+            path:'warehouse',
+            loadChildren: () =>import('./master/pages/warehouse/warehouse.module').then(m => m.WarehouseModule)
           }
         ]
       }

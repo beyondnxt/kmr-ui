@@ -1,14 +1,15 @@
 import { Component } from '@angular/core';
-import { MatDialog } from '@angular/material/dialog';
-import * as data from './category-data'
 import { DeleteModalComponent } from 'src/app/shared/components/delete-modal/delete-modal.component';
-import { AddCategoryComponent } from './components/add-category/add-category.component';
+import * as data from './rope-type.data'
+import { MatDialog } from '@angular/material/dialog';
+import { AddRopeTypeComponent } from './components/add-rope-type/add-rope-type.component';
+
 @Component({
-  selector: 'app-category',
-  templateUrl: './category.component.html',
-  styleUrls: ['./category.component.scss']
+  selector: 'app-rope-type',
+  templateUrl: './rope-type.component.html',
+  styleUrls: ['./rope-type.component.scss']
 })
-export class CategoryComponent {
+export class RopeTypeComponent {
   constructor(private dialog: MatDialog,) { }
   tableHeaders = data.tableHeaders;
   tableValues = data.tableValues;
@@ -32,12 +33,12 @@ export class CategoryComponent {
     });
   }
   openPopUp(edit: boolean) {
-    this.dialog.open(AddCategoryComponent, {
+    this.dialog.open(AddRopeTypeComponent, {
       width: '650px',
       height: 'max-content',
       data: edit,
       disableClose: true,
-      panelClass: 'category-dialog-container',
+      panelClass: 'rope-type-dialog-container',
     }).afterClosed().subscribe((res: any) => {
       if (res) {
         console.log(res)

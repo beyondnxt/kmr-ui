@@ -1,19 +1,19 @@
 import { Component } from '@angular/core';
-import { MatDialog } from '@angular/material/dialog';
-import * as data from './category-data'
 import { DeleteModalComponent } from 'src/app/shared/components/delete-modal/delete-modal.component';
-import { AddCategoryComponent } from './components/add-category/add-category.component';
+import * as data from './warehouse-data'
+import { MatDialog } from '@angular/material/dialog';
+import { AddWarehouseComponent } from './components/add-warehouse/add-warehouse.component';
 @Component({
-  selector: 'app-category',
-  templateUrl: './category.component.html',
-  styleUrls: ['./category.component.scss']
+  selector: 'app-warehouse',
+  templateUrl: './warehouse.component.html',
+  styleUrls: ['./warehouse.component.scss']
 })
-export class CategoryComponent {
+export class WarehouseComponent {
   constructor(private dialog: MatDialog,) { }
   tableHeaders = data.tableHeaders;
   tableValues = data.tableValues;
   fixedTableHeader = data.fixedTableHeaders;
-  addCategory() {
+  addWareHouse() {
     this.openPopUp(false);
   }
   edit() {
@@ -32,7 +32,7 @@ export class CategoryComponent {
     });
   }
   openPopUp(edit: boolean) {
-    this.dialog.open(AddCategoryComponent, {
+    this.dialog.open(AddWarehouseComponent, {
       width: '650px',
       height: 'max-content',
       data: edit,
