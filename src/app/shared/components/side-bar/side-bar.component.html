@@ -26,6 +26,15 @@
     <ul class="sidenav-nav">
         <li class="sidenav-nav-item">
             <ng-container>
+                <a class="sidenav-nav-link" (click)="addNew()" routerLinkActive="active"
+                [routerLinkActiveOptions]="{exact:true}">
+                    <i class="sidenav-link-icon fas fa-plus fa-fw"></i>
+                    <span class="sidenav-link-text" *ngIf="collapsed">Add New</span>
+                </a>
+            </ng-container>
+        </li>
+        <li class="sidenav-nav-item">
+            <ng-container>
                 <a class="sidenav-nav-link" [routerLink]="'dashboard'" routerLinkActive="active"
                     [routerLinkActiveOptions]="{exact:true}">
                     <i class="sidenav-link-icon fal fa-chart-bar"></i>
