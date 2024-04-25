@@ -1,6 +1,9 @@
 import { Component, EventEmitter, HostListener, OnInit, Output } from '@angular/core';
 import { navBarData } from './nav-data';
 import { Router } from '@angular/router';
+import { MatDialog } from '@angular/material/dialog';
+import { AddNewModalComponent } from '../add-new-modal/add-new-modal.component';
+import { FormControl } from '@angular/forms';
 
 interface sideNavToggle {
   screenWidth: number;
@@ -12,8 +15,8 @@ interface sideNavToggle {
   templateUrl: './side-bar.component.html',
   styleUrls: ['./side-bar.component.scss']
 })
-export class SideBarComponent {
-  constructor(private router: Router) { }
+export class SideBarComponent {  
+  constructor(private router: Router, private dialog: MatDialog) { }
   @Output() onToggleSideNav: EventEmitter<sideNavToggle> = new EventEmitter();
   mainNavLinks: any = [];
   adminNavLinks: any = [];
@@ -84,5 +87,17 @@ export class SideBarComponent {
       this.mainNavLinks = navBarData.mainNav;
       this.masterNavLinks = [];
     }
+  }
+  addNew(){
+    this.dialog.open(AddNewModalComponent, {
+      width: '650px',
+      height: 'max-content',
+      disableClose: true,
+      panelClass: 'add-new-dialog-container',
+    }).afterClosed().subscribe((res: any) => {
+      if (res) {
+        console.log(res)
+      }
+    });
   }
 }
