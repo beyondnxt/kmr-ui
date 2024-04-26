@@ -74,6 +74,14 @@ const routes: Routes = [
           {
             path:'warehouse',
             loadChildren: () =>import('./master/pages/warehouse/warehouse.module').then(m => m.WarehouseModule)
+          },
+          {
+            path:'supplier',
+            loadChildren: () =>import('./master/pages/supplier/supplier.module').then(m => m.SupplierModule)
+          },
+          {
+            path:'department',
+            loadChildren: () =>import('./master/pages/department/department.module').then(m => m.DepartmentModule)
           }
         ]
       }

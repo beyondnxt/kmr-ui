@@ -84,5 +84,17 @@ export const navBarData = {
             label: 'Warehouse',
             menu: 'user'
         },
+        {
+            routerlink: 'master/supplier',
+            icon: 'fas fa-box-check',
+            label: 'Supplier',
+            menu: 'user'
+        },
+        {
+            routerlink: 'master/department',
+            icon: 'fas fa-store',
+            label: 'Department',
+            menu: 'user'
+        },
     ]
 };

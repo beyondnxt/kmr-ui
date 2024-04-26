@@ -10,6 +10,8 @@ import { AddRopeTypeComponent } from 'src/app/master/pages/rope-type/components/
 import { Router } from '@angular/router';
 import { AddRoleComponent } from 'src/app/admin/pages/role/components/add-role/add-role.component';
 import { AddUserComponent } from 'src/app/admin/pages/user/components/add-user/add-user.component';
+import { AddSupplierComponent } from 'src/app/master/pages/supplier/components/add-supplier/add-supplier.component';
+import { AddDepartmentComponent } from 'src/app/master/pages/department/components/add-department/add-department.component';
 
 @Component({
   selector: 'app-add-new-modal',
@@ -55,6 +57,18 @@ export class AddNewModalComponent {
       name: 'Warehouse',
       icon: 'fas fa-warehouse',
       value: 'warehouse',
+      master: true
+    },
+    {
+      name: 'Department',
+      icon: 'fas fa-store',
+      value: 'department',
+      master: true
+    },
+    {
+      name: 'Supplier',
+      icon: 'fas fa-box-check',
+      value: 'supplier',
       master: true
     },
     {
@@ -129,6 +143,22 @@ export class AddNewModalComponent {
           height: 'max-content',
           disableClose: true,
           panelClass: 'warehouse-dialog-container',
+        })
+        break;
+      case 'supplier':
+        this.dialog.open(AddSupplierComponent, {
+          width: '650px',
+          height: 'max-content',
+          disableClose: true,
+          panelClass: 'supplier-dialog-container',
+        })
+        break;
+      case 'department':
+        this.dialog.open(AddDepartmentComponent, {
+          width: '650px',
+          height: 'max-content',
+          disableClose: true,
+          panelClass: 'department-dialog-container',
         })
         break;
       case 'role':
