@@ -1,0 +1,81 @@
+<div class="dialog-container">
+    <div class="row">
+        <div class="col-lg-12 closeAlign">
+            <div class="head">
+                <h1>{{dialogData ? 'Edit An Category Master': 'Create An Category Master'}}</h1>
+            </div>
+            <div>
+                <button mat-icon-button mat-dialog-close tabindex="-1" class="close-button">
+                    <mat-icon class="closeColor">close</mat-icon></button>
+            </div>
+        </div>
+    </div>
+    <div class="row" [formGroup]="categoryForm">
+        <div class="col-lg-6">
+            <mat-form-field class="col-lg-12">
+                <label class="labelName" id="parentCategory">Parent Category 
+                    <input type="text" formControlName="parentCategory" matInput placeholder="Add parent category "
+                        id="parentCategory">
+                </label>
+                <mat-error *ngIf="categoryForm.get('parentCategory')?.hasError('required')">
+                    <b> Parent category  is required</b>
+                </mat-error>
+            </mat-form-field>
+        </div>
+        <div class="col-lg-6">
+            <mat-form-field class="col-lg-12">
+                <label class="labelName" id="categoryName">Category Name
+                    <input type="text" formControlName="categoryName" matInput placeholder="Add category Name"
+                        id="categoryName">
+                </label>
+                <mat-error *ngIf="categoryForm.get('categoryName')?.hasError('required')">
+                    <b> Category name is required</b>
+                </mat-error>
+            </mat-form-field>
+        </div>
+        <div class="col-lg-6">
+            <mat-form-field class="col-lg-12">
+                <label class="labelName" id="categoryName">Category Code
+                    <input type="text" formControlName="categoryCode" matInput placeholder="Add category Code"
+                        id="categoryCode">
+                </label>
+                <mat-error *ngIf="categoryForm.get('categoryCode')?.hasError('required')">
+                    <b> Category code is required</b>
+                </mat-error>
+            </mat-form-field>
+        </div>
+        <div class="col-lg-6">
+            <mat-form-field class="col-lg-12">
+                <label class="Add type">Type</label>
+                <mat-select placeholder="Select Type" formControlName="type">
+                    <mat-option>Test</mat-option>
+                  </mat-select>
+                  <mat-error *ngIf="categoryForm.get('type')?.hasError('required')">
+                    <b> Type is required</b>
+                </mat-error>
+            </mat-form-field>
+        </div>
+        <div class="col-lg-6">
+            <mat-form-field class="col-lg-12">
+                <label class="Add type">Grade</label>
+                <mat-select placeholder="Select grade" formControlName="grade">
+                    <mat-option>Test</mat-option>
+                  </mat-select>
+                  <mat-error *ngIf="categoryForm.get('grade')?.hasError('required')">
+                    <b> Grade is required</b>
+                </mat-error>
+            </mat-form-field>
+        </div>
+        <div class="col-lg-6">
+            <p class="labelName mb-0">SMS Category</p>
+            <mat-checkbox formControlName="smsCategory">
+              </mat-checkbox>
+        </div>
+    </div>
+    <div class="row m-0 p-0">
+        <div class="btnAlign">
+            <app-kmr-btn mat-dialog-close [label]="'Cancel'" [bgColor]="'#F2F4F6'" [color]="'black'"></app-kmr-btn>
+            <app-kmr-btn [label]="'Save'" (action)="save()"></app-kmr-btn>
+        </div>
+    </div>
+</div>
