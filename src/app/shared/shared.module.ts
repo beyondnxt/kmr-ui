@@ -19,6 +19,7 @@ import { KmrBtnComponent } from './components/kmr-btn/kmr-btn.component';
 import { FooterComponent } from './components/footer/footer.component';
 import {DragDropModule} from '@angular/cdk/drag-drop';
 import { DeleteModalComponent } from './components/delete-modal/delete-modal.component';
+import { AddNewModalComponent } from './components/add-new-modal/add-new-modal.component';
 
 
 
@@ -39,7 +40,8 @@ import { DeleteModalComponent } from './components/delete-modal/delete-modal.com
     SearchComponent,
     KmrBtnComponent,
     FooterComponent,
-    DeleteModalComponent
+    DeleteModalComponent,
+    AddNewModalComponent
     
   ],
   imports: [
