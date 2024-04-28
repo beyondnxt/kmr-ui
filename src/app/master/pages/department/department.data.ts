@@ -29,4 +29,64 @@ export const tableValues = [
         type:'Mono Filament',
         action:''
     },
+    {
+        companyName:'Nagercoil',
+        departmentName:'Test',
+        type:'Mono Filament',
+        action:''
+    },
+    {
+        companyName:'Nagercoil',
+        departmentName:'Test',
+        type:'Mono Filament',
+        action:''
+    },
+    {
+        companyName:'Nagercoil',
+        departmentName:'Test',
+        type:'Mono Filament',
+        action:''
+    },
+    {
+        companyName:'Nagercoil',
+        departmentName:'Test',
+        type:'Mono Filament',
+        action:''
+    },
+    {
+        companyName:'Nagercoil',
+        departmentName:'Test',
+        type:'Mono Filament',
+        action:''
+    },
+    {
+        companyName:'Nagercoil',
+        departmentName:'Test',
+        type:'Mono Filament',
+        action:''
+    },
+    {
+        companyName:'Nagercoil',
+        departmentName:'Test',
+        type:'Mono Filament',
+        action:''
+    },
+    {
+        companyName:'Nagercoil',
+        departmentName:'Test',
+        type:'Mono Filament',
+        action:''
+    },
+    {
+        companyName:'Nagercoil',
+        departmentName:'Test',
+        type:'Mono Filament',
+        action:''
+    },
+    {
+        companyName:'Nagercoil',
+        departmentName:'Test',
+        type:'Mono Filament',
+        action:''
+    },
 ]

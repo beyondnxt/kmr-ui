@@ -96,5 +96,17 @@ export const navBarData = {
             label: 'Department',
             menu: 'user'
         },
+        {
+            routerlink: 'master/color',
+            icon: 'fas fa-palette fa-fw',
+            label: 'Color',
+            menu: 'user'
+        },
+        {
+            routerlink: 'master/brand',
+            icon: 'fas fa-award',
+            label: 'Brand',
+            menu: 'user'
+        },
     ]
 };

@@ -82,6 +82,14 @@ const routes: Routes = [
           {
             path:'department',
             loadChildren: () =>import('./master/pages/department/department.module').then(m => m.DepartmentModule)
+          },
+          {
+            path:'color',
+            loadChildren: () =>import('./master/pages/color/color.module').then(m => m.ColorModule)
+          },
+          {
+            path:'brand',
+            loadChildren: () =>import('./master/pages/brand/brand.module').then(m => m.BrandModule)
           }
         ]
       }
