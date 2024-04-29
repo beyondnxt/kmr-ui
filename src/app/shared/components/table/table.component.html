@@ -35,8 +35,8 @@
                                 <!-- <i class="fas fa-times-circle" *ngIf="!key.role"></i> -->
                                 <div class="score-value" [style.color]="handleStatusColor(value[key.key])"> {{
                                     value[key.key]}} </div>
-                                <div class="score-value" *ngIf="key.edit"> <i class="fas fa-edit" (click)="edit.emit()"></i> <i
-                                        class="fas fa-trash-alt ml" (click)="delete.emit()"></i> </div>
+                                <div class="score-value" *ngIf="key.edit"> <i class="fas fa-edit" (click)="edit.emit(value)"></i> <i
+                                        class="fas fa-trash-alt ml" (click)="delete.emit(value.id)"></i> </div>
 
                             </td>
                         </ng-container>
