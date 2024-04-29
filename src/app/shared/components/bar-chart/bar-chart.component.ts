@@ -39,11 +39,11 @@ export class BarChartComponent {
     this.chartOptions = {
       series: [
         {
-          // name: "Net Profit",
+          name: "Active buyer - 1",
           data: [44, 55, 57, 56, 61]
         },
         {
-          // name: "Revenue",
+          name: "Active buyer - 2",
           data: [76, 85, 101, 98]
         },
         // {
@@ -89,20 +89,20 @@ export class BarChartComponent {
         ]
       },
       yaxis: {
-        title: {
-          text: "$ (thousands)"
-        }
+        // title: {
+        //   text: "$ (thousands)"
+        // }
       },
       fill: {
         opacity: 1,
         colors:['#6b50ff','#00e1d7']
       },
       tooltip: {
-        y: {
-          formatter: function(val:any) {
-            return "$ " + val + " thousands";
-          }
-        }
+        // y: {
+        //   formatter: function(val:any) {
+        //     return "$ " + val + " thousands";
+        //   }
+        // }
       }
     };
   }

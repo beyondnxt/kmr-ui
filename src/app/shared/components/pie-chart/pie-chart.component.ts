@@ -43,7 +43,7 @@ export class PieChartComponent {
               show: true,
               label: "Total",
               formatter: function(w) {
-                return "249";
+                return "127";
               }
             }
           }
