@@ -10,6 +10,10 @@ import { AddRopeTypeComponent } from 'src/app/master/pages/rope-type/components/
 import { Router } from '@angular/router';
 import { AddRoleComponent } from 'src/app/admin/pages/role/components/add-role/add-role.component';
 import { AddUserComponent } from 'src/app/admin/pages/user/components/add-user/add-user.component';
+import { AddSupplierComponent } from 'src/app/master/pages/supplier/components/add-supplier/add-supplier.component';
+import { AddDepartmentComponent } from 'src/app/master/pages/department/components/add-department/add-department.component';
+import { AddColorComponent } from 'src/app/master/pages/color/components/add-color/add-color.component';
+import { AddBrandComponent } from 'src/app/master/pages/brand/components/add-brand/add-brand.component';
 
 @Component({
   selector: 'app-add-new-modal',
@@ -36,7 +40,7 @@ export class AddNewModalComponent {
     {
       name: 'Main Customer',
       icon: 'fas fa-clipboard-user',
-      value: 'mainCustomer',
+      value: 'main-customer',
       master: true
     },
     {
@@ -48,13 +52,37 @@ export class AddNewModalComponent {
     {
       name: 'Rope Type',
       icon: 'fas fa-ribbon',
-      value: 'ropeType',
+      value: 'rope-type',
       master: true
     },
     {
       name: 'Warehouse',
       icon: 'fas fa-warehouse',
       value: 'warehouse',
+      master: true
+    },
+    {
+      name: 'Department',
+      icon: 'fas fa-store',
+      value: 'department',
+      master: true
+    },
+    {
+      name: 'Supplier',
+      icon: 'fas fa-box-check',
+      value: 'supplier',
+      master: true
+    },
+    {
+      name: 'Color',
+      icon: 'fas fa-palette fa-fw',
+      value: 'color',
+      master: true
+    },
+    {
+      name: 'Brand',
+      icon: 'fas fa-award',
+      value: 'brand',
       master: true
     },
     {
@@ -72,6 +100,7 @@ export class AddNewModalComponent {
   ]
   ngOnInit(): void {
     this.filterSelectionTypes();
+    this.patchSelectionType();
   }
   filterSelectionTypes() {
     const routerUrl = this.router.url;
@@ -81,73 +110,36 @@ export class AddNewModalComponent {
       this.selectionTypes = this.selectionTypes.filter((x: any) => x.admin);
     }
   }
-  next(value: string): void {
-    switch (value) {
-      case 'company':
-        this.dialog.open(AddCompanyComponent, {
-          width: '650px',
-          height: 'max-content',
-          disableClose: true,
-          panelClass: 'company-dialog-container',
-        })
-        break;
-      case 'customer':
-        this.dialog.open(AddCustomerComponent, {
-          width: '650px',
-          height: 'max-content',
-          disableClose: true,
-          panelClass: 'customer-dialog-container',
-        })
-        break;
-      case 'mainCustomer':
-        this.dialog.open(AddMainCustomerComponent, {
-          width: '650px',
-          height: 'max-content',
-          disableClose: true,
-          panelClass: 'main-customer-dialog-container',
-        })
-        break;
-      case 'category':
-        this.dialog.open(AddCategoryComponent, {
-          width: '650px',
-          height: 'max-content',
-          disableClose: true,
-          panelClass: 'category-dialog-container',
-        })
-        break;
-      case 'ropeType':
-        this.dialog.open(AddRopeTypeComponent, {
-          width: '650px',
-          height: 'max-content',
-          disableClose: true,
-          panelClass: 'rope-type-dialog-container',
-        })
-        break;
-      case 'warehouse':
-        this.dialog.open(AddWarehouseComponent, {
-          width: '650px',
-          height: 'max-content',
-          disableClose: true,
-          panelClass: 'warehouse-dialog-container',
-        })
-        break;
-      case 'role':
-        this.dialog.open(AddRoleComponent, {
-          width: '650px',
-          height: 'max-content',
-          disableClose: true,
-          panelClass: 'role-dialog-container',
-        })
-        break;
-      case 'user':
-        this.dialog.open(AddUserComponent, {
-          width: '650px',
-          height: 'max-content',
-          disableClose: true,
-          panelClass: 'warehouse-dialog-container',
-        })
-        break;
+  patchSelectionType() {
+    const routerUrl = this.router.url.split('/');
+    if (routerUrl.length) {
+      this.type.patchValue(routerUrl[2]);
     }
-
   }
+  next(value: string): void {
+    const componentMap: { [key: string]: any } = {
+      'company': AddCompanyComponent,
+      'customer': AddCustomerComponent,
+      'main-customer': AddMainCustomerComponent,
+      'category': AddCategoryComponent,
+      'rope-type': AddRopeTypeComponent,
+      'warehouse': AddWarehouseComponent,
+      'supplier': AddSupplierComponent,
+      'department': AddDepartmentComponent,
+      'role': AddRoleComponent,
+      'user': AddUserComponent,
+      'color': AddColorComponent,
+      'brand': AddBrandComponent,
+    };
+  
+    if (componentMap[value]) {
+      this.dialog.open(componentMap[value], {
+        width: '650px',
+        height: 'max-content',
+        disableClose: true,
+        panelClass: `${value}-dialog-container`,
+      });
+    }
+  }  
 }
+  // 221 - line reduced to 144 line
