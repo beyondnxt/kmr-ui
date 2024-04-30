@@ -90,6 +90,14 @@ const routes: Routes = [
           {
             path:'brand',
             loadChildren: () =>import('./master/pages/brand/brand.module').then(m => m.BrandModule)
+          },
+          {
+            path:'rope-kg-length',
+            loadChildren: () =>import('./master/pages/rope-kg-length/rope-kg-length.module').then(m => m.RopeKgLengthModule)
+          },
+          {
+            path:'rope-grade',
+            loadChildren: () =>import('./master/pages/rope-grade/rope-grade.module').then(m => m.RopeGradeModule)
           }
         ]
       }
