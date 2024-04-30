@@ -72,11 +72,12 @@
         <div class="col-lg-6">
             <mat-form-field class="col-lg-12">
                 <label class="labelName">Role</label>
-                <mat-select placeholder="Select role" formControlName="role">
-                    <mat-option>Admin</mat-option>
-                    <mat-option>Super Admin</mat-option>
+                <mat-select placeholder="Select role" formControlName="roleId">
+                    <mat-option *ngFor="let role of roles" [value]="role.value">
+                        {{ role.label}}
+                    </mat-option>
                 </mat-select>
-                <mat-error *ngIf="userForm.get('role')?.hasError('required')">
+                <mat-error *ngIf="userForm.get('roleId')?.hasError('required')">
                     <b> Role is required</b>
                 </mat-error>
             </mat-form-field>
@@ -85,7 +86,7 @@
     <div class="row m-0 p-0">
         <div class="btnAlign">
             <app-kmr-btn mat-dialog-close [label]="'Cancel'" [bgColor]="'#F2F4F6'" [color]="'black'"></app-kmr-btn>
-            <app-kmr-btn [label]="'Save'" (action)="save()"></app-kmr-btn>
+            <app-kmr-btn [label]="'Save'" (action)="save(dialogData ? true : false)"></app-kmr-btn>
         </div>
     </div>
 </div>
