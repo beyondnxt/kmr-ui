@@ -25,4 +25,5 @@ export class AuthService {
   getUser(): Observable<any> {
     return this.http.get((this.baseUrl + '/user'));
   }
+  
 }
