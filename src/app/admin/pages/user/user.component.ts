@@ -3,8 +3,8 @@ import * as data from './user-data';
 import { AddUserComponent } from './components/add-user/add-user.component';
 import { MatDialog } from '@angular/material/dialog';
 import { DeleteModalComponent } from 'src/app/shared/components/delete-modal/delete-modal.component';
-import { AuthService } from 'src/app/providers/auth.service';
 import { UserHelper } from './user.helper';
+import { AuthService } from 'src/app/providers/auth/auth.service';
 
 @Component({
   selector: 'app-user',
