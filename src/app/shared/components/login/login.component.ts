@@ -16,6 +16,7 @@ import {
 import { Router } from '@angular/router';
 import { globalShareBaseOrigin } from 'src/app/app.component';
 import { AuthService } from 'src/app/providers/auth.service';
+import { StorageService } from '../../services/storage/storage-service';
 
 @Component({
   selector: 'app-login',
@@ -42,9 +43,11 @@ import { AuthService } from 'src/app/providers/auth.service';
   ],
 })
 export class LoginComponent {
+  loadingSpinner: boolean = false;
   constructor(
     private router: Router,
-    private authService: AuthService
+    private authService: AuthService,
+    private _storageService: StorageService
   ) {}
 
   ngOnInit() {}
@@ -55,27 +58,36 @@ export class LoginComponent {
     password: new FormControl('', Validators.required),
   });
 
+  signInResponseMsg!: string;
+  showSignInResMsg: boolean = false;
   signIn() {
-    console.log('Form valid:', this.loginForm.valid);
     if (this.loginForm.invalid) {
-      this.loginForm.markAllAsTouched()
-    }else{
-
+      this.loginForm.markAllAsTouched();
+    } else {
+      this.loadingSpinner = true;
+      let data = {
+        email: this.loginForm.value.email,
+        password: this.loginForm.value.password,
+      };
+      this.authService.userLogIn(data).subscribe({
+        next: (res) => {
+          this.loadingSpinner = false;
+          if (res.token) {
+            this._storageService.setItem('token', res.token);
+            this.router.navigate(['/dashboard']);
+          } else {
+            this.showSignInResMsg = true;
+            this.signInResponseMsg = res.message;
+            this._storageService.clear();
+          }
+        },
+        error: (err) => {
+          this.loadingSpinner = false;
+          this.showSignInResMsg = true;
+          this.signInResponseMsg = err.error.message;
+          throw err;
+        },
+      });
     }
-    this.router.navigate(['/dashboard']);
-    let data = {
-      email: 'jisha@gmail.com',
-      password: 'jisha',
-    };
-
-    // this.authService.userLogIn(data).subscribe({
-    //   next: (res) => {
-    //     console.log(res);
-    //   },
-    //   error: (err) => {
-    //     throw err;
-    //   },
-    // });
-
   }
 }

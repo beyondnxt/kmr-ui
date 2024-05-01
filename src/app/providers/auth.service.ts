@@ -11,10 +11,7 @@ export class AuthService {
   baseUrl = environment.KRM_BASE_URL;
 
   userLogIn(payload: any): Observable<any> {
-    return this.http.post(
-      'https://m2jm69c8-3000.inc1.devtunnels.ms/auth/signin',
-      payload
-    );
+    return this.http.post(this.baseUrl + '/auth/signin', payload);
   }
   createUser(payload: any): Observable<any> {
     return this.http.post(this.baseUrl + '/auth/signup', payload);
