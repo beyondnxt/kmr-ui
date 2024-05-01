@@ -64,6 +64,7 @@ export class UserComponent {
     });
   }
 
+  // create user api method
   createUser(payload: any) {
     this.authService.createUser(payload).subscribe({
       next: (res) => {
