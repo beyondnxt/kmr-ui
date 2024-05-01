@@ -1,10 +1,12 @@
-import { Component } from '@angular/core';
-
+import { Component, HostListener } from '@angular/core';
+export let globalShareBaseOrigin: string;
 @Component({
   selector: 'app-root',
   templateUrl: './app.component.html',
-  styleUrls: ['./app.component.scss']
+  styleUrls: ['./app.component.scss'],
 })
 export class AppComponent {
-  title = 'kmr-ui';
+  constructor() {
+    globalShareBaseOrigin = window.location.origin;
+  }
 }
