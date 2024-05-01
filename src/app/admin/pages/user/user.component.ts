@@ -59,7 +59,7 @@ export class UserComponent {
           this.updateteUser(res.formData, res.id);
           return
         }
-        this.createUser(res);
+        this.createUser(res.formData);
       }
     });
   }
