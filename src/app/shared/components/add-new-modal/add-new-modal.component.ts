@@ -14,6 +14,8 @@ import { AddSupplierComponent } from 'src/app/master/pages/supplier/components/a
 import { AddDepartmentComponent } from 'src/app/master/pages/department/components/add-department/add-department.component';
 import { AddColorComponent } from 'src/app/master/pages/color/components/add-color/add-color.component';
 import { AddBrandComponent } from 'src/app/master/pages/brand/components/add-brand/add-brand.component';
+import { AddRopeKgLengthComponent } from 'src/app/master/pages/rope-kg-length/components/add-rope-kg-length/add-rope-kg-length.component';
+import { AddRopeGradeComponent } from 'src/app/master/pages/rope-grade/components/add-rope-grade/add-rope-grade.component';
 
 @Component({
   selector: 'app-add-new-modal',
@@ -86,6 +88,18 @@ export class AddNewModalComponent {
       master: true
     },
     {
+      name: 'Rope KG Length',
+      icon: 'fas fa-ruler-horizontal',
+      value: 'rope-kg-length',
+      master: true
+    },
+    {
+      name: 'Rope Grade',
+      icon: 'fas fa-award',
+      value: 'rope-grade',
+      master: true
+    },
+    {
       name: 'User',
       icon: 'fal fa-user',
       value: 'user',
@@ -130,6 +144,8 @@ export class AddNewModalComponent {
       'user': AddUserComponent,
       'color': AddColorComponent,
       'brand': AddBrandComponent,
+      'rope-kg-length':AddRopeKgLengthComponent,
+      'rope-grade':AddRopeGradeComponent
     };
   
     if (componentMap[value]) {
