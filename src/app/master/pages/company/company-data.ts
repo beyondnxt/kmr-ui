@@ -19,12 +19,12 @@ export const tableHeaders = [
     },
     {
         name: 'VAT TIN',
-        key: 'vat',
+        key: 'vatTin',
         sort: true,
     },
     {
         name: 'CST No',
-        key: 'cst',
+        key: 'cstNo',
         sort: true,
     },
     {
@@ -44,7 +44,7 @@ export const tableHeaders = [
     },
     {
         name: 'Mobile',
-        key: 'mobile',
+        key: 'mobileNumber',
         sort: true,
     },
     {
