@@ -15,8 +15,9 @@ import {
 } from '@angular/forms';
 import { Router } from '@angular/router';
 import { globalShareBaseOrigin } from 'src/app/app.component';
-import { AuthService } from 'src/app/providers/auth.service';
+
 import { StorageService } from '../../services/storage/storage-service';
+import { AuthService } from 'src/app/providers/auth/auth.service';
 
 @Component({
   selector: 'app-login',
