@@ -18,7 +18,7 @@ import { LoginComponent } from './shared/components/login/login.component';
     BrowserAnimationsModule,
     HttpClientModule
   ],
-  providers: [LoginComponent],
+  providers: [],
   schemas: [CUSTOM_ELEMENTS_SCHEMA, NO_ERRORS_SCHEMA],
   bootstrap: [AppComponent]
 })

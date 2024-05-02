@@ -10,8 +10,6 @@ import { navBarData } from './nav-data';
 import { Router } from '@angular/router';
 import { MatDialog } from '@angular/material/dialog';
 import { AddNewModalComponent } from '../add-new-modal/add-new-modal.component';
-import { FormControl } from '@angular/forms';
-import { LoginComponent } from '../login/login.component';
 import { DataSharingService } from '../../services/data-sharing/data-sharing.service';
 import { take } from 'rxjs';
 import { StorageService } from '../../services/storage/storage-service';
@@ -30,7 +28,6 @@ export class SideBarComponent {
   constructor(
     private router: Router,
     private dialog: MatDialog,
-    public loginComponent: LoginComponent,
     private _dataSharingService: DataSharingService,
     private _storageService: StorageService
   ) {
