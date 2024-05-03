@@ -5,7 +5,7 @@ import {
   animate,
   state,
 } from '@angular/animations';
-import { Component } from '@angular/core';
+import { Component, EventEmitter, Output } from '@angular/core';
 import {
   AbstractControl,
   FormBuilder,
@@ -15,10 +15,9 @@ import {
 } from '@angular/forms';
 import { Router } from '@angular/router';
 import { globalShareBaseOrigin } from 'src/app/app.component';
-
 import { StorageService } from '../../services/storage/storage-service';
+import { DataSharingService } from '../../services/data-sharing/data-sharing.service';
 import { AuthService } from 'src/app/providers/auth/auth.service';
-
 @Component({
   selector: 'app-login',
   templateUrl: './login.component.html',
@@ -48,7 +47,8 @@ export class LoginComponent {
   constructor(
     private router: Router,
     private authService: AuthService,
-    private _storageService: StorageService
+    private _storageService: StorageService,
+    private _dataSharingService: DataSharingService
   ) {}
 
   ngOnInit() {}
@@ -70,13 +70,19 @@ export class LoginComponent {
         email: this.loginForm.value.email,
         password: this.loginForm.value.password,
       };
+
       this.authService.userLogIn(data).subscribe({
         next: (res) => {
           this.loadingSpinner = false;
           if (res.token) {
             this._storageService.setItem('token', res.token);
+            this._dataSharingService.sendLoggedInData({
+              user_name: res.userName,
+              user_role: res.roleName,
+            });
             this.router.navigate(['/dashboard']);
           } else {
+            this.loadingSpinner = false;
             this.showSignInResMsg = true;
             this.signInResponseMsg = res.message;
             this._storageService.clear();
@@ -86,6 +92,7 @@ export class LoginComponent {
           this.loadingSpinner = false;
           this.showSignInResMsg = true;
           this.signInResponseMsg = err.error.message;
+          this._storageService.clear();
           throw err;
         },
       });
