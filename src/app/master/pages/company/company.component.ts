@@ -41,6 +41,7 @@ export class CompanyComponent {
       }
     });
   }
+
   edit(value: any) {
     this.openPopUp(value);
   }
@@ -82,7 +83,8 @@ export class CompanyComponent {
         this.getCompany();
         this.commonService.showSnackbar('Company updated successfully');
       },
-      error(err) {
+      error: (err) => {
+        this.commonService.showSnackbar('Failed to update, please try again');
       },
     })
   }
@@ -92,23 +94,29 @@ export class CompanyComponent {
       next: (res) => {
         this.getCompany();
         this.commonService.showSnackbar('Deleted Successfully');
-      }, error:(err)=> {
+      }, error: (err) => {
         this.commonService.showSnackbar('Failed to delete, please try again');
       },
     })
   }
 
-  getCompany(query?: any) {
-    console.log('query', query)
-    this.companyService.getCompany(query).subscribe({
+  search(key: any) {
+    this.getCompany('', `&value=${key}`)
+  }
+
+  getCompany(query?: any,searchKey?:string) {
+    this.companyService.getCompany(query,searchKey).subscribe({
       next: (res) => {
-        this.tableValues = this.companyHelper.mapCompanyData(res.company);
+        this.tableValues = this.companyHelper.mapCompanyData(res.data);
         this.totalCount = res.totalCount;
+        // this.commonService.showSnackbar('Data fetched successfully');
       },
-      error(err) {
+      error: (err) => {
+        this.commonService.showSnackbar('Failed to get data');
       },
     })
   }
+
   pagination(pageData: any) {
     this.getCompany(pageData);
   }

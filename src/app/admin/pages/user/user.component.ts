@@ -18,6 +18,7 @@ export class UserComponent {
   tableHeaders = data.tableHeaders;
   tableValues: any
   fixedTableHeader = data.fixedTableHeaders;
+  totalCount = 0;
 
   ngOnInit() {
     this.getUser();
@@ -101,10 +102,11 @@ export class UserComponent {
   getUser() {
     this.authService.getUser().subscribe({
       next: (res) => {
-        console.log('res', res)
         this.tableValues = this.userHelper.mapUserData(res.data);
-      }, error(err) {
-
+        this.totalCount = res.total
+        // this.commonService.showSnackbar('Data fetched successfully');
+      }, error:(err)=> {
+        this.commonService.showSnackbar('Failed to get data');
       },
     })
   }

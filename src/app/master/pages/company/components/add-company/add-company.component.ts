@@ -19,7 +19,9 @@ export class AddCompanyComponent {
     location: ['', [Validators.required, Validators.pattern('[a-zA-Z ]*')]],
     code: ['', [Validators.required]],
     vatTin: ['', [Validators.required]],
-    email: ['', [Validators.required, Validators.email]],
+    email: ['', [Validators.required,Validators.pattern(
+      /^(([^<>()[\]\\.,;:\s@"]+(\.[^<>()[\]\\.,;:\s@"]+)*)|(".+"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$/
+    ),]],
     cstNo: ['', [Validators.required]],
     pan: ['', [Validators.required]],
     gstIn: ['', [Validators.required]],

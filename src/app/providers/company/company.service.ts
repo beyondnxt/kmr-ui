@@ -23,8 +23,8 @@ export class CompanyService {
     return this.http.delete(this.baseUrl + `/company/${id}`);
   }
 
-  getCompany(query:any): Observable<any> {
-    return this.http.get(this.baseUrl + `/company?page=${query?.pageNo || 1}&limit=${query?.pageLimit || this.commonService.calculatePaginationVal()}`);
+  getCompany(query:any,searchKey:string|any): Observable<any> {
+    return this.http.get(this.baseUrl + `/company?page=${query?.pageNo || 1}&limit=${query?.pageLimit || this.commonService.calculatePaginationVal()}${searchKey ? searchKey : ''}`);
   }
 
 }

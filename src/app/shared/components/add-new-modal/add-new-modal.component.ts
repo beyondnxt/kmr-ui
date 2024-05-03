@@ -144,10 +144,10 @@ export class AddNewModalComponent {
       'user': AddUserComponent,
       'color': AddColorComponent,
       'brand': AddBrandComponent,
-      'rope-kg-length':AddRopeKgLengthComponent,
-      'rope-grade':AddRopeGradeComponent
+      'rope-kg-length': AddRopeKgLengthComponent,
+      'rope-grade': AddRopeGradeComponent
     };
-  
+
     if (componentMap[value]) {
       this.dialog.open(componentMap[value], {
         width: '650px',
@@ -156,6 +156,6 @@ export class AddNewModalComponent {
         panelClass: `${value}-dialog-container`,
       });
     }
-  }  
+  }
 }
-  // 221 - line reduced to 144 line
+// 221 - line reduced to 144 line

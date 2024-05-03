@@ -10,8 +10,8 @@ import { CommonService } from 'src/app/providers/common/common.service';
 })
 export class AddUserComponent {
   constructor(private fb: FormBuilder, public dialogRef: MatDialogRef<AddUserComponent>, @Inject(MAT_DIALOG_DATA) public dialogData: any,public commonService:CommonService) { }
-  roles = [{ label: "Admin", value: "1" }, { label: "Owner", value: "2" }, { label: "Lead", value: "3" }]
-
+  roles = [{ label: "Admin", value: "1" }, { label: "Owner", value: "2" }, { label: "Lead", value: "3" }];
+  
   ngOnInit() {
     this.patchUser();
   }

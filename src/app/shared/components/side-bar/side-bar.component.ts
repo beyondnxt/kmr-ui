@@ -1,10 +1,18 @@
-import { Component, EventEmitter, HostListener, OnInit, Output } from '@angular/core';
+import {
+  ChangeDetectorRef,
+  Component,
+  EventEmitter,
+  HostListener,
+  OnInit,
+  Output,
+} from '@angular/core';
 import { navBarData } from './nav-data';
 import { Router } from '@angular/router';
 import { MatDialog } from '@angular/material/dialog';
 import { AddNewModalComponent } from '../add-new-modal/add-new-modal.component';
-import { FormControl } from '@angular/forms';
-
+import { DataSharingService } from '../../services/data-sharing/data-sharing.service';
+import { take } from 'rxjs';
+import { StorageService } from '../../services/storage/storage-service';
 interface sideNavToggle {
   screenWidth: number;
   collapsed: boolean;
@@ -13,10 +21,21 @@ interface sideNavToggle {
 @Component({
   selector: 'app-side-bar',
   templateUrl: './side-bar.component.html',
-  styleUrls: ['./side-bar.component.scss']
+  styleUrls: ['./side-bar.component.scss'],
 })
-export class SideBarComponent {  
-  constructor(private router: Router, private dialog: MatDialog) { }
+export class SideBarComponent {
+  public loggedInDetails: any;
+  constructor(
+    private router: Router,
+    private dialog: MatDialog,
+    private _dataSharingService: DataSharingService,
+    private _storageService: StorageService
+  ) {
+    this._dataSharingService.logged_in_data.pipe(take(1)).subscribe((res) => {
+      this.loggedInDetails = res;
+    });
+  }
+
   @Output() onToggleSideNav: EventEmitter<sideNavToggle> = new EventEmitter();
   mainNavLinks: any = [];
   adminNavLinks: any = [];
@@ -31,7 +50,10 @@ export class SideBarComponent {
     this.screenWidth = window.innerWidth;
     if (this.screenWidth <= 768) {
       this.collapsed = false;
-      this.onToggleSideNav.emit({ collapsed: this.collapsed, screenWidth: this.screenWidth });
+      this.onToggleSideNav.emit({
+        collapsed: this.collapsed,
+        screenWidth: this.screenWidth,
+      });
     }
   }
   ngOnInit() {
@@ -43,16 +65,22 @@ export class SideBarComponent {
     this.mainNavLinks = navBarData.mainNav;
   }
 
-
   toggleCollapse(): void {
     this.collapsed = !this.collapsed;
-    this.onToggleSideNav.emit({ collapsed: this.collapsed, screenWidth: this.screenWidth });
+    this.onToggleSideNav.emit({
+      collapsed: this.collapsed,
+      screenWidth: this.screenWidth,
+    });
   }
   closeSideNav(): void {
     this.collapsed = false;
-    this.onToggleSideNav.emit({ collapsed: this.collapsed, screenWidth: this.screenWidth });
+    this.onToggleSideNav.emit({
+      collapsed: this.collapsed,
+      screenWidth: this.screenWidth,
+    });
   }
   logout() {
+    this._storageService.clear();
     this.router.navigate(['/login']);
   }
   updateNavLinks(): void {
@@ -67,8 +95,7 @@ export class SideBarComponent {
       this.mainNavLinks = [];
       this.masterNavLinks = [];
       this.salesNavLinks = navBarData.salesNavLinks;
-    }
-    else if (routerUrl.startsWith('/master')) {
+    } else if (routerUrl.startsWith('/master')) {
       this.adminNavLinks = [];
       this.mainNavLinks = [];
       this.salesNavLinks = [];
@@ -88,16 +115,19 @@ export class SideBarComponent {
       this.masterNavLinks = [];
     }
   }
-  addNew(){
-    this.dialog.open(AddNewModalComponent, {
-      width: '650px',
-      height: 'max-content',
-      disableClose: true,
-      panelClass: 'add-new-dialog-container',
-    }).afterClosed().subscribe((res: any) => {
-      if (res) {
-        console.log(res)
-      }
-    });
+  addNew() {
+    this.dialog
+      .open(AddNewModalComponent, {
+        width: '650px',
+        height: 'max-content',
+        disableClose: true,
+        panelClass: 'add-new-dialog-container',
+      })
+      .afterClosed()
+      .subscribe((res: any) => {
+        if (res) {
+          console.log(res);
+        }
+      });
   }
 }

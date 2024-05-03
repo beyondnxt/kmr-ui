@@ -8,7 +8,8 @@ import { Router } from "@angular/router";
 export class companyHelper {
 
 mapCompanyData(serviceData:any){
-    return serviceData.map((x: any) => {
+    console.log('serviceData',serviceData)
+    return serviceData?.map((x: any) => {
         return {
                 id: x.id,
                 companyName: x.companyName,

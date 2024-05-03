@@ -5,7 +5,7 @@
     <div class="col-lg-6 col-md-6">
         <div class="row">
             <div class="col-lg-8 col-md-8">
-                <app-search></app-search>
+                <app-search (search)="search($event)"></app-search>
             </div>
             <div class="col-lg-4 col-md-4">
                 <app-kmr-btn [label]="'+ Add Company'" (action)="addCompany()"></app-kmr-btn>

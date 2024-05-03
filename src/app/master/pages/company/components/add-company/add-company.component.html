@@ -59,8 +59,8 @@
                     <input type="text" formControlName="email" matInput placeholder="Add email">
                 </label>
                 <mat-error
-                    *ngIf="companyForm.get('email')?.hasError('email') && !companyForm.get('email')?.hasError('required')">
-                    Please enter a valid email address
+                    *ngIf="companyForm.get('email')?.errors?.['pattern'] && !companyForm.get('email')?.hasError('required')">
+                  <b> Please enter a valid email address</b> 
                 </mat-error>
                 <mat-error *ngIf="companyForm.get('email')?.hasError('required')">
                     <b> Email is required</b>

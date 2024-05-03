@@ -17,6 +17,7 @@ export class TableComponent {
   @Input() tableValues: any = [];
   @Input() totalCount: any = [];
   @Input() fixedTableHeader: any = [];
+  @Input() apiLoader = false;
   @Output() delete = new EventEmitter();
   @Output() edit = new EventEmitter();
   @Output() pagination = new EventEmitter();
