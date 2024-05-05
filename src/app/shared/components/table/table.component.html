@@ -18,10 +18,10 @@
     <div class="table-data-wrapper">
         <table class="table-data">
             <thead>
-                <tr  cdkDropList cdkDropListOrientation="horizontal" [cdkDropListData]="tableHeaders" (cdkDragReleased)="release=true"
-                (cdkDropListDropped)="dropCol($event)">
+                <tr cdkDropList cdkDropListOrientation="horizontal" [cdkDropListData]="tableHeaders"
+                    (cdkDragReleased)="release=true" (cdkDropListDropped)="dropCol($event)">
                     <th *ngFor="let header of tableHeaders" cdkDrag (mousedown)="mouseDown($event)" cdkDragLockAxis="x"
-                    (cdkDragReleased)="release=true">
+                        (cdkDragReleased)="release=true">
                         <div class="label">{{header.name}} <i *ngIf="header.sort" class="fas fa-sort"></i></div>
                     </th>
                 </tr>
@@ -35,18 +35,28 @@
                                 <!-- <i class="fas fa-times-circle" *ngIf="!key.role"></i> -->
                                 <div class="score-value" [style.color]="handleStatusColor(value[key.key])"> {{
                                     value[key.key]}} </div>
-                                <div class="score-value" *ngIf="key.edit"> <i class="fas fa-edit" (click)="edit.emit(value)"></i> <i
-                                        class="fas fa-trash-alt ml" (click)="delete.emit(value.id)"></i> </div>
+                                <div class="score-value" *ngIf="key.edit"> <i class="fas fa-edit"
+                                        (click)="edit.emit(value)"></i> <i class="fas fa-trash-alt ml"
+                                        (click)="delete.emit(value.id)"></i> </div>
 
                             </td>
                         </ng-container>
                     </tr>
                 </ng-container>
+                <tr *ngIf="!tableValues?.length" >
+                    <td colspan="6">
+                        <p class="noData">No data available !!</p>
+                    </td>
+                </tr>
+
             </tbody>
         </table>
     </div>
 </div>
-<mat-paginator #paginator class="demo-paginator" (page)="handlePageEvent($event)" [length]="length"
-    [pageSize]="pageSize" [disabled]="disabled" [showFirstLastButtons]="showFirstLastButtons"
-    [hidePageSize]="hidePageSize" [pageIndex]="pageIndex" aria-label="Select page">
+<!-- <ng-container *ngIf="totalCount > commonService.calculatePaginationVal() "> -->
+<mat-paginator #paginator class="demo-paginator" (page)="handlePageEvent($event)" [length]="totalCount"
+    [pageSize]="commonService.calculatePaginationVal()" [disabled]="disabled"
+    [showFirstLastButtons]="showFirstLastButtons" [hidePageSize]="hidePageSize" [pageIndex]="pageIndex"
+    aria-label="Select page">
 </mat-paginator>
+<!-- </ng-container> -->

@@ -126,3 +126,10 @@ tr:nth-child(even) {
   .ml{
 	margin-left: 10px;
   }
+
+  .noData{
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    min-height: calc(100vh - 18rem);
+  }

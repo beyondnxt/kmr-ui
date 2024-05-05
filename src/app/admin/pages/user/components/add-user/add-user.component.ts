@@ -1,6 +1,7 @@
 import { Component, Inject } from '@angular/core';
 import { FormBuilder, Validators } from '@angular/forms';
 import { MAT_DIALOG_DATA, MatDialogRef } from '@angular/material/dialog';
+import { CommonService } from 'src/app/providers/common/common.service';
 
 @Component({
   selector: 'app-add-user',
@@ -8,9 +9,9 @@ import { MAT_DIALOG_DATA, MatDialogRef } from '@angular/material/dialog';
   styleUrls: ['./add-user.component.scss']
 })
 export class AddUserComponent {
-  constructor(private fb: FormBuilder, public dialogRef: MatDialogRef<AddUserComponent>, @Inject(MAT_DIALOG_DATA) public dialogData: any) { }
-  roles = [{ label: "Admin", value: "1" }, { label: "Owner", value: "2" }, { label: "Lead", value: "3" }]
-
+  constructor(private fb: FormBuilder, public dialogRef: MatDialogRef<AddUserComponent>, @Inject(MAT_DIALOG_DATA) public dialogData: any,public commonService:CommonService) { }
+  roles = [{ label: "Admin", value: "1" }, { label: "Owner", value: "2" }, { label: "Lead", value: "3" }];
+  
   ngOnInit() {
     this.patchUser();
   }
@@ -26,16 +27,17 @@ export class AddUserComponent {
     status: [true]
   })
 
-  save(isEdit:boolean) {
+  save(isEdit: boolean) {
     this.userForm.markAllAsTouched();
     if (this.userForm.invalid) {
+      this.commonService.showSnackbar('Please fill all require fields');
       return;
     } else {
-      this.dialogRef.close({formData:this.userForm.getRawValue(),isEdit:isEdit,id:this.dialogData?.id})
+      this.dialogRef.close({ formData: this.userForm.getRawValue(), isEdit: isEdit, id: this.dialogData?.id })
     }
   }
-  patchUser(){
-    if(this.dialogData){
+  patchUser() {
+    if (this.dialogData) {
       this.userForm.patchValue(this.dialogData);
     }
   }

@@ -3,8 +3,9 @@ import * as data from './user-data';
 import { AddUserComponent } from './components/add-user/add-user.component';
 import { MatDialog } from '@angular/material/dialog';
 import { DeleteModalComponent } from 'src/app/shared/components/delete-modal/delete-modal.component';
-import { AuthService } from 'src/app/providers/auth.service';
 import { UserHelper } from './user.helper';
+import { AuthService } from 'src/app/providers/auth/auth.service';
+import { CommonService } from 'src/app/providers/common/common.service';
 
 @Component({
   selector: 'app-user',
@@ -13,10 +14,11 @@ import { UserHelper } from './user.helper';
   providers: [UserHelper]
 })
 export class UserComponent {
-  constructor(private dialog: MatDialog, private authService: AuthService, private userHelper: UserHelper) { }
+  constructor(private dialog: MatDialog, private authService: AuthService, private userHelper: UserHelper, public commonService: CommonService) { }
   tableHeaders = data.tableHeaders;
   tableValues: any
   fixedTableHeader = data.fixedTableHeaders;
+  totalCount = 0;
 
   ngOnInit() {
     this.getUser();
@@ -26,12 +28,12 @@ export class UserComponent {
     this.openPopup();
   }
 
-  delete(id:string) {
+  delete(id: string) {
     this.dialog.open(DeleteModalComponent, {
       width: '650px',
       height: 'max-content',
       disableClose: true,
-      data:id,
+      data: id,
       panelClass: 'delete-dialog-container',
     }).afterClosed().subscribe((res: any) => {
       if (res) {
@@ -59,7 +61,7 @@ export class UserComponent {
           this.updateteUser(res.formData, res.id);
           return
         }
-        this.createUser(res);
+        this.createUser(res.formData);
       }
     });
   }
@@ -68,8 +70,9 @@ export class UserComponent {
     this.authService.createUser(payload).subscribe({
       next: (res) => {
         this.getUser();
-      }, error(err) {
-
+        this.commonService.showSnackbar('User created successfully');
+      }, error:(err)=> {
+        this.commonService.showSnackbar('Failed to create, please try again');
       },
     })
   }
@@ -78,17 +81,20 @@ export class UserComponent {
     this.authService.updateUser(payload, id).subscribe({
       next: (res) => {
         this.getUser();
-      }, error(err) {
-
+        this.commonService.showSnackbar('User updated successfully');
+      }, error:(err)=> {
+        this.commonService.showSnackbar('Failed to create, please try again');
       },
     })
   }
+
   deleteUser(id: string) {
     this.authService.deleteUser(id).subscribe({
       next: (res) => {
         this.getUser();
-      }, error(err) {
-
+        this.commonService.showSnackbar('Deleted Successfully');
+      }, error:(err)=> {
+        this.commonService.showSnackbar('Failed to delete, please try again');
       },
     })
   }
@@ -96,10 +102,11 @@ export class UserComponent {
   getUser() {
     this.authService.getUser().subscribe({
       next: (res) => {
-        console.log('res', res)
         this.tableValues = this.userHelper.mapUserData(res.data);
-      }, error(err) {
-
+        this.totalCount = res.total
+        // this.commonService.showSnackbar('Data fetched successfully');
+      }, error:(err)=> {
+        this.commonService.showSnackbar('Failed to get data');
       },
     })
   }
