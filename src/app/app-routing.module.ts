@@ -8,15 +8,15 @@ import { AuthGuard } from './shared/guards/auth.guard.ts/auth.guard';
 const routes: Routes = [
   {
     path: '',
-    redirectTo: '/login',
+    redirectTo: 'kmr/login',
     pathMatch: 'full'
   },
   {
-    path: 'login',
+    path: 'kmr/login',
     component: LoginComponent,
   },
   {
-    path: '',
+    path: 'kmr',
     component: LayoutComponent,
     children: [
       {

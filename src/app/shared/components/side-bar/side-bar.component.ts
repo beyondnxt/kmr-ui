@@ -76,21 +76,21 @@ export class SideBarComponent {
   }
   logout() {
     this._storageService.clear();
-    this.router.navigate(['/login']);
+    this.router.navigate(['kmr/login']);
   }
   updateNavLinks(): void {
     const routerUrl = this.router.url;
-    if (routerUrl.startsWith('/admin')) {
+   if (routerUrl.startsWith('/kmr/admin')) {
       this.salesNavLinks = [];
       this.mainNavLinks = [];
       this.masterNavLinks = [];
       this.adminNavLinks = navBarData.adminNavLinks;
-    } else if (routerUrl.startsWith('/sales')) {
+    } else if (routerUrl.startsWith('/kmr/sales')) {
       this.adminNavLinks = [];
       this.mainNavLinks = [];
       this.masterNavLinks = [];
       this.salesNavLinks = navBarData.salesNavLinks;
-    } else if (routerUrl.startsWith('/master')) {
+    } else if (routerUrl.startsWith('/kmr/master')) {
       this.adminNavLinks = [];
       this.mainNavLinks = [];
       this.salesNavLinks = [];

@@ -79,7 +79,7 @@ export class LoginComponent {
             this._storageService.setItem('role_id', res.roleId);
             this._storageService.setItem('role_name', res.roleName);
             this._storageService.setItem('token', res.token);
-            this.router.navigate(['/dashboard']);
+            this.router.navigate(['kmr/dashboard']);
           } else {
             this.loadingSpinner = false;
             this.showSignInResMsg = true;
