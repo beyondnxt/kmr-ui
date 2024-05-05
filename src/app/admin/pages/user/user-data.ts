@@ -19,7 +19,7 @@ export const tableHeaders = [
     },
     {
         name: 'Phone Number',
-        key: 'mobile',
+        key: 'phoneNumber',
         sort: true,
     },
     {
@@ -29,7 +29,7 @@ export const tableHeaders = [
     },
     {
         name: 'Role',
-        key: 'role',
+        key: 'roleName',
         sort: true,
     },
     {
@@ -49,9 +49,9 @@ export const tableValues = [
         companyName: 'Leo John',
         firstName: 'Leo',
         lastName: 'John',
-        mobile: '7401567040',
+        phoneNumber: '7401567040',
         email: 'test@test.com',
-        role: 'Admin',
+        roleId: 'Admin',
         createdOn: '13-03-2022',
         action: ''
 

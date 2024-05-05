@@ -108,5 +108,17 @@ export const navBarData = {
             label: 'Brand',
             menu: 'user'
         },
+        {
+            routerlink: 'master/rope-kg-length',
+            icon: 'fas fa-ruler-horizontal',
+            label: 'Rope KG Length',
+            menu: 'user'
+        },
+        {
+            routerlink: 'master/rope-grade',
+            icon: 'fas fa-award',
+            label: 'Rope Grade',
+            menu: 'user'
+        },
     ]
 };

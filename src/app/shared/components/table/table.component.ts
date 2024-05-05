@@ -1,6 +1,7 @@
-import { Component, EventEmitter, Input, Output } from '@angular/core';
-import { PageEvent } from '@angular/material/paginator';
-import {CdkDragDrop, moveItemInArray, transferArrayItem} from '@angular/cdk/drag-drop';  
+import { Component, EventEmitter, Input, Output, ViewChild } from '@angular/core';
+import { MatPaginator, PageEvent } from '@angular/material/paginator';
+import { CdkDragDrop, moveItemInArray, transferArrayItem } from '@angular/cdk/drag-drop';
+import { CommonService } from 'src/app/providers/common/common.service';
 
 @Component({
   selector: 'app-table',
@@ -8,13 +9,18 @@ import {CdkDragDrop, moveItemInArray, transferArrayItem} from '@angular/cdk/drag
   styleUrls: ['./table.component.scss']
 })
 export class TableComponent {
+  constructor(public commonService:CommonService){}
+  @ViewChild(MatPaginator) paginator: MatPaginator | any;
   pos: any
   release: boolean = true;
   @Input() tableHeaders: any = [];
   @Input() tableValues: any = [];
+  @Input() totalCount: any = [];
   @Input() fixedTableHeader: any = [];
+  @Input() apiLoader = false;
   @Output() delete = new EventEmitter();
   @Output() edit = new EventEmitter();
+  @Output() pagination = new EventEmitter();
   length = 50;
   pageSize = 10;
   pageIndex = 0;
@@ -24,6 +30,12 @@ export class TableComponent {
   disabled = false;
   pageEvent: PageEvent | undefined;
   handlePageEvent(e: PageEvent) {
+    const pageData = {
+      currentPage:this.paginator.pageIndex,
+      pageNo:this.paginator?.pageIndex + 1,
+      pageLimit:this.commonService.calculatePaginationVal()
+    }
+    this.pagination.emit(pageData);
   }
   handleStatusColor(status: string) {
     switch (status) {
@@ -48,6 +60,7 @@ export class TableComponent {
       width: el.getBoundingClientRect().width + 'px',
     };
   }
+
 }
 
 

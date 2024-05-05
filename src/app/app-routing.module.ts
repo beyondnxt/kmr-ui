@@ -3,24 +3,26 @@ import { RouterModule, Routes } from '@angular/router';
 import { DashboardComponent } from './shared/components/dashboard/dashboard.component';
 import { LayoutComponent } from './shared/components/layout/layout.component';
 import { LoginComponent } from './shared/components/login/login.component';
+import { AuthGuard } from './shared/guards/auth.guard.ts/auth.guard';
 
 const routes: Routes = [
   {
     path: '',
-    redirectTo: '/login',
+    redirectTo: 'kmr/login',
     pathMatch: 'full'
   },
   {
-    path: 'login',
+    path: 'kmr/login',
     component: LoginComponent,
   },
   {
-    path: '',
+    path: 'kmr',
     component: LayoutComponent,
     children: [
       {
         path: 'dashboard',
-        component: DashboardComponent
+        component: DashboardComponent,
+        canActivate:[AuthGuard]
       },
       {
         path: 'sales',
@@ -90,6 +92,14 @@ const routes: Routes = [
           {
             path:'brand',
             loadChildren: () =>import('./master/pages/brand/brand.module').then(m => m.BrandModule)
+          },
+          {
+            path:'rope-kg-length',
+            loadChildren: () =>import('./master/pages/rope-kg-length/rope-kg-length.module').then(m => m.RopeKgLengthModule)
+          },
+          {
+            path:'rope-grade',
+            loadChildren: () =>import('./master/pages/rope-grade/rope-grade.module').then(m => m.RopeGradeModule)
           }
         ]
       }

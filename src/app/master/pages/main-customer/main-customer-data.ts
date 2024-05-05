@@ -23,6 +23,16 @@ export const tableHeaders = [
         sort: true,
     },
     {
+        name: 'Created on',
+        key: 'createdOn',
+        sort: true,
+    },
+    {
+        name: 'Updates on',
+        key: 'updatedOn',
+        sort: true,
+    },
+    {
         name: 'Action',
         key: 'action',
         edit: true

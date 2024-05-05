@@ -3,47 +3,112 @@ import * as data from './user-data';
 import { AddUserComponent } from './components/add-user/add-user.component';
 import { MatDialog } from '@angular/material/dialog';
 import { DeleteModalComponent } from 'src/app/shared/components/delete-modal/delete-modal.component';
+import { UserHelper } from './user.helper';
+import { AuthService } from 'src/app/providers/auth/auth.service';
+import { CommonService } from 'src/app/providers/common/common.service';
 
 @Component({
   selector: 'app-user',
   templateUrl: './user.component.html',
-  styleUrls: ['./user.component.scss']
+  styleUrls: ['./user.component.scss'],
+  providers: [UserHelper]
 })
 export class UserComponent {
-  constructor(private dialog: MatDialog,) { }
+  constructor(private dialog: MatDialog, private authService: AuthService, private userHelper: UserHelper, public commonService: CommonService) { }
   tableHeaders = data.tableHeaders;
-  tableValues = data.tableValues;
+  tableValues: any
   fixedTableHeader = data.fixedTableHeaders;
-  
+  totalCount = 0;
+
+  ngOnInit() {
+    this.getUser();
+  }
+
   addUser() {
     this.openPopup();
   }
-  delete() {
+
+  delete(id: string) {
     this.dialog.open(DeleteModalComponent, {
       width: '650px',
       height: 'max-content',
       disableClose: true,
+      data: id,
       panelClass: 'delete-dialog-container',
     }).afterClosed().subscribe((res: any) => {
       if (res) {
         console.log(res)
+        this.deleteUser(res)
       }
     })
-}
-edit(){
-  this.openPopup(true)
-}
-openPopup(edit?:boolean){
-  this.dialog.open(AddUserComponent, {
-    width: '650px',
-    height: 'max-content',
-    data:edit,
-    disableClose: true,
-    panelClass: 'user-dialog-container',
-  }).afterClosed().subscribe((res: any) => {
-    if (res) {
-      console.log(res)
-    }
-  });
-}
+  }
+
+  edit(value: any) {
+    this.openPopup(value)
+  }
+
+  openPopup(edit?: boolean) {
+    this.dialog.open(AddUserComponent, {
+      width: '650px',
+      height: 'max-content',
+      data: edit,
+      disableClose: true,
+      panelClass: 'user-dialog-container',
+    }).afterClosed().subscribe((res: any) => {
+      if (res) {
+        console.log(res);
+        if (res.isEdit) {
+          this.updateteUser(res.formData, res.id);
+          return
+        }
+        this.createUser(res.formData);
+      }
+    });
+  }
+
+  createUser(payload: any) {
+    this.authService.createUser(payload).subscribe({
+      next: (res) => {
+        this.getUser();
+        this.commonService.showSnackbar('User created successfully');
+      }, error:(err)=> {
+        this.commonService.showSnackbar('Failed to create, please try again');
+      },
+    })
+  }
+
+  updateteUser(payload: any, id: string) {
+    this.authService.updateUser(payload, id).subscribe({
+      next: (res) => {
+        this.getUser();
+        this.commonService.showSnackbar('User updated successfully');
+      }, error:(err)=> {
+        this.commonService.showSnackbar('Failed to create, please try again');
+      },
+    })
+  }
+
+  deleteUser(id: string) {
+    this.authService.deleteUser(id).subscribe({
+      next: (res) => {
+        this.getUser();
+        this.commonService.showSnackbar('Deleted Successfully');
+      }, error:(err)=> {
+        this.commonService.showSnackbar('Failed to delete, please try again');
+      },
+    })
+  }
+
+  getUser() {
+    this.authService.getUser().subscribe({
+      next: (res) => {
+        this.tableValues = this.userHelper.mapUserData(res.data);
+        this.totalCount = res.total
+        // this.commonService.showSnackbar('Data fetched successfully');
+      }, error:(err)=> {
+        this.commonService.showSnackbar('Failed to get data');
+      },
+    })
+  }
+
 }

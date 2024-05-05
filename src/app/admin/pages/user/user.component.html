@@ -1,6 +1,6 @@
 <div class="row pt-3">
     <div class="col-lg-6 col-md-6">
-        <h2>User List(100)</h2>
+        <h2>User List({{totalCount}})</h2>
     </div>
     <div class="col-lg-6 col-md-6">
         <div class="row">
@@ -14,5 +14,5 @@
     </div>
 </div>
 <div class="pt-3">
-<app-table [tableHeaders]="tableHeaders" [tableValues]="tableValues" [fixedTableHeader]="fixedTableHeader" (delete)="delete()" (edit)="edit()"></app-table>
+<app-table [tableHeaders]="tableHeaders" [tableValues]="tableValues" [fixedTableHeader]="fixedTableHeader" (delete)="delete($event)" (edit)="edit($event)"></app-table>
 </div>
