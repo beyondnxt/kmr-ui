@@ -5,19 +5,19 @@ import { Injectable } from '@angular/core';
 })
 export class StorageService implements StorageInterface {
   clear(): void {
-    sessionStorage.clear();
+    localStorage.clear();
   }
   getItem(key: string): any {
-    return sessionStorage.getItem(key);
+    return localStorage.getItem(key);
   }
   key(index: number): any {
-    return sessionStorage.key(index);
+    return localStorage.key(index);
   }
   removeItem(key: string): void {
-    sessionStorage.removeItem(key);
+    localStorage.removeItem(key);
   }
   setItem(key: string, value: string): void {
-    sessionStorage.setItem(key, value);
+    localStorage.setItem(key, value);
   }
 }
 

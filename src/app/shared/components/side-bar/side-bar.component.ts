@@ -24,16 +24,11 @@ interface sideNavToggle {
   styleUrls: ['./side-bar.component.scss'],
 })
 export class SideBarComponent {
-  public loggedInDetails: any;
   constructor(
     private router: Router,
     private dialog: MatDialog,
-    private _dataSharingService: DataSharingService,
-    private _storageService: StorageService
+    public _storageService: StorageService
   ) {
-    this._dataSharingService.logged_in_data.pipe(take(1)).subscribe((res) => {
-      this.loggedInDetails = res;
-    });
   }
 
   @Output() onToggleSideNav: EventEmitter<sideNavToggle> = new EventEmitter();
