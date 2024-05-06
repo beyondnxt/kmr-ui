@@ -7,7 +7,6 @@ import {
   Router,
 } from '@angular/router';
 import { Observable } from 'rxjs';
-import { StorageService } from '../../services/storage/storage-service';
 
 @Injectable({
   providedIn: 'root',
@@ -15,7 +14,6 @@ import { StorageService } from '../../services/storage/storage-service';
 export class AuthGuard implements CanActivate {
   constructor(
     private router: Router,
-    private _storageService: StorageService
   ) {}
 
   canActivate(
@@ -28,7 +26,7 @@ export class AuthGuard implements CanActivate {
     | UrlTree {
     const isLoggedIn = false; // Check if user is logged in
 
-    if (this._storageService.getItem('token')) {
+    if (localStorage.getItem('token')) {
       return true;
     } else {
       // Redirect to login page or another route if not logged in
