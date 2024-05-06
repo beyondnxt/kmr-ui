@@ -47,8 +47,7 @@ export class LoginComponent {
   constructor(
     private router: Router,
     private authService: AuthService,
-    private _storageService: StorageService,
-    private _dataSharingService: DataSharingService
+    private _storageService: StorageService
   ) {}
 
   ngOnInit() {}
@@ -75,12 +74,12 @@ export class LoginComponent {
         next: (res) => {
           this.loadingSpinner = false;
           if (res.token) {
+            this._storageService.setItem('user_id', res.userId);
+            this._storageService.setItem('user_name', res.userName);
+            this._storageService.setItem('role_id', res.roleId);
+            this._storageService.setItem('role_name', res.roleName);
             this._storageService.setItem('token', res.token);
-            this._dataSharingService.sendLoggedInData({
-              user_name: res.userName,
-              user_role: res.roleName,
-            });
-            this.router.navigate(['/dashboard']);
+            this.router.navigate(['kmr/dashboard']);
           } else {
             this.loadingSpinner = false;
             this.showSignInResMsg = true;
