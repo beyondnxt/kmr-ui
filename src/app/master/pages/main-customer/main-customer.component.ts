@@ -29,6 +29,9 @@ export class MainCustomerComponent {
     this.openPopup();
   }
 
+  test(){
+    this.commonService.notification('success','test','success')
+  }
   delete(id: string) {
     this.dialog.open(DeleteModalComponent, {
       width: '650px',

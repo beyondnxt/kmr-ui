@@ -20,6 +20,7 @@ import { FooterComponent } from './components/footer/footer.component';
 import {DragDropModule} from '@angular/cdk/drag-drop';
 import { DeleteModalComponent } from './components/delete-modal/delete-modal.component';
 import { AddNewModalComponent } from './components/add-new-modal/add-new-modal.component';
+import { SnackBarComponent } from './components/snack-bar/snack-bar.component';
 
 
 
@@ -41,7 +42,8 @@ import { AddNewModalComponent } from './components/add-new-modal/add-new-modal.c
     KmrBtnComponent,
     FooterComponent,
     DeleteModalComponent,
-    AddNewModalComponent
+    AddNewModalComponent,
+    SnackBarComponent
     
   ],
   imports: [
