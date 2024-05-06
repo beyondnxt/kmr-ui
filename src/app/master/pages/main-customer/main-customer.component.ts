@@ -28,10 +28,7 @@ export class MainCustomerComponent {
   addMainCus() {
     this.openPopup();
   }
-
-  test(){
-    this.commonService.notification('success','test','success')
-  }
+  
   delete(id: string) {
     this.dialog.open(DeleteModalComponent, {
       width: '650px',
@@ -76,13 +73,13 @@ export class MainCustomerComponent {
     this.apiLoader = true;
     this.mainCustomerService.getMainCustomer(query, searchQuery).subscribe({
       next: (res) => {
-        this.tableValues = this.mainCusHelper.mapMainCustomer(res.mainCustomer);
+        this.tableValues = this.mainCusHelper.mapMainCustomer(res.data);
         this.totalCount = res.totalCount;
         this.apiLoader = false;
         // this.commonService.showSnackbar('Data fetched successfully');
       },
       error: (err) => {
-        this.commonService.showSnackbar('Failed to get data');
+        this.commonService.notification('Failed','Failed to get data','fail')
       },
     })
   }
@@ -91,9 +88,9 @@ export class MainCustomerComponent {
     this.mainCustomerService.deleteMainCustomer(id).subscribe({
       next: (res) => {
         this.getMainCus();
-        this.commonService.showSnackbar('Deleted Successfully');
+        this.commonService.notification('Success','Deleted Successfully','success')
       }, error: (err) => {
-        this.commonService.showSnackbar('Failed to delete, please try again');
+        this.commonService.notification('Failed','Failed to delete, please try again','fail')
       },
     })
   }

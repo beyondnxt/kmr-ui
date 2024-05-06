@@ -43,7 +43,11 @@ const routes: Routes = [
           {
             path:'role',
             loadChildren: () =>import('./admin/pages/role/role.module').then(m => m.RoleModule)
-          }
+          },
+          {
+            path:'sales-lead',
+            loadChildren: () =>import('./admin/pages/sales-admin/sales-admin.module').then(m => m.SalesAdminModule)
+          },
         ]
       },
       {

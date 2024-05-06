@@ -19,10 +19,11 @@
 
 .score-value {
 	position: relative;
-	width: 65px;
 	font-size: 14px;
     white-space: nowrap;
 	color: #3d4f78;
+	overflow: hidden;
+    text-overflow: ellipsis;
 }
 
 .wrapper {

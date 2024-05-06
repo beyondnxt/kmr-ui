@@ -11,17 +11,22 @@ import { CommonService } from 'src/app/providers/common/common.service';
 export class AddUserComponent {
   constructor(private fb: FormBuilder, public dialogRef: MatDialogRef<AddUserComponent>, @Inject(MAT_DIALOG_DATA) public dialogData: any,public commonService:CommonService) { }
   roles = [{ label: "Admin", value: "1" }, { label: "Owner", value: "2" }, { label: "Lead", value: "3" }];
+  departments = [{ label: "Test", value: "test" }];
+  locations = [{ label: "Nagercoil", value: "nagercoil" }];
   
   ngOnInit() {
     this.patchUser();
   }
 
   userForm = this.fb.group({
-    firstName: ['', [Validators.required, Validators.pattern('[a-zA-Z ]*')]],
-    lastName: ['', [Validators.required, Validators.pattern('[a-zA-Z ]*')]],
+    userName: ['', [Validators.required, Validators.pattern('[a-zA-Z ]*')]],
+    fullName: ['', [Validators.required, Validators.pattern('[a-zA-Z ]*')]],
     phoneNumber: ['', [Validators.required, Validators.pattern('[0-9]{10}')]],
     email: ['', [Validators.required, Validators.email]],
     password: ['', [Validators.required]],
+    retypePassword: ['', [Validators.required]],
+    location: ['', [Validators.required]],
+    departmentName: ['', [Validators.required]],
     companyId: ['1'],
     roleId: ['', [Validators.required]],
     status: [true]

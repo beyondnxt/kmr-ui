@@ -9,5 +9,7 @@ import { Router } from '@angular/router';
 })
 export class SnackBarComponent {
   constructor(public router: Router,@Inject(MAT_SNACK_BAR_DATA) public data:any,public snackBarRef:MatSnackBarRef<SnackBarComponent>) { }
- 
+  dismiss(){
+    this.snackBarRef.dismiss();
+  }
 }

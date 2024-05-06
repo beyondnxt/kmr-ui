@@ -34,7 +34,7 @@ export class AddCompanyComponent {
   save(isEdit:boolean){
     this.companyForm.markAllAsTouched();
     if (this.companyForm.invalid) {
-      this.commonService.showSnackbar('Please fill all require fields');
+      this.commonService.notification('Failed','Please fill all required fields','fail')
       return;
     } else {
       this.dialogRef.close({ formData: this.companyForm.getRawValue(), isEdit: isEdit, id: this.dialogData?.id })

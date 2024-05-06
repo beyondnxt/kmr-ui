@@ -16,6 +16,7 @@ import { AddColorComponent } from 'src/app/master/pages/color/components/add-col
 import { AddBrandComponent } from 'src/app/master/pages/brand/components/add-brand/add-brand.component';
 import { AddRopeKgLengthComponent } from 'src/app/master/pages/rope-kg-length/components/add-rope-kg-length/add-rope-kg-length.component';
 import { AddRopeGradeComponent } from 'src/app/master/pages/rope-grade/components/add-rope-grade/add-rope-grade.component';
+import { AddSalesAdminComponent } from 'src/app/admin/pages/sales-admin/components/add-sales-admin/add-sales-admin.component';
 
 @Component({
   selector: 'app-add-new-modal',
@@ -111,6 +112,12 @@ export class AddNewModalComponent {
       value: 'role',
       admin: true
     },
+    {
+      name: 'Sales Lead',
+      icon: 'fas fa-users-cog fa-fw',
+      value: 'sales-lead',
+      admin: true
+    },
   ]
   ngOnInit(): void {
     this.filterSelectionTypes();
@@ -118,9 +125,10 @@ export class AddNewModalComponent {
   }
   filterSelectionTypes() {
     const routerUrl = this.router.url;
-    if (routerUrl.startsWith('/master')) {
+    console.log(routerUrl)
+    if (routerUrl.startsWith('/kmr/master')) {
       this.selectionTypes = this.selectionTypes.filter((x: any) => x.master);
-    } else if (routerUrl.startsWith('/admin')) {
+    } else if (routerUrl.startsWith('/kmr/admin')) {
       this.selectionTypes = this.selectionTypes.filter((x: any) => x.admin);
     }
   }
@@ -145,7 +153,8 @@ export class AddNewModalComponent {
       'color': AddColorComponent,
       'brand': AddBrandComponent,
       'rope-kg-length': AddRopeKgLengthComponent,
-      'rope-grade': AddRopeGradeComponent
+      'rope-grade': AddRopeGradeComponent,
+      'sales-lead':AddSalesAdminComponent
     };
 
     if (componentMap[value]) {

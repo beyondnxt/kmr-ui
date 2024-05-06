@@ -13,35 +13,61 @@
     <div class="row" [formGroup]="userForm">
         <div class="col-lg-6">
             <mat-form-field class="col-lg-12">
-                <label class="labelName">First Name
-                    <input type="text" formControlName="firstName" matInput placeholder="Add First Name">
+                <label class="labelName">User Name
+                    <input type="text" formControlName="userName" matInput placeholder="Add User Name">
                 </label>
-                <mat-error *ngIf="userForm.get('firstName')?.hasError('required')">
-                    <b> First name is required</b>
+                <mat-error *ngIf="userForm.get('userName')?.hasError('required')">
+                    <b> User name is required</b>
                 </mat-error>
-                <mat-error *ngIf="userForm.get('firstName')?.errors?.['pattern']"><b>Only alphabets are allowed.</b></mat-error>
+                <mat-error *ngIf="userForm.get('userName')?.errors?.['pattern']"><b>Only alphabets are allowed.</b></mat-error>
             </mat-form-field>
         </div>
         <div class="col-lg-6">
             <mat-form-field class="col-lg-12">
-                <label class="labelName">Last Name
-                    <input type="text" formControlName="lastName" matInput placeholder="Add last Name">
+                <label class="labelName">Full Name
+                    <input type="text" formControlName="fullName" matInput placeholder="Add full name">
                 </label>
-                <mat-error *ngIf="userForm.get('lastName')?.hasError('required')">
-                    <b> Last name is required</b>
+                <mat-error *ngIf="userForm.get('fullName')?.hasError('required')">
+                    <b> Full name is required</b>
                 </mat-error>
-                <mat-error *ngIf="userForm.get('lastName')?.errors?.['pattern']"><b>Only alphabets are allowed.</b></mat-error>   
+                <mat-error *ngIf="userForm.get('fullName')?.errors?.['pattern']"><b>Only alphabets are allowed.</b></mat-error>   
             </mat-form-field>
         </div>
         <div class="col-lg-6">
             <mat-form-field class="col-lg-12">
-                <label class="labelName">Phone Number
-                    <input type="text" formControlName="phoneNumber" matInput placeholder="Add phone number">
+                <label class="labelName">Location</label>
+                <mat-select placeholder="Select location" formControlName="location">
+                    <mat-option *ngFor="let location of locations" [value]="location.value">
+                        {{ location.label}}
+                    </mat-option>
+                </mat-select>
+                <mat-error *ngIf="userForm.get('location')?.hasError('required')">
+                    <b> Location is required</b>
+                </mat-error>
+            </mat-form-field>
+        </div>
+        <div class="col-lg-6">
+            <mat-form-field class="col-lg-12">
+                <label class="labelName">Department Name</label>
+                <mat-select placeholder="Select Department" formControlName="departmentName">
+                    <mat-option *ngFor="let department of departments" [value]="department.value">
+                        {{ department.label}}
+                    </mat-option>
+                </mat-select>
+                <mat-error *ngIf="userForm.get('departmentName')?.hasError('required')">
+                    <b> Department name is required</b>
+                </mat-error>
+            </mat-form-field>
+        </div>
+        <div class="col-lg-6">
+            <mat-form-field class="col-lg-12">
+                <label class="labelName">Mobile Number
+                    <input type="text" formControlName="phoneNumber" matInput placeholder="Add mobile number">
                 </label>
                 <mat-error *ngIf="userForm.get('phoneNumber')?.hasError('required')">
-                    <b> Phone number is required</b>
+                    <b> Mobile number is required</b>
                 </mat-error>
-                <mat-error *ngIf="userForm.get('phoneNumber')?.errors?.['pattern']"><b>Invalid phone number
+                <mat-error *ngIf="userForm.get('phoneNumber')?.errors?.['pattern']"><b>Invalid mobile number
                     format.</b></mat-error>
             </mat-form-field>
         </div>
@@ -66,6 +92,16 @@
                 </label>
                 <mat-error *ngIf="userForm.get('password')?.hasError('required')">
                     <b> Password is required</b>
+                </mat-error>
+            </mat-form-field>
+        </div>
+        <div class="col-lg-6">
+            <mat-form-field class="col-lg-12">
+                <label class="labelName">Re-Type Password
+                    <input type="password" formControlName="retypePassword" matInput placeholder="Add re-type password">
+                </label>
+                <mat-error *ngIf="userForm.get('retypePassword')?.hasError('required')">
+                    <b> Re-Type Password is required</b>
                 </mat-error>
             </mat-form-field>
         </div>

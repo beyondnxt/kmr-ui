@@ -26,7 +26,7 @@ export class AddMainCustomerComponent {
 
   save(isEdit: boolean) {
     if (this.mainCustomerForm.invalid) {
-      this.commonService.showSnackbar('Please fill all require fields');
+      this.commonService.notification('Failed','Please fill all required fields','fail')
       return;
     } else if (isEdit) {
       this.updateMainCustomer(this.mainCustomerForm.getRawValue(), this.dialogData?.id)
@@ -44,11 +44,11 @@ export class AddMainCustomerComponent {
   createMainCustomer(payload: any) {
     this.mainCustomerService.createMainCustomer(payload).subscribe({
       next: (res) => {
-        this.commonService.showSnackbar('Main customer created successfully');
+        this.commonService.notification('Success','Main customer created successfully','success')
         this.dialogRef.close(true);
       },
       error: (err) => {
-        this.commonService.showSnackbar('Failed to create, please try again');
+        this.commonService.notification('Failed','Main customer created successfully','fail')
       },
     })
   }
@@ -56,11 +56,11 @@ export class AddMainCustomerComponent {
   updateMainCustomer(payload: any, id: string) {
     this.mainCustomerService.updateMainCustomer(payload, id).subscribe({
       next: (res) => {
-        this.commonService.showSnackbar('Main customer updated successfully');
+        this.commonService.notification('Success','Main customer updated successfully','success')
         this.dialogRef.close(true);
       },
       error: (err) => {
-        this.commonService.showSnackbar('Failed to update, please try again');
+        this.commonService.notification('Failed','Failed to update, please try again','fail')
       },
     })
   }

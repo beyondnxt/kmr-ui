@@ -69,7 +69,7 @@ export class CompanyComponent {
     this.companyService.createCompany(payload).subscribe({
       next: (res) => {
         this.getCompany();
-        this.commonService.showSnackbar('Company created successfully');
+        this.commonService.notification('Success','Company created successfully','success')
       },
       error: (err) => {
         this.commonService.showSnackbar('Failed to create, please try again');
@@ -81,7 +81,7 @@ export class CompanyComponent {
     this.companyService.updateCompany(payload, id).subscribe({
       next: (res) => {
         this.getCompany();
-        this.commonService.showSnackbar('Company updated successfully');
+        this.commonService.notification('Success','Company updated successfully','success')
       },
       error: (err) => {
         this.commonService.showSnackbar('Failed to update, please try again');
@@ -93,9 +93,9 @@ export class CompanyComponent {
     this.companyService.deleteCompany(id).subscribe({
       next: (res) => {
         this.getCompany();
-        this.commonService.showSnackbar('Deleted Successfully');
+        this.commonService.notification('Success','Deleted Successfully','success')
       }, error: (err) => {
-        this.commonService.showSnackbar('Failed to delete, please try again');
+        this.commonService.notification('Failed','Failed to delete, please try again','fail')
       },
     })
   }
@@ -107,12 +107,12 @@ export class CompanyComponent {
   getCompany(query?: any,searchKey?:string) {
     this.companyService.getCompany(query,searchKey).subscribe({
       next: (res) => {
-        this.tableValues = this.companyHelper.mapCompanyData(res.company);
+        this.tableValues = this.companyHelper.mapCompanyData(res.data);
         this.totalCount = res.totalCount;
         // this.commonService.showSnackbar('Data fetched successfully');
       },
       error: (err) => {
-        this.commonService.showSnackbar('Failed to get data');
+        this.commonService.notification('Failed','Failed to get data','fail')
       },
     })
   }
