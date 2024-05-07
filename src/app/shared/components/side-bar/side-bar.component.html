@@ -30,11 +30,11 @@
         width="35"
         height="35"
         alt=""
-      />
+      />  
       <div class="profile-name" *ngIf="collapsed">
         <div>
-          <span class="name">{{ _storageService.getItem("user_name") }}</span>
-          <p class="role">{{ _storageService.getItem("role_name") }}</p>
+          <span class="name">{{ loggedInUserName }}</span>
+          <p class="role">{{ loggedInUserRole }}</p>
         </div>
       </div>
     </div>

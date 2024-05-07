@@ -10,9 +10,6 @@ import { navBarData } from './nav-data';
 import { Router } from '@angular/router';
 import { MatDialog } from '@angular/material/dialog';
 import { AddNewModalComponent } from '../add-new-modal/add-new-modal.component';
-import { DataSharingService } from '../../services/data-sharing/data-sharing.service';
-import { take } from 'rxjs';
-import { StorageService } from '../../services/storage/storage-service';
 interface sideNavToggle {
   screenWidth: number;
   collapsed: boolean;
@@ -24,10 +21,11 @@ interface sideNavToggle {
   styleUrls: ['./side-bar.component.scss'],
 })
 export class SideBarComponent {
+  loggedInUserName: string | null = '';
+  loggedInUserRole: string | null = '';
   constructor(
     private router: Router,
     private dialog: MatDialog,
-    public _storageService: StorageService
   ) {
   }
 
@@ -52,6 +50,8 @@ export class SideBarComponent {
     }
   }
   ngOnInit() {
+    this.loggedInUserName = localStorage.getItem('user_name');
+    this.loggedInUserRole = localStorage.getItem('role_name');
     this.screenWidth = window.innerWidth;
     this.router.events.subscribe(() => {
       this.updateNavLinks();
@@ -75,7 +75,7 @@ export class SideBarComponent {
     });
   }
   logout() {
-    this._storageService.clear();
+    localStorage.clear();
     this.router.navigate(['kmr/login']);
   }
   updateNavLinks(): void {
