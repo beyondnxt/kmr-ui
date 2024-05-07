@@ -73,7 +73,7 @@ export class MainCustomerComponent {
     this.apiLoader = true;
     this.mainCustomerService.getMainCustomer(query, searchQuery).subscribe({
       next: (res) => {
-        this.tableValues = this.mainCusHelper.mapMainCustomer(res.mainCustomer);
+        this.tableValues = this.mainCusHelper.mapMainCustomer(res.data);
         this.totalCount = res.totalCount;
         this.apiLoader = false;
         // this.commonService.showSnackbar('Data fetched successfully');

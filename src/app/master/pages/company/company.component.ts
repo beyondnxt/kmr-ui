@@ -107,7 +107,7 @@ export class CompanyComponent {
   getCompany(query?: any,searchKey?:string) {
     this.companyService.getCompany(query,searchKey).subscribe({
       next: (res) => {
-        this.tableValues = this.companyHelper.mapCompanyData(res.company);
+        this.tableValues = this.companyHelper.mapCompanyData(res.data);
         this.totalCount = res.totalCount;
         // this.commonService.showSnackbar('Data fetched successfully');
       },

@@ -64,7 +64,7 @@ export class LoginComponent {
     } else {
       this.loadingSpinner = true;
       let data = {
-        email: this.loginForm.value.email,
+        userName: this.loginForm.value.email,
         password: this.loginForm.value.password,
       };
 
