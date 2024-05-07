@@ -15,9 +15,8 @@ import {
 } from '@angular/forms';
 import { Router } from '@angular/router';
 import { globalShareBaseOrigin } from 'src/app/app.component';
-import { StorageService } from '../../services/storage/storage-service';
-import { DataSharingService } from '../../services/data-sharing/data-sharing.service';
 import { AuthService } from 'src/app/providers/auth/auth.service';
+
 @Component({
   selector: 'app-login',
   templateUrl: './login.component.html',
@@ -47,7 +46,6 @@ export class LoginComponent {
   constructor(
     private router: Router,
     private authService: AuthService,
-    private _storageService: StorageService
   ) {}
 
   ngOnInit() {}
@@ -74,24 +72,24 @@ export class LoginComponent {
         next: (res) => {
           this.loadingSpinner = false;
           if (res.token) {
-            this._storageService.setItem('user_id', res.userId);
-            this._storageService.setItem('user_name', res.userName);
-            this._storageService.setItem('role_id', res.roleId);
-            this._storageService.setItem('role_name', res.roleName);
-            this._storageService.setItem('token', res.token);
-            this.router.navigate(['kmr/dashboard']);
+            localStorage.setItem('user_id', res.userId);
+            localStorage.setItem('user_name', res.userName);
+            localStorage.setItem('role_id', res.roleId);
+            localStorage.setItem('role_name', res.roleName);
+            localStorage.setItem('token', res.token);
+            this.router.navigate(['/dashboard']);
           } else {
             this.loadingSpinner = false;
             this.showSignInResMsg = true;
             this.signInResponseMsg = res.message;
-            this._storageService.clear();
+            localStorage.clear();
           }
         },
         error: (err) => {
           this.loadingSpinner = false;
           this.showSignInResMsg = true;
           this.signInResponseMsg = err.error.message;
-          this._storageService.clear();
+          localStorage.clear();
           throw err;
         },
       });
