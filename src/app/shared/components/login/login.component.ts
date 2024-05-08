@@ -88,10 +88,11 @@ export class LoginComponent {
         error: (err) => {
           this.loadingSpinner = false;
           this.showSignInResMsg = true;
-          this.signInResponseMsg = err.error.message;
+          this.signInResponseMsg = 'Check Internet connection or VPN';
           localStorage.clear();
           throw err;
-        },
+        }
+      
       });
     }
   }

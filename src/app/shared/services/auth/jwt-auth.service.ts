@@ -26,7 +26,6 @@ export class JwtAuthService {
         Authorization: 'Bearer ' + token,
       }),
     };
-
     return HTTP_OPTIONS;
   }
 
