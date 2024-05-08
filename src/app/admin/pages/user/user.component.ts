@@ -47,7 +47,7 @@ export class UserComponent {
     this.openPopup(value)
   }
 
-  openPopup(edit?: boolean) {
+  openPopup(edit?: any) {
     this.dialog.open(AddUserComponent, {
       width: '650px',
       height: 'max-content',

@@ -21,7 +21,7 @@ export class AddUserComponent {
   userForm = this.fb.group({
     userName: ['', [Validators.required, Validators.pattern('[a-zA-Z ]*')]],
     fullName: ['', [Validators.required, Validators.pattern('[a-zA-Z ]*')]],
-    phoneNumber: ['', [Validators.required, Validators.pattern('[0-9]{10}')]],
+    mobileNumber: ['', [Validators.required, Validators.pattern('[0-9]{10}')]],
     email: ['', [Validators.required, Validators.email]],
     password: ['', [Validators.required]],
     retypePassword: ['', [Validators.required]],
