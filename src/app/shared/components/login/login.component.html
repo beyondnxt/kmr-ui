@@ -30,23 +30,22 @@
         <form (ngSubmit)="signIn()" [formGroup]="loginForm">
           <div class="input-group mb-3">
             <input
-              formControlName="email"
+              formControlName="username"
               type="text"
               class="form-control form-control-lg bg-light fs-6"
-              placeholder="Email address"
+              placeholder="User Name"
             />
           </div>
           <div
             style="margin-top: -12px; margin-bottom: 12px"
             *ngIf="
-              loginForm.get('email')?.invalid && loginForm.get('email')?.touched
+              loginForm.get('username')?.invalid &&
+              loginForm.get('username')?.touched
             "
             class="text-danger"
             [@topToBottomAnimation]
           >
-            <small class="mt-[-15px] mb-[12px]"
-              >Email address is required</small
-            >
+            <small class="mt-[-15px] mb-[12px]">Username is required</small>
           </div>
           <div class="input-group mb-1">
             <input
@@ -79,6 +78,7 @@
 
         <div class="input-group mb-3">
           <button
+            type="submit"
             class="btn btn-lg w-100 fs-6 text-white"
             style="background: var(--primary)"
             (click)="signIn()"

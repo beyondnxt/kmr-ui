@@ -52,7 +52,7 @@ export class LoginComponent {
 
   //Login Form Validation
   loginForm = new FormGroup({
-    email: new FormControl('', Validators.required),
+    username: new FormControl('', Validators.required),
     password: new FormControl('', Validators.required),
   });
 
@@ -64,7 +64,7 @@ export class LoginComponent {
     } else {
       this.loadingSpinner = true;
       let data = {
-        userName: this.loginForm.value.email,
+        userName: this.loginForm.value.username,
         password: this.loginForm.value.password,
       };
 
