@@ -7,6 +7,12 @@ export const fixedTableHeaders =
 
 export const tableHeaders = [
     {
+        name: 'User Name',
+        key: 'userName',
+        sort: true,
+
+    },
+    {
         name: 'Department',
         key: 'departmentName',
         sort: true,

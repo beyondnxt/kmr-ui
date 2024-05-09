@@ -48,7 +48,7 @@ export class AddMainCustomerComponent {
         this.dialogRef.close(true);
       },
       error: (err) => {
-        this.commonService.notification('Failed','Main customer created successfully','fail')
+        this.commonService.notification('Failed','Failed to update, please try again','fail')
       },
     })
   }
