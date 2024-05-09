@@ -1,5 +1,5 @@
 import { Component, Inject } from '@angular/core';
-import { FormBuilder, Validators } from '@angular/forms';
+import { FormArray, FormBuilder, Validators } from '@angular/forms';
 import { MAT_DIALOG_DATA, MatDialogRef } from '@angular/material/dialog';
 import { CommonService } from 'src/app/providers/common/common.service';
 import { DepartmentService } from 'src/app/providers/department/department.service';
@@ -17,25 +17,45 @@ export class AddDepartmentComponent {
   departMentForm = this.fb.group({
     departmentName: ['', [Validators.required]],
     location: ['', [Validators.required]],
-    type: ['', [Validators.required]],
+    type: this.buildCheckboxes()
   })
 
   ngOnInit() {
     this.patchDepartment();
   }
 
+  get checkboxesArray() {
+    return this.departMentForm.get('type') as FormArray;
+  }
+
+  buildCheckboxes() {
+    const checkboxes = this.types.map(type => {
+      return this.fb.control(type.checked);
+    });
+    return this.fb.array(checkboxes);
+  }
+
+  onCheckboxChange(index: number, event: any) {
+    this.checkboxesArray.at(index).setValue(event.target.checked);
+  }
+
   patchDepartment() {
     if (this.dialogData) {
-      this.departMentForm.patchValue(this.dialogData);
-      for (let data of this.dialogData?.type) {
-        const findType = this.types.find((x: any) => x.name === data);
-        if (findType) {
-          findType.checked = true; 
+      this.departMentForm.patchValue({ departmentName: this.dialogData.departmentName, location: this.dialogData.location });
+      for (let data of this.dialogData.type) {
+        this.selectedType(data, 'patch');
+        console.log(data)
+        const index = this.types.findIndex(x => x.name === data);
+        if (index !== -1) {
+          console.log(index)
+          this.checkboxesArray.at(index).patchValue(true);
+          this.types[index].checked = true;
         }
       }
     }
   }
-  
+
+
   save(isEdit: boolean) {
     const payload = {
       departmentName: this.departMentForm.value.departmentName,
@@ -52,9 +72,17 @@ export class AddDepartmentComponent {
     }
   }
 
-  selectedType(type: string) {
-    this.selectedTypes.push(type);
+  selectedType(type: string, event: any) {
+    if (event?.checked || event === 'patch') {
+      this.selectedTypes.push(type);
+    } else {
+      const index = this.selectedTypes.indexOf(type);
+      if (index !== -1) {
+        this.selectedTypes.splice(index, 1);
+      }
+    }
   }
+
 
   createMainCustomer(payload: any) {
     this.departmentService.createDepartment(payload).subscribe({

@@ -33,14 +33,3 @@ export const tableHeaders = [
         edit: true
     },
 ]
-
-export const tableValues = [
-    {
-        companyName: 'Ajay G S',
-        shortCode:'NGL002',
-        userName: 'ajaygs',
-        createdOn: '12/3/2024',
-        updatedOn: '12/3/2024',
-        action:''
-    },
-]

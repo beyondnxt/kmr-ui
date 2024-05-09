@@ -36,10 +36,9 @@
                 </mat-error>
             </mat-form-field>
         </div>
-        <div class="col-lg-12">
+        <div class="col-lg-12" formArrayName="type">
             <p class="labelName mb-0">Type</p>
-            <mat-checkbox *ngFor="let type of types" [value]="type.name" [checked]="type.checked" formControlName="type"
-                (change)="selectedType(type.name)">
+            <mat-checkbox *ngFor="let type of types; let i = index" [value]="type.name"  [formControlName]="i" (change)="selectedType(type.name,$event)">
                 {{ type.name }}
             </mat-checkbox>
         </div>
