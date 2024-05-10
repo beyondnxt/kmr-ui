@@ -19,6 +19,7 @@ export class UserComponent {
   tableValues: any
   fixedTableHeader = data.fixedTableHeaders;
   totalCount = 0;
+  apiLoader=false;
 
   ngOnInit() {
     this.getUser();
@@ -37,7 +38,6 @@ export class UserComponent {
       panelClass: 'delete-dialog-container',
     }).afterClosed().subscribe((res: any) => {
       if (res) {
-        console.log(res)
         this.deleteUser(res)
       }
     })
@@ -47,7 +47,16 @@ export class UserComponent {
     this.openPopup(value)
   }
 
-  openPopup(edit?: boolean) {
+  pagination(pageData: any) {
+    this.getUser(pageData);
+  }
+
+  search(key: any) {
+    this.getUser('', `&value=${key}`)
+  }
+
+
+  openPopup(edit?: any) {
     this.dialog.open(AddUserComponent, {
       width: '650px',
       height: 'max-content',
@@ -56,57 +65,32 @@ export class UserComponent {
       panelClass: 'user-dialog-container',
     }).afterClosed().subscribe((res: any) => {
       if (res) {
-        console.log(res);
-        if (res.isEdit) {
-          this.updateteUser(res.formData, res.id);
-          return
-        }
-        this.createUser(res.formData);
+        this.getUser();
       }
     });
-  }
-
-  createUser(payload: any) {
-    this.authService.createUser(payload).subscribe({
-      next: (res) => {
-        this.getUser();
-        this.commonService.showSnackbar('User created successfully');
-      }, error:(err)=> {
-        this.commonService.showSnackbar('Failed to create, please try again');
-      },
-    })
-  }
-
-  updateteUser(payload: any, id: string) {
-    this.authService.updateUser(payload, id).subscribe({
-      next: (res) => {
-        this.getUser();
-        this.commonService.showSnackbar('User updated successfully');
-      }, error:(err)=> {
-        this.commonService.showSnackbar('Failed to create, please try again');
-      },
-    })
   }
 
   deleteUser(id: string) {
     this.authService.deleteUser(id).subscribe({
       next: (res) => {
         this.getUser();
-        this.commonService.showSnackbar('Deleted Successfully');
-      }, error:(err)=> {
-        this.commonService.showSnackbar('Failed to delete, please try again');
+        this.commonService.notification('Success','Deleted Successfully','success')
+      }, error: (err) => {
+        this.commonService.notification('Failed','Failed to delete, please try again','fail')
       },
     })
   }
 
-  getUser() {
-    this.authService.getUser().subscribe({
+  getUser(query?: any, searchQuery?: string) {
+    this.apiLoader = true;
+    this.authService.getUser(query, searchQuery).subscribe({
       next: (res) => {
+        this.apiLoader = false;
         this.tableValues = this.userHelper.mapUserData(res.data);
         this.totalCount = res.total
-        // this.commonService.showSnackbar('Data fetched successfully');
-      }, error:(err)=> {
-        this.commonService.showSnackbar('Failed to get data');
+      }, error: (err) => {
+        this.apiLoader = false;
+        this.commonService.notification('Failed','Failed to get data','fail')
       },
     })
   }

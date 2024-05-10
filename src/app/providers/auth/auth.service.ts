@@ -2,12 +2,13 @@ import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { Observable } from 'rxjs';
 import { environment } from 'src/environments/environment';
+import { CommonService } from '../common/common.service';
 
 @Injectable({
   providedIn: 'root',
 })
 export class AuthService {
-  constructor(public http: HttpClient) {}
+  constructor(public http: HttpClient, public commonService: CommonService) { }
   baseUrl = environment.KRM_BASE_URL;
 
   userLogIn(payload: any): Observable<any> {
@@ -25,8 +26,12 @@ export class AuthService {
     return this.http.delete(this.baseUrl + `/user/${id}`);
   }
 
-  getUser(): Observable<any> {
-    return this.http.get(this.baseUrl + '/user');
+  getUser(query: any, searchKey: string | any): Observable<any> {
+    return this.http.get(this.baseUrl + `/user?page=${query?.pageNo || 1}&limit=${query?.pageLimit || this.commonService.calculatePaginationVal()}${searchKey ? searchKey : ''}`);
   }
   
+  getDepartment(): Observable<any> {
+    return this.http.get(this.baseUrl + '/department/all');
+  }
+
 }

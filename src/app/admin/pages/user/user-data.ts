@@ -7,19 +7,25 @@ export const fixedTableHeaders =
 
 export const tableHeaders = [
     {
-        name: 'First Name',
-        key: 'firstName',
+        name: 'User Name',
+        key: 'userName',
         sort: true,
 
     },
     {
-        name: 'Last Name',
-        key: 'lastName',
+        name: 'Department',
+        key: 'departmentName',
+        sort: true,
+
+    },
+    {
+        name: 'Location',
+        key: 'location',
         sort: true,
     },
     {
         name: 'Phone Number',
-        key: 'phoneNumber',
+        key: 'mobileNumber',
         sort: true,
     },
     {
@@ -35,6 +41,11 @@ export const tableHeaders = [
     {
         name: 'Created On',
         key: 'createdOn',
+        sort: true,
+    },
+    {
+        name: 'Updated On',
+        key: 'updatedOn',
         sort: true,
     },
     {

@@ -8,11 +8,14 @@ export class UserHelper {
         return serviceData.map((x: any) => {
             return {
                 id:x.id,
-                companyName:`${x.firstName} ${x.lastName} `,
-                firstName:x?.firstName,
-                lastName:x?.lastName,
-                phoneNumber:x?.phoneNumber,
-                email:x.email,
+                companyName: x.fullName,
+                fullName: x.fullName,
+                userName: x.userName,
+                mobileNumber:x?.mobileNumer,
+                departmentName:x.departmentName,
+                departmentId:x.departmentId,
+                location:x.location,
+                email:x.email ? x.email : '',
                 createdOn:new Date(x.createdOn).toLocaleDateString('en-GB'),
                 roleName:x.roleName,
                 roleId:x.roleId
