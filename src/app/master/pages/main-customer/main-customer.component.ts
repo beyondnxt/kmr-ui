@@ -79,6 +79,7 @@ export class MainCustomerComponent {
         // this.commonService.showSnackbar('Data fetched successfully');
       },
       error: (err) => {
+        this.apiLoader = false;
         this.commonService.notification('Failed','Failed to get data','fail')
       },
     })
