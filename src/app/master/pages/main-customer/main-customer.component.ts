@@ -76,7 +76,6 @@ export class MainCustomerComponent {
         this.tableValues = this.mainCusHelper.mapMainCustomer(res.data);
         this.totalCount = res.totalCount;
         this.apiLoader = false;
-        // this.commonService.showSnackbar('Data fetched successfully');
       },
       error: (err) => {
         this.apiLoader = false;
