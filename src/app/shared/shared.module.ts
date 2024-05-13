@@ -21,6 +21,7 @@ import {DragDropModule} from '@angular/cdk/drag-drop';
 import { DeleteModalComponent } from './components/delete-modal/delete-modal.component';
 import { AddNewModalComponent } from './components/add-new-modal/add-new-modal.component';
 import { SnackBarComponent } from './components/snack-bar/snack-bar.component';
+import { AlphabeticOnlyDirective } from './directives/alphabetic-only.directive';
 
 
 
@@ -43,7 +44,8 @@ import { SnackBarComponent } from './components/snack-bar/snack-bar.component';
     FooterComponent,
     DeleteModalComponent,
     AddNewModalComponent,
-    SnackBarComponent
+    SnackBarComponent,
+    AlphabeticOnlyDirective
     
   ],
   imports: [
@@ -52,6 +54,6 @@ import { SnackBarComponent } from './components/snack-bar/snack-bar.component';
     NgApexchartsModule,
     DragDropModule
   ],
-  exports: [HeaderComponent, DashboardComponent, BodyComponent, LayoutComponent,SideBarComponent, MatModule, NgApexchartsModule,AreaChartComponent,PieChartComponent,DashboardCardComponent,BarChartComponent,KmrTableComponent,TableComponent, SearchComponent, KmrBtnComponent, FooterComponent]
+  exports: [HeaderComponent, DashboardComponent, BodyComponent, LayoutComponent,SideBarComponent, MatModule, NgApexchartsModule,AreaChartComponent,PieChartComponent,DashboardCardComponent,BarChartComponent,KmrTableComponent,TableComponent, SearchComponent, KmrBtnComponent, FooterComponent, AlphabeticOnlyDirective]
 })
 export class SharedModule { }
