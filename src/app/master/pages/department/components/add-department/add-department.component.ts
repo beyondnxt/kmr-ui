@@ -47,7 +47,6 @@ export class AddDepartmentComponent {
         console.log(data)
         const index = this.types.findIndex(x => x.name === data);
         if (index !== -1) {
-          console.log(index)
           this.checkboxesArray.at(index).patchValue(true);
           this.types[index].checked = true;
         }
@@ -83,7 +82,6 @@ export class AddDepartmentComponent {
     }
   }
 
-
   createMainCustomer(payload: any) {
     this.departmentService.createDepartment(payload).subscribe({
       next: (res) => {
@@ -91,7 +89,7 @@ export class AddDepartmentComponent {
         this.dialogRef.close(true);
       },
       error: (err) => {
-        this.commonService.notification('Failed', 'Department created successfully', 'fail')
+        this.commonService.notification('Failed', 'Failed to create, please try again', 'fail')
       },
     })
   }

@@ -13,6 +13,10 @@ import { WarehouseService } from 'src/app/providers/warehouse/warehouse.service'
 export class WarehouseComponent {
   // *-----------------------------Global Variable Declaration----------------------------//
   selectedRow: any;
+  tableHeaders = data.tableHeaders;
+  tableValues: any;
+  fixedTableHeader = data.fixedTableHeaders;
+  totalCount = 0;
   // *---------------------------------Constructor-----------------------------------//
 
   constructor(
@@ -22,10 +26,6 @@ export class WarehouseComponent {
   ) {
     this.getWarehouseLists();
   }
-  tableHeaders = data.tableHeaders;
-  tableValues: any;
-  fixedTableHeader = data.fixedTableHeaders;
-  totalCount = 0;
 
   addWareHouse() {
     this.openPopUp({ edit: false });
@@ -65,11 +65,11 @@ export class WarehouseComponent {
       .afterClosed()
       .subscribe((res: any) => {
         if (res) {
-          console.log(res);
           this.getWarehouseLists();
         }
       });
   }
+
   // *-------------------------------------API Methods------------------------------------//
 
   getWarehouseLists() {
