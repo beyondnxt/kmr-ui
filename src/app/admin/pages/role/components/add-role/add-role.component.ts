@@ -1,6 +1,8 @@
 import { Component, Inject } from '@angular/core';
-import { FormBuilder, Validators } from '@angular/forms';
+import { FormArray, FormBuilder, Validators } from '@angular/forms';
 import { MAT_DIALOG_DATA, MatDialogRef } from '@angular/material/dialog';
+import { CommonService } from 'src/app/providers/common/common.service';
+import { RoleService } from 'src/app/providers/role/role.service';
 
 @Component({
   selector: 'app-add-role',
@@ -8,12 +10,170 @@ import { MAT_DIALOG_DATA, MatDialogRef } from '@angular/material/dialog';
   styleUrls: ['./add-role.component.scss']
 })
 export class AddRoleComponent {
-  constructor(private fb: FormBuilder, public dialogRef: MatDialogRef<AddRoleComponent>, @Inject(MAT_DIALOG_DATA) public dialogData: any) { }
-  menus = [{ name: 'Master', checked: true },{ name: 'Admin', checked: false },{ name: 'Sales', checked: false }];
+  constructor(private fb: FormBuilder, public dialogRef: MatDialogRef<AddRoleComponent>, @Inject(MAT_DIALOG_DATA) public dialogData: any, private roleService: RoleService, public commonService: CommonService) { }
+  menus = [
+    {
+      name: "Dashboard",
+      key: "dashboard",
+      checked: true
+    },
+    {
+      name: "Admin",
+      key: "admin",
+      checked: false,
+    },
+    {
+      name: "User",
+      key: "user",
+      checked: false,
+    },
+    {
+      name: "Role",
+      key: "role",
+      checked: false,
+    },
+    {
+      name: "Company",
+      key: "company",
+      checked: false,
+    },
+    {
+      name: "Customer",
+      key: "customer",
+      checked: false,
+    },
+    {
+      name: "Main Customer",
+      key: "mainCustomer",
+      checked: false,
+    },
+    {
+      name: "Category",
+      key: "category",
+      checked: false,
+    },
+    {
+      name: "Rope Type",
+      key: "ropeType",
+      checked: false,
+    },
+    {
+      name: "Warehouse",
+      key: "warehouse",
+      checked: false,
+    },
+    {
+      name: "Supplier",
+      key: "supplier",
+      checked: false,
+    },
+    {
+      name: "Department",
+      key: "department",
+      checked: false,
+    },
+    {
+      name: "Color",
+      key: "color",
+      checked: false,
+    },
+    {
+      name: "Rope Kg Length",
+      key: "ropeKgLength",
+      checked: false,
+    },
+    {
+      name: "Rope Grade",
+      key: "ropeGrade",
+      checked: false,
+    }
+  ];
+  selectedMenus: any = [];
   roleForm = this.fb.group({
-    roleName: ['', [Validators.required, Validators.pattern('[a-zA-Z ]*')]],
+    name: ['', [Validators.required, Validators.pattern('[a-zA-Z ]*')]],
+    description: ['', [Validators.required]],
+    menuItems: this.buildCheckboxes()
   })
-  save() {
-    this.roleForm.markAllAsTouched();
+
+  ngOnInit(){
+    this.patchRole();
+  }
+
+  buildCheckboxes() {
+    const checkboxes = this.menus.map(menu => {
+      return this.fb.control(menu.checked);
+    });
+    return this.fb.array(checkboxes);
+  }
+
+  selectedMenu(menu: string, event: any) {
+    if (event?.checked || event === 'patch') {
+      this.selectedMenus.push({ [menu]: event?.checked });
+    } else {
+      const index = this.selectedMenus.indexOf(menu);
+      if (index !== -1) {
+        this.selectedMenus.splice(index, 1);
+      }
+    }
+  }
+
+
+  save(isEdit: boolean) {
+    const payload = {
+      name: this.roleForm.value.name,
+      description: this.roleForm.value.description,
+      menuAccess: this.selectedMenus
+    }
+    if (this.roleForm.invalid) {
+      this.commonService.notification('Failed', 'Please fill all required fields', 'fail')
+      return;
+    } else if (isEdit) {
+      this.updateMainCustomer(payload, this.dialogData?.id)
+    } else {
+      this.createMainCustomer(payload);
+    }
+  }
+
+  createMainCustomer(payload: any) {
+    this.roleService.createRole(payload).subscribe({
+      next: (res) => {
+        this.commonService.notification('Success', 'Role created successfully', 'success')
+        this.dialogRef.close(true);
+      },
+      error: (err) => {
+        this.commonService.notification('Failed', 'Failed to create, please try again', 'fail')
+      },
+    })
+  }
+
+  get checkboxesArray() {
+    return this.roleForm.get('menuItems') as FormArray;
+  }
+
+  patchRole() {
+    if (this.dialogData) {
+      this.roleForm.patchValue({ name: this.dialogData.name, description: this.dialogData.description });
+      for (let data of this.dialogData.accessKeys) {
+        this.selectedMenu(data, 'patch');
+        console.log(data)
+        const index = this.menus.findIndex(x => x.name === data);
+        if (index !== -1) {
+          this.checkboxesArray.at(index).patchValue(true);
+          this.menus[index].checked = true;
+        }
+      }
+    }
+  }
+
+  updateMainCustomer(payload: any, id: string) {
+    this.roleService.updateRole(payload, id).subscribe({
+      next: (res) => {
+        this.commonService.notification('Success', 'Role updated successfully', 'success')
+        this.dialogRef.close(true);
+      },
+      error: (err) => {
+        this.commonService.notification('Failed', 'Failed to update, please try again', 'fail')
+      },
+    })
   }
 }

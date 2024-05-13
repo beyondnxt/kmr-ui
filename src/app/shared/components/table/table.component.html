@@ -31,19 +31,24 @@
                     <tr>
                         <ng-container *ngFor="let key of tableHeaders">
                             <td>
-                                <i class="fas fa-check-circle" *ngIf="key.role"></i>
+                                <ng-container *ngIf="key.role">
+                                    <i class="fas fa-check-circle" *ngIf="value[key.key]"></i>
+                                    <i class="fas fa-times-circle" style="color: #eb0f0f;" *ngIf="!value[key.key]"></i>
+                                </ng-container>
                                 <!-- <i class="fas fa-times-circle" *ngIf="!key.role"></i> -->
-                                <div class="score-value" [style.color]="handleStatusColor(value[key.key])"> {{
-                                    value[key.key]}} </div>
-                                <div class="score-value" *ngIf="key.edit"> <i class="fas fa-edit"
-                                        (click)="edit.emit(value)"></i> <i class="fas fa-trash-alt ml"
-                                        (click)="delete.emit(value.id)"></i> </div>
+                                <ng-container *ngIf="!key.role">
+                                    <div class="score-value" [style.color]="handleStatusColor(value[key.key])"> {{
+                                        value[key.key]}} </div>
+                                    <div class="score-value" *ngIf="key.edit"> <i class="fas fa-edit"
+                                            (click)="edit.emit(value)"></i> <i class="fas fa-trash-alt ml"
+                                            (click)="delete.emit(value.id)"></i> </div>
+                                </ng-container>
 
                             </td>
                         </ng-container>
                     </tr>
                 </ng-container>
-                <tr *ngIf="!tableValues?.length" >
+                <tr *ngIf="!tableValues?.length">
                     <td colspan="6">
                         <p class="noData">No data available !!</p>
                     </td>
