@@ -1,25 +1,28 @@
 import { Component } from '@angular/core';
-import { DeleteModalComponent } from 'src/app/shared/components/delete-modal/delete-modal.component';
-import * as data from './rope-type.data'
 import { MatDialog } from '@angular/material/dialog';
-import { AddRopeTypeComponent } from './components/add-rope-type/add-rope-type.component';
+import { AddRopeSpecificationComponent } from './components/add-rope-specification/add-rope-specification.component';
+import * as data from './rope-specification.data'
+import { DeleteModalComponent } from 'src/app/shared/components/delete-modal/delete-modal.component';
 
 @Component({
-  selector: 'app-rope-type',
-  templateUrl: './rope-type.component.html',
-  styleUrls: ['./rope-type.component.scss']
+  selector: 'app-rope-specification',
+  templateUrl: './rope-specification.component.html',
+  styleUrls: ['./rope-specification.component.scss']
 })
-export class RopeTypeComponent {
+export class RopeSpecificationComponent {
   constructor(private dialog: MatDialog) { }
   tableHeaders = data.tableHeaders;
   tableValues = data.tableValues;
   fixedTableHeader = data.fixedTableHeaders;
-  addCategory() {
+
+  addRopeSpec(){
     this.openPopUp(false);
   }
+  
   edit() {
     this.openPopUp(true)
   }
+
   delete() {
     this.dialog.open(DeleteModalComponent, {
       width: '650px',
@@ -33,12 +36,12 @@ export class RopeTypeComponent {
     });
   }
   openPopUp(edit: boolean) {
-    this.dialog.open(AddRopeTypeComponent, {
-      width: '650px',
+    this.dialog.open(AddRopeSpecificationComponent, {
+      width: '950px',
       height: 'max-content',
       data: edit,
       disableClose: true,
-      panelClass: 'rope-type-dialog-container',
+      panelClass: 'rope-specification-dialog-container',
     }).afterClosed().subscribe((res: any) => {
       if (res) {
         console.log(res)

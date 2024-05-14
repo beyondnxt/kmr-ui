@@ -126,5 +126,11 @@ export const navBarData = {
             label: 'Rope Grade',
             menu: 'user'
         },
+        {
+            routerlink: 'master/rope-specification',
+            icon: 'fas fa-tasks',
+            label: 'Rope Specification',
+            menu: 'user'
+        },
     ]
 };

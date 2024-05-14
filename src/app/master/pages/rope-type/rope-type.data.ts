@@ -10,7 +10,6 @@ export const tableHeaders = [
         name: 'Short Code',
         key: 'shortCode',
         sort: true,
-
     },
     {
         name: 'Piece No Short Code',
