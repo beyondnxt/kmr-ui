@@ -19,8 +19,13 @@ export class WarehouseService {
     return this.http.post(this.baseUrl + '/warehouse', payload);
   }
 
-  getWarehouseLists(): Observable<any> {
-    return this.http.get(this.baseUrl + '/warehouse');
+  getWarehouseLists(query: any, searchKey: string | any): Observable<any> {
+    return this.http.get(
+      this.baseUrl +
+        `/warehouse?page=${query?.pageNo || 1}&limit=${
+          query?.pageLimit || this.commonService.calculatePaginationVal()
+        }${searchKey ? searchKey : ''}`
+    );
   }
 
   deleteWarehouse(id: number): Observable<any> {

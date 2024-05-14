@@ -70,10 +70,18 @@ export class WarehouseComponent {
       });
   }
 
+  search(key: any) {
+    this.getWarehouseLists('', `&value=${key}`);
+  }
+
+  pagination(pageData: any) {
+    this.getWarehouseLists(pageData);
+  }
+
   // *-------------------------------------API Methods------------------------------------//
 
-  getWarehouseLists() {
-    this._wareHouseApiService.getWarehouseLists().subscribe({
+  getWarehouseLists(query?: any, searchKey?: string) {
+    this._wareHouseApiService.getWarehouseLists(query, searchKey).subscribe({
       next: (res) => {
         this.tableValues = res.data;
         this.totalCount = res.totalCount;
