@@ -14,10 +14,10 @@
         <div class="col-lg-6">
             <mat-form-field class="col-lg-12">
                 <label class="Add main Customer">Main Customer</label>
-                <mat-select placeholder="Select main customer" formControlName="mainCustomer">
-                    <mat-option>KMR</mat-option>
+                <mat-select placeholder="Select main customer" formControlName="mainCustomerId" >
+                    <mat-option *ngFor="let mainCustomer of mainCustomers" [value]="mainCustomer.id">{{mainCustomer.name}}</mat-option>
                   </mat-select>
-                  <mat-error *ngIf="customerForm.get('mainCustomer')?.hasError('required')">
+                  <mat-error *ngIf="customerForm.get('mainCustomerId')?.hasError('required')">
                     <b> Main customer is required</b>
                 </mat-error>
             </mat-form-field>
@@ -98,10 +98,10 @@
         <div class="col-lg-6">
             <mat-form-field class="col-lg-12">
                 <label class="Add main Customer">Sales Lead Name</label>
-                <mat-select placeholder="Select sales lead name" formControlName="salesLeadName">
-                    <mat-option>KMR</mat-option>
+                <mat-select placeholder="Select sales lead name" formControlName="salesLeadId">
+                    <mat-option *ngFor="let salesLead of salesLeads" [value]="salesLead.id">{{salesLead.name}}</mat-option>
                  </mat-select>
-                 <mat-error *ngIf="customerForm.get('salesLeadName')?.hasError('required')">
+                 <mat-error *ngIf="customerForm.get('salesLeadId')?.hasError('required')">
                     <b> Sales lead name is required</b>
                 </mat-error>
             </mat-form-field>
@@ -159,10 +159,11 @@
             <mat-form-field class="col-lg-12">
                 <label class="labelName">State</label>
                 <mat-select placeholder="Select state" formControlName="state">
-                    <mat-option>Tamil Nadu</mat-option>
-                    <mat-error *ngIf="customerForm.get('state')?.hasError('required')">
-                        <b> State is required</b>
-                    </mat-error> </mat-select>
+                    <mat-option *ngFor="let state of states" [value]="state.value">{{state.label}}</mat-option>
+                </mat-select>
+                <mat-error *ngIf="customerForm.get('state')?.hasError('required')">
+                    <b> State is required</b>
+                </mat-error> 
             </mat-form-field>
         </div>
         <div class="col-lg-6">
@@ -196,7 +197,7 @@
             <mat-form-field class="col-lg-12">
                 <label class="labelName">Country</label>
                 <mat-select placeholder="Select country" formControlName="country">
-                    <mat-option>India</mat-option>
+                    <mat-option *ngFor="let country of countries" [value]="country.value">{{country.label}}</mat-option>
                  </mat-select>
                  <mat-error *ngIf="customerForm.get('country')?.hasError('required')">
                     <b> Country is required</b>
@@ -206,8 +207,8 @@
         <div class="col-lg-6">
             <mat-form-field class="col-lg-12">
                 <label class="labelName">Handled By</label>
-                <mat-select placeholder="Select handled by" formControlName="handledBy">
-                    <mat-option>India</mat-option>
+                 <mat-select placeholder="Select handled by" formControlName="handledBy">
+                    <mat-option *ngFor="let handleBy of salesLeads" [value]="handleBy.id">{{handleBy.name}}</mat-option>
                  </mat-select>
                  <mat-error *ngIf="customerForm.get('handledBy')?.hasError('required')">
                     <b> Handled By is required</b>
@@ -228,7 +229,7 @@
     <div class="row m-0 p-0">
         <div class="btnAlign">
             <app-kmr-btn mat-dialog-close [label]="'Cancel'" [bgColor]="'#F2F4F6'" [color]="'black'"></app-kmr-btn>
-            <app-kmr-btn [label]="'Save'" (action)="save()"></app-kmr-btn>
+            <app-kmr-btn [label]="'Save'" (action)="save(dialogData ? true : false)"></app-kmr-btn>
         </div>
     </div>
 </div>
