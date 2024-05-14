@@ -104,6 +104,10 @@ const routes: Routes = [
           {
             path:'rope-grade',
             loadChildren: () =>import('./master/pages/rope-grade/rope-grade.module').then(m => m.RopeGradeModule)
+          },
+          {
+            path:'rope-specification',
+            loadChildren: () =>import('./master/pages/rope-specification/rope-specification.module').then(m => m.RopeSpecificationModule)
           }
         ]
       }

@@ -1,0 +1,344 @@
+<div class="dialog-container">
+    <div class="row">
+        <div class="col-lg-12 closeAlign">
+            <div class="head">
+                <h1>{{dialogData ? 'Edit An Rope Specification Master': 'Create An Rope Specification Master'}}</h1>
+            </div>
+            <div>
+                <button mat-icon-button mat-dialog-close tabindex="-1" class="close-button">
+                    <mat-icon class="closeColor">close</mat-icon></button>
+            </div>
+        </div>
+    </div>
+    <div class="row scrollSet" [formGroup]="ropeSpecificationForm">
+        <div class="col-lg-3">
+            <mat-form-field class="col-lg-12">
+                <label class="labelName" id="sampleNo">Sample No
+                    <input type="text" formControlName="sampleNo" matInput placeholder="Add sample no"
+                        id="sampleNo">
+                </label>
+                <mat-error *ngIf="ropeSpecificationForm.get('sampleNo')?.hasError('required')">
+                    <b> Sample No is required</b>
+                </mat-error>
+            </mat-form-field>
+        </div>
+        <div class="col-lg-3">
+            <mat-form-field class="col-lg-12">
+                <label class="labelName" id="sampleNo">Date
+                    <input matInput [matDatepicker]="picker" placeholder="MM/DD/YYYY" formControlName="date">
+                </label>
+                <!-- <mat-hint>MM/DD/YYYY</mat-hint> -->
+                <mat-datepicker-toggle matIconSuffix [for]="picker"></mat-datepicker-toggle>
+                <mat-datepicker #picker></mat-datepicker>
+                <mat-error *ngIf="ropeSpecificationForm.get('date')?.hasError('required')">
+                    <b>Date is required</b>
+                </mat-error>
+              </mat-form-field>
+        </div>
+        <div class="col-lg-3">
+            <mat-form-field class="col-lg-12">
+                <label class="labelName" id="ropeSize">Rope Size
+                    <input type="text" formControlName="ropeSize" matInput placeholder="Add rope size"
+                        id="ropeSize">
+                </label>
+                <mat-error *ngIf="ropeSpecificationForm.get('ropeSize')?.hasError('required')">
+                    <b> Rope size is required</b>
+                </mat-error>
+            </mat-form-field>
+        </div>
+        <div class="col-lg-3">
+            <mat-form-field class="col-lg-12">
+                <label class="labelName">Color</label>
+                <mat-select placeholder="Select color" formControlName="color">
+                    <mat-option>Test</mat-option>
+                </mat-select>
+                <mat-error *ngIf="ropeSpecificationForm.get('color')?.hasError('required')">
+                    <b> Color is required</b>
+                </mat-error>
+            </mat-form-field>
+        </div>
+        <div class="col-lg-3">
+            <mat-form-field class="col-lg-12">
+                <label class="labelName" id="type">Type
+                    <input type="text" formControlName="type" matInput placeholder="Add Type" appAlphabeticOnly
+                        id="type">
+                </label>
+                <mat-error *ngIf="ropeSpecificationForm.get('type')?.hasError('required')">
+                    <b> Type is required</b>
+                </mat-error>
+            </mat-form-field>
+        </div>
+        <div class="col-lg-3">
+            <mat-form-field class="col-lg-12">
+                <label class="labelName" id="twist">Twist
+                    <input type="text" formControlName="twist" matInput placeholder="Add twist"
+                        id="twist">
+                </label>
+                <mat-error *ngIf="ropeSpecificationForm.get('twist')?.hasError('required')">
+                    <b> Twist is required</b>
+                </mat-error>
+            </mat-form-field>
+        </div>
+        <div class="col-lg-3">
+            <mat-form-field class="col-lg-12">
+                <label class="labelName" id="customer">Customer
+                    <input type="text" formControlName="customer" matInput placeholder="Add customer"
+                        id="customer">
+                </label>
+                <mat-error *ngIf="ropeSpecificationForm.get('customer')?.hasError('required')">
+                    <b> Customer is required</b>
+                </mat-error>
+            </mat-form-field>
+        </div>
+        <div class="col-lg-3">
+            <mat-form-field class="col-lg-12">
+                <label class="labelName">Grade</label>
+                <mat-select placeholder="Select grade" formControlName="grade">
+                    <mat-option>Test</mat-option>
+                </mat-select>
+                <mat-error *ngIf="ropeSpecificationForm.get('grade')?.hasError('required')">
+                    <b> Grade is required</b>
+                </mat-error>
+            </mat-form-field>
+        </div>
+        <div class="col-lg-3">
+            <mat-form-field class="col-lg-12">
+                <label class="labelName">EX. No</label>
+                <mat-select placeholder="Select EX. No" formControlName="exNo">
+                    <mat-option>Test</mat-option>
+                </mat-select>
+                <mat-error *ngIf="ropeSpecificationForm.get('exNo')?.hasError('required')">
+                    <b> EX. No is required</b>
+                </mat-error>
+            </mat-form-field>
+        </div>
+        <div class="col-lg-3">
+            <mat-form-field class="col-lg-12">
+                <label class="labelName" id="die">Die
+                    <input type="text" formControlName="die" matInput placeholder="Add die"
+                        id="die">
+                </label>
+                <mat-error *ngIf="ropeSpecificationForm.get('die')?.hasError('required')">
+                    <b> Die is required</b>
+                </mat-error>
+            </mat-form-field>
+        </div>
+        <div class="col-lg-3">
+            <mat-form-field class="col-lg-12">
+                <label class="labelName" id="stretchRatio">Stretch Ratio
+                    <input type="text" formControlName="stretchRatio" matInput placeholder="Add stretch ratio"
+                        id="stretchRatio">
+                </label>
+                <mat-error *ngIf="ropeSpecificationForm.get('stretchRatio')?.hasError('required')">
+                    <b> Stretch ratio is required</b>
+                </mat-error>
+            </mat-form-field>
+        </div>
+        <div class="col-lg-12 head">
+            <h1 class="text-center">Extruder-VIII(R)</h1>
+        </div>
+        <div class="col-lg-3">
+            <mat-form-field class="col-lg-12">
+                <label class="labelName" id="elongation">Elongation(%)
+                    <input type="text" formControlName="elongation" matInput placeholder="Add Elongation"
+                        id="elongation">
+                </label>
+                <mat-error *ngIf="ropeSpecificationForm.get('elongation')?.hasError('required')">
+                    <b> Elongation is required</b>
+                </mat-error>
+            </mat-form-field>
+        </div>
+        <div class="col-lg-3">
+            <mat-form-field class="col-lg-12">
+                <label class="labelName" id="GPD">GPD
+                    <input type="text" formControlName="gpd" matInput placeholder="Add GPD"
+                        id="gpd">
+                </label>
+                <mat-error *ngIf="ropeSpecificationForm.get('gpd')?.hasError('required')">
+                    <b> GPD is required</b>
+                </mat-error>
+            </mat-form-field>
+        </div>
+        <div class="col-lg-3">
+            <mat-form-field class="col-lg-12">
+                <label class="labelName" id="denier">Denier
+                    <input type="text" formControlName="denier" matInput placeholder="Add denier"
+                        id="denier">
+                </label>
+                <mat-error *ngIf="ropeSpecificationForm.get('denier')?.hasError('required')">
+                    <b> Denier is required</b>
+                </mat-error>
+            </mat-form-field>
+        </div>
+        <div class="col-lg-3">
+            <mat-form-field class="col-lg-12">
+                <label class="labelName" id="noOfTape">No Of Tape
+                    <input type="text" formControlName="noOfTape" matInput placeholder="Add no of tape"
+                        id="noOfTape">
+                </label>
+                <mat-error *ngIf="ropeSpecificationForm.get('noOfTape')?.hasError('required')">
+                    <b> No Of Tape is required</b>
+                </mat-error>
+            </mat-form-field>
+        </div>
+        <div class="col-lg-3">
+            <mat-form-field class="col-lg-12">
+                <label class="labelName" id="strandDenier">Strand Denier
+                    <input type="text" formControlName="strandDenier" matInput placeholder="Add strand denier"
+                        id="strandDenier">
+                </label>
+                <mat-error *ngIf="ropeSpecificationForm.get('strandDenier')?.hasError('required')">
+                    <b>Strand denier is required</b>
+                </mat-error>
+            </mat-form-field>
+        </div>
+        <div class="col-lg-3">
+            <mat-form-field class="col-lg-12">
+                <label class="labelName" id="onlineTpm">Online TPM
+                    <input type="text" formControlName="onlineTpm" matInput placeholder="Add Online TPM"
+                        id="onlineTpm">
+                </label>
+                <mat-error *ngIf="ropeSpecificationForm.get('onlineTpm')?.hasError('required')">
+                    <b>Online TPM is required</b>
+                </mat-error>
+            </mat-form-field>   
+        </div>
+        <div class="col-lg-3">
+            <mat-form-field class="col-lg-12">
+                <label class="labelName" id="noOfStrand">No Of Strand
+                    <input type="text" formControlName="noOfStrand" matInput placeholder="Add no of Strand"
+                        id="noOfStrand">
+                </label>
+                <mat-error *ngIf="ropeSpecificationForm.get('noOfStrand')?.hasError('required')">
+                    <b> No Of Strand is required</b>
+                </mat-error>
+            </mat-form-field>
+        </div>
+        <div class="col-lg-3">
+            <mat-form-field class="col-lg-12">
+                <label class="labelName" id="ropeMcNo">Rope MC No
+                    <input type="text" formControlName="ropeMcNo" matInput placeholder="Add Rope MC No"
+                        id="ropeMcNo">
+                </label>
+                <mat-error *ngIf="ropeSpecificationForm.get('ropeMcNo')?.hasError('required')">
+                    <b> Rope MC No is required</b>
+                </mat-error>
+            </mat-form-field>
+        </div>
+        <div class="col-lg-3">
+            <mat-form-field class="col-lg-12">
+                <label class="labelName" id="gear">Gear
+                    <input type="text" formControlName="gear" matInput placeholder="Add Gear"
+                        id="gear">
+                </label>
+                <mat-error *ngIf="ropeSpecificationForm.get('gear')?.hasError('required')">
+                    <b> Gear is required</b>
+                </mat-error>
+            </mat-form-field>
+        </div>
+        <div class="col-lg-3">
+            <mat-form-field class="col-lg-12">
+                <label class="labelName" id="noOfTape">Twist Factor
+                    <input type="text" formControlName="twistFactor" matInput placeholder="Add twist factor"
+                        id="twistFactor">
+                </label>
+                <mat-error *ngIf="ropeSpecificationForm.get('twistFactor')?.hasError('required')">
+                    <b> Twist Factor is required</b>
+                </mat-error>
+            </mat-form-field>
+        </div>
+        <div class="col-lg-3">
+            <mat-form-field class="col-lg-12">
+                <label class="labelName" id="noOfTape">Lay Length
+                    <input type="text" formControlName="layLength" matInput placeholder="Add lay length"
+                        id="layLength">
+                </label>
+                <mat-error *ngIf="ropeSpecificationForm.get('layLength')?.hasError('required')">
+                    <b> Lay Length is required</b>
+                </mat-error>
+            </mat-form-field>
+        </div>
+        <div class="col-lg-3">
+            <mat-form-field class="col-lg-12">
+                <label class="labelName" id="noOfTape">W/Mtr
+                    <input type="text" formControlName="wMtr" matInput placeholder="Add W/Mtr "
+                        id="wMtr">
+                </label>
+                <mat-error *ngIf="ropeSpecificationForm.get('wMtr')?.hasError('required')">
+                    <b> W/Mtr is required</b>
+                </mat-error>
+            </mat-form-field>
+        </div>
+        <div class="col-lg-3">
+            <mat-form-field class="col-lg-12">
+                <label class="labelName" id="noOfTape">Actual Dia
+                    <input type="text" formControlName="actualDia" matInput placeholder="Add Actual Dia"
+                        id="actualDia">
+                </label>
+                <mat-error *ngIf="ropeSpecificationForm.get('actualDia')?.hasError('required')">
+                    <b> Actual Dia is required</b>
+                </mat-error>
+            </mat-form-field>
+        </div>
+        <div class="col-lg-3">
+            <mat-form-field class="col-lg-12">
+                <label class="labelName" id="noOfTape">Strength (Kgs)
+                    <input type="text" formControlName="strength" matInput placeholder="Add Strength"
+                        id="strength">
+                </label>
+                <mat-error *ngIf="ropeSpecificationForm.get('strength')?.hasError('required')">
+                    <b> Strength is required</b>
+                </mat-error>
+            </mat-form-field>
+        </div>
+        <div class="col-lg-3">
+            <mat-form-field class="col-lg-12">
+                <label class="labelName" id="elongation1">Elongation(%)
+                    <input type="text" formControlName="elongation1" matInput placeholder="Add Elongation"
+                        id="elongation1">
+                </label>
+                <mat-error *ngIf="ropeSpecificationForm.get('elongation1')?.hasError('required')">
+                    <b> Elongation is required</b>
+                </mat-error>
+            </mat-form-field>
+        </div>
+        <div class="col-lg-3">
+            <mat-form-field class="col-lg-12">
+                <label class="labelName" id="GPD">GPD
+                    <input type="text" formControlName="gpd1" matInput placeholder="Add GPD"
+                        id="gpd1">
+                </label>
+                <mat-error *ngIf="ropeSpecificationForm.get('gpd1')?.hasError('required')">
+                    <b> GPD is required</b>
+                </mat-error>
+            </mat-form-field>
+        </div>
+        <div class="col-lg-3">
+            <mat-form-field class="col-lg-12">
+                <label class="labelName" id="rackNo">Rack No
+                    <input type="text" formControlName="rackNo" matInput placeholder="Add rack no"
+                        id="rackNo">
+                </label>
+                <mat-error *ngIf="ropeSpecificationForm.get('rackNo')?.hasError('required')">
+                    <b> Rack No is required</b>
+                </mat-error>
+            </mat-form-field>
+        </div>
+        <div class="col-lg-12">
+            <mat-form-field class="col-lg-12">
+                <label class="labelName">Additives
+                    <textarea formControlName="additives" matInput placeholder="Add additives"></textarea>
+                </label>
+                <mat-error *ngIf="ropeSpecificationForm.get('additives')?.hasError('required')">
+                    <b> Additives is required</b>
+                </mat-error>
+            </mat-form-field>
+        </div>
+    </div>
+    <div class="row m-0 p-0">
+        <div class="btnAlign">
+            <app-kmr-btn mat-dialog-close [label]="'Cancel'" [bgColor]="'#F2F4F6'" [color]="'black'"></app-kmr-btn>
+            <app-kmr-btn [label]="'Save'"  (action)="save()"></app-kmr-btn>
+        </div>
+    </div>
+</div>
