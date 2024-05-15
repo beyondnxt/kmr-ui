@@ -6,15 +6,15 @@ export const fixedTableHeaders =
 }
 
 export const tableHeaders = [
-    {
-        name: 'Status',
-        key: 'status',
-        sort: true,
+    // {
+    //     name: 'Status',
+    //     key: 'status',
+    //     sort: true,
 
-    },
+    // },
     {
         name: 'Name',
-        key: 'customerName',
+        key: 'name',
         sort: true,
     },
     {
@@ -38,122 +38,18 @@ export const tableHeaders = [
         sort: true,
     },
     {
+        name: 'Sales Code',
+        key: 'salesCode',
+        sort: true,
+    },
+    {
+        name: 'Code',
+        key: 'code',
+        sort: true,
+    },
+    {
         name: 'Action',
         key: 'action',
         edit: true
     },
-]
-
-export const tableValues = [
-    {
-        companyName: 'BeyondNXT',
-        status:'Active',
-        customerName: 'John Doe',
-        code: '83888',
-        type: 'Domestic',
-        contactPerson: 'T Suresh',
-        grade: 'A',
-        action:''
-    },
-    {
-        companyName: 'BeyondNXT',
-        status:'Active',
-        customerName: 'John Doe',
-        code: '83888',
-        type: 'Domestic',
-        contactPerson: 'T Suresh',
-        grade: 'A',
-        action:''
-    },
-    {
-        companyName: 'BeyondNXT',
-        status:'Active',
-        customerName: 'John Doe',
-        code: '83888',
-        type: 'Domestic',
-        contactPerson: 'T Suresh',
-        grade: 'A',
-        action:''
-    },
-    {
-        companyName: 'BeyondNXT',
-        status:'Active',
-        customerName: 'John Doe',
-        code: '83888',
-        type: 'Domestic',
-        contactPerson: 'T Suresh',
-        grade: 'A',
-        action:''
-    },
-    {
-        companyName: 'BeyondNXT',
-        status:'Active',
-        customerName: 'John Doe',
-        code: '83888',
-        type: 'Domestic',
-        contactPerson: 'T Suresh',
-        grade: 'A',
-        action:''
-    },
-    {
-        companyName: 'BeyondNXT',
-        status:'Active',
-        customerName: 'John Doe',
-        code: '83888',
-        type: 'Domestic',
-        contactPerson: 'T Suresh',
-        grade: 'A',
-        action:''
-    },
-    {
-        companyName: 'BeyondNXT',
-        status:'Active',
-        customerName: 'John Doe',
-        code: '83888',
-        type: 'Domestic',
-        contactPerson: 'T Suresh',
-        grade: 'A',
-        action:''
-    },
-    {
-        companyName: 'BeyondNXT',
-        status:'Active',
-        customerName: 'John Doe',
-        code: '83888',
-        type: 'Domestic',
-        contactPerson: 'T Suresh',
-        grade: 'A',
-        action:''
-    },
-    {
-        companyName: 'BeyondNXT',
-        status:'Active',
-        customerName: 'John Doe',
-        code: '83888',
-        type: 'Domestic',
-        contactPerson: 'T Suresh',
-        grade: 'A',
-        action:''
-    },
-    {
-        companyName: 'BeyondNXT',
-        status:'Active',
-        customerName: 'John Doe',
-        code: '83888',
-        type: 'Domestic',
-        contactPerson: 'T Suresh',
-        grade: 'A',
-        action:''
-    },
-    {
-        companyName: 'BeyondNXT',
-        status:'Active',
-        customerName: 'John Doe',
-        code: '83888',
-        type: 'Domestic',
-        contactPerson: 'T Suresh',
-        grade: 'A',
-        action:''
-    },
-
 ]

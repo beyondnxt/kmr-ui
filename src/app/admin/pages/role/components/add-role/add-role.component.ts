@@ -108,13 +108,17 @@ export class AddRoleComponent {
 
   selectedMenu(menu: string, event: any) {
     if (event?.checked || event === 'patch') {
-      this.selectedMenus.push({ [menu]: event?.checked });
+      this.selectedMenus.push({ [menu]: event === 'patch' ? true : event?.checked });
     } else {
-      const index = this.selectedMenus.indexOf(menu);
+      const index = this.selectedMenus.findIndex((item: {}) => Object.keys(item)[0] === menu);
       if (index !== -1) {
-        this.selectedMenus.splice(index, 1);
+        this.selectedMenus[index][menu] = false;
+        if (!this.selectedMenus[index][menu]) {
+          this.selectedMenus.splice(index, 1);
+        }
       }
     }
+    
   }
 
 
