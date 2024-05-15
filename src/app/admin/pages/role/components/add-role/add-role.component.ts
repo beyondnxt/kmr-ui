@@ -15,7 +15,7 @@ export class AddRoleComponent {
     {
       name: "Dashboard",
       key: "dashboard",
-      checked: true
+      checked: false
     },
     {
       name: "Admin",
@@ -95,7 +95,7 @@ export class AddRoleComponent {
     menuItems: this.buildCheckboxes()
   })
 
-  ngOnInit(){
+  ngOnInit() {
     this.patchRole();
   }
 
@@ -118,9 +118,7 @@ export class AddRoleComponent {
         }
       }
     }
-    
   }
-
 
   save(isEdit: boolean) {
     const payload = {
@@ -128,10 +126,15 @@ export class AddRoleComponent {
       description: this.roleForm.value.description,
       menuAccess: this.selectedMenus
     }
+    this.roleForm.markAllAsTouched();
     if (this.roleForm.invalid) {
-      this.commonService.notification('Failed', 'Please fill all required fields', 'fail')
+      this.commonService.notification('Failed', 'Please fill all required fields', 'fail');
       return;
-    } else if (isEdit) {
+    } else if (!this.selectedMenus.length) {
+      this.commonService.notification('Failed', 'Please choose atleast one menu', 'fail');
+      return;
+    }
+    else if (isEdit) {
       this.updateMainCustomer(payload, this.dialogData?.id)
     } else {
       this.createMainCustomer(payload);
@@ -180,4 +183,5 @@ export class AddRoleComponent {
       },
     })
   }
+
 }

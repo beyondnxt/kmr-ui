@@ -12,7 +12,7 @@ import { MainCustomerService } from 'src/app/providers/main-customer/main-custom
 export class AddMainCustomerComponent {
   constructor(private fb: FormBuilder, public dialogRef: MatDialogRef<AddMainCustomerComponent>, @Inject(MAT_DIALOG_DATA) public dialogData: any, private commonService: CommonService, private mainCustomerService: MainCustomerService) { }
   countries = [{ label: "India", value: "India" }, { label: "USA", value: "USA" }, { label: "UK", value: "UK" }, { label: "Singapore", value: "Singapore" }, { label: "Malaysia", value: "Malaysia" }]
-
+  apiLoader = false
   mainCustomerForm = this.fb.group({
     name: ['', [Validators.required, Validators.pattern('[a-zA-Z ]*')]],
     code: ['', [Validators.required]],
@@ -25,8 +25,9 @@ export class AddMainCustomerComponent {
   }
 
   save(isEdit: boolean) {
+    this.mainCustomerForm.markAllAsTouched();
     if (this.mainCustomerForm.invalid) {
-      this.commonService.notification('Failed','Please fill all required fields','fail')
+      this.commonService.notification('Failed', 'Please fill all required fields', 'fail')
       return;
     } else if (isEdit) {
       this.updateMainCustomer(this.mainCustomerForm.getRawValue(), this.dialogData?.id)
@@ -42,25 +43,31 @@ export class AddMainCustomerComponent {
   }
 
   createMainCustomer(payload: any) {
+    this.apiLoader = true;
     this.mainCustomerService.createMainCustomer(payload).subscribe({
       next: (res) => {
-        this.commonService.notification('Success','Main customer created successfully','success')
+        this.apiLoader = false;
+        this.commonService.notification('Success', 'Main customer created successfully', 'success')
         this.dialogRef.close(true);
       },
       error: (err) => {
-        this.commonService.notification('Failed','Failed to update, please try again','fail')
+        this.apiLoader = false;
+        this.commonService.notification('Failed', 'Failed to update, please try again', 'fail')
       },
     })
   }
 
   updateMainCustomer(payload: any, id: string) {
+    this.apiLoader = true;
     this.mainCustomerService.updateMainCustomer(payload, id).subscribe({
       next: (res) => {
-        this.commonService.notification('Success','Main customer updated successfully','success')
+        this.apiLoader = false;
+        this.commonService.notification('Success', 'Main customer updated successfully', 'success')
         this.dialogRef.close(true);
       },
       error: (err) => {
-        this.commonService.notification('Failed','Failed to update, please try again','fail')
+        this.apiLoader = false;
+        this.commonService.notification('Failed', 'Failed to update, please try again', 'fail')
       },
     })
   }
