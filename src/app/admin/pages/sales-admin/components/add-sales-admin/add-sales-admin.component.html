@@ -37,7 +37,7 @@
                 <label class="labelName">Login User Name</label>
                 <mat-select placeholder="Select login user name" formControlName="userId">
                     <mat-option *ngFor="let user of userList" [value]="user.id">
-                        {{ user.name}}
+                        {{ user.userName}}
                     </mat-option>
                 </mat-select>
                 <mat-error *ngIf="salesLeadForm.get('userId')?.hasError('required')">

@@ -27,4 +27,5 @@ export class MainCustomerService {
   getMainCustomer(query: any, key: string | any): Observable<any> {
     return this.http.get(this.baseUrl + `/main-customer?page=${query?.pageNo || 1}&limit=${query?.pageLimit || this.commonService.calculatePaginationVal()}${key ? key : ''}`);
   }
+  
 }
