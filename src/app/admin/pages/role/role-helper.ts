@@ -38,7 +38,6 @@ export class RoleHelper {
       
       extractMenuAccessKeys(menuAccess: any[]): string[] {
         const menuAccessKeys: string[] = [];
-      
         menuAccess.forEach((menu: any) => {
           Object.keys(menu).forEach((key) => {
             if (menu[key] === true && !menuAccessKeys.includes(key)) {

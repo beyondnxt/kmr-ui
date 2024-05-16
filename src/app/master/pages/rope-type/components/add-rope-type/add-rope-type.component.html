@@ -48,8 +48,8 @@
     </div>
     <div class="row m-0 p-0">
         <div class="btnAlign">
-            <app-kmr-btn mat-dialog-close [label]="'Cancel'" [bgColor]="'#F2F4F6'" [color]="'black'"></app-kmr-btn>
-            <app-kmr-btn [label]="'Save'" (action)="save()"></app-kmr-btn>
+            <app-kmr-btn mat-dialog-close [label]="'Cancel'" [bgColor]="'#F2F4F6'" [color]="'black'" ></app-kmr-btn>
+            <app-kmr-btn [label]="'Save'" (action)="save(dialogData ? true : false)" [apiLoader]="apiLoader" [minWidth]="'80px'"></app-kmr-btn>
         </div>
     </div>
 </div>
