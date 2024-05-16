@@ -38,7 +38,7 @@ export class MainCustomerComponent {
       panelClass: 'delete-dialog-container',
     }).afterClosed().subscribe((res: any) => {
       if (res) {
-        this.deleteCompany(res);
+        this.deleteMainCustomer(id);
       }
     })
   }
@@ -84,7 +84,7 @@ export class MainCustomerComponent {
     })
   }
 
-  deleteCompany(id: string) {
+  deleteMainCustomer(id: string) {
     this.mainCustomerService.deleteMainCustomer(id).subscribe({
       next: (res) => {
         this.getMainCus();

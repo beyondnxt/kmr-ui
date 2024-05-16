@@ -37,7 +37,7 @@ export class CompanyComponent {
       panelClass: 'delete-dialog-container',
     }).afterClosed().subscribe((res: any) => {
       if (res) {
-        this.deleteCompany(res);
+        this.deleteCompany(id);
       }
     });
   }

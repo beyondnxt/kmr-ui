@@ -15,6 +15,8 @@ export class AddCustomerComponent {
   states = [{ label: "Tamil Nadu", value: "Tamil Nadu" }]
   mainCustomers: any = []
   salesLeads: any = []
+  apiLoader = false;
+
   customerForm = this.fb.group({
     mainCustomerId: ['', [Validators.required]],
     name: ['', [Validators.required, Validators.pattern('[a-zA-Z ]*')]],
@@ -64,24 +66,30 @@ export class AddCustomerComponent {
   }
 
   createCustomer(payload: any) {
+    this.apiLoader = true;
     this.customerService.createCustomer(payload).subscribe({
       next: (res) => {
+        this.apiLoader = false;
         this.commonService.notification('Success', 'Customer created successfully', 'success')
         this.dialogRef.close(true);
       },
       error: (err) => {
+        this.apiLoader = false;
         this.commonService.notification('Failed', 'Failed to update, please try again', 'fail')
       },
     })
   }
 
   updateCustomer(payload: any, id: string) {
+    this.apiLoader = true;
     this.customerService.updateCustomer(payload, id).subscribe({
       next: (res) => {
+        this.apiLoader = false;
         this.commonService.notification('Success', 'Customer updated successfully', 'success')
         this.dialogRef.close(true);
       },
       error: (err) => {
+        this.apiLoader = false;
         this.commonService.notification('Failed', 'Failed to update, please try again', 'fail')
       },
     })

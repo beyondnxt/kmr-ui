@@ -38,7 +38,7 @@ export class DepartmentComponent {
       panelClass: 'delete-dialog-container',
     }).afterClosed().subscribe((res: any) => {
       if (res) {
-        this.deleteDepartment(res);
+        this.deleteDepartment(id);
       }
     })
   }

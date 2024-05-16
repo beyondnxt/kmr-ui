@@ -187,7 +187,8 @@
         <div class="col-lg-6">
             <mat-form-field class="col-lg-12">
                 <label class="labelName">PAN
-                    <input type="text" matInput placeholder="Add pan" formControlName="pan"></label>
+                    <input type="text" matInput placeholder="Add pan" formControlName="pan">
+                </label>
                     <mat-error *ngIf="customerForm.get('pan')?.hasError('required')">
                         <b> PAN is required</b>
                     </mat-error> 
@@ -207,9 +208,10 @@
         <div class="col-lg-6">
             <mat-form-field class="col-lg-12">
                 <label class="labelName">Handled By</label>
-                 <mat-select placeholder="Select handled by" formControlName="handledBy">
+                 <!-- <mat-select placeholder="Select handled by" formControlName="handledBy">
                     <mat-option *ngFor="let handleBy of salesLeads" [value]="handleBy.id">{{handleBy.name}}</mat-option>
-                 </mat-select>
+                 </mat-select> -->
+                 <input type="text" matInput placeholder="Add handled by" formControlName="handledBy">
                  <mat-error *ngIf="customerForm.get('handledBy')?.hasError('required')">
                     <b> Handled By is required</b>
                 </mat-error>
@@ -229,7 +231,7 @@
     <div class="row m-0 p-0">
         <div class="btnAlign">
             <app-kmr-btn mat-dialog-close [label]="'Cancel'" [bgColor]="'#F2F4F6'" [color]="'black'"></app-kmr-btn>
-            <app-kmr-btn [label]="'Save'" (action)="save(dialogData ? true : false)"></app-kmr-btn>
+            <app-kmr-btn [label]="'Save'" (action)="save(dialogData ? true : false)" [apiLoader]="apiLoader"></app-kmr-btn>
         </div>
     </div>
 </div>

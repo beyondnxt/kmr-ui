@@ -38,7 +38,7 @@ export class UserComponent {
       panelClass: 'delete-dialog-container',
     }).afterClosed().subscribe((res: any) => {
       if (res) {
-        this.deleteUser(res)
+        this.deleteUser(id)
       }
     })
   }

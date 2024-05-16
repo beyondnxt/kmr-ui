@@ -38,7 +38,7 @@ export class SalesAdminComponent {
       panelClass: 'delete-dialog-container',
     }).afterClosed().subscribe((res: any) => {
       if (res) {
-        this.deleteSalesLead(res);
+        this.deleteSalesLead(id);
       }
     })
   }
