@@ -54,7 +54,7 @@ export class CustomerComponent {
       panelClass: 'category-dialog-container',
     }).afterClosed().subscribe((res: any) => {
       if (res) {
-        console.log(res)
+        this.getCustomer();
       }
     });
   }

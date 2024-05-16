@@ -17,76 +17,18 @@ export const tableHeaders = [
         sort: true,
     },
     {
+        name: 'Created on',
+        key: 'createdOn',
+        sort: true,
+    },
+    {
+        name: 'Updated on',
+        key: 'updatedOn',
+        sort: true,
+    },
+    {
         name: 'Action',
         key: 'action',
         edit: true
-    },
-]
-export const tableValues = [
-    {
-        companyName:'Test',
-        shortCode:'133',
-        pieceNoShortCode:'452',
-        action:''
-    },
-    {
-        companyName:'Test',
-        shortCode:'133',
-        pieceNoShortCode:'452',
-        action:''
-    },
-    {
-        companyName:'Test',
-        shortCode:'133',
-        pieceNoShortCode:'452',
-        action:''
-    },
-    {
-        companyName:'Test',
-        shortCode:'133',
-        pieceNoShortCode:'452',
-        action:''
-    },
-    {
-        companyName:'Test',
-        shortCode:'133',
-        pieceNoShortCode:'452',
-        action:''
-    },
-    {
-        companyName:'Test',
-        shortCode:'133',
-        pieceNoShortCode:'452',
-        action:''
-    },
-    {
-        companyName:'Test',
-        shortCode:'133',
-        pieceNoShortCode:'452',
-        action:''
-    },
-    {
-        companyName:'Test',
-        shortCode:'133',
-        pieceNoShortCode:'452',
-        action:''
-    },
-    {
-        companyName:'Test',
-        shortCode:'133',
-        pieceNoShortCode:'452',
-        action:''
-    },
-    {
-        companyName:'Test',
-        shortCode:'133',
-        pieceNoShortCode:'452',
-        action:''
-    },
-    {
-        companyName:'Test',
-        shortCode:'133',
-        pieceNoShortCode:'452',
-        action:''
     },
 ]
