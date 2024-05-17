@@ -53,8 +53,7 @@ export class AddDepartmentComponent {
       }
     }
   }
-
-
+  
   save(isEdit: boolean) {
     const payload = {
       departmentName: this.departMentForm.value.departmentName,

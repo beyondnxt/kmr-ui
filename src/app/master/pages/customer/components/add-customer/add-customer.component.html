@@ -88,18 +88,18 @@
         <div class="col-lg-6">
             <p class="labelName">Grade</p>
             <mat-radio-group aria-label="Select an option" formControlName="grade">
-                <mat-radio-button value="1">A</mat-radio-button>
-                <mat-radio-button value="2">B</mat-radio-button>
-                <mat-radio-button value="2">C</mat-radio-button>
-                <mat-radio-button value="2">D</mat-radio-button>
-                <mat-radio-button value="2">E</mat-radio-button>
+                <mat-radio-button value="A">A</mat-radio-button>
+                <mat-radio-button value="B">B</mat-radio-button>
+                <mat-radio-button value="C">C</mat-radio-button>
+                <mat-radio-button value="D">D</mat-radio-button>
+                <mat-radio-button value="E">E</mat-radio-button>
             </mat-radio-group>
         </div>
         <div class="col-lg-6">
             <mat-form-field class="col-lg-12">
                 <label class="Add main Customer">Sales Lead Name</label>
                 <mat-select placeholder="Select sales lead name" formControlName="salesLeadId">
-                    <mat-option *ngFor="let salesLead of salesLeads" [value]="salesLead.id">{{salesLead.name}}</mat-option>
+                    <mat-option *ngFor="let salesLead of salesLeads" [value]="salesLead.id">{{salesLead.salesLeadName}}</mat-option>
                  </mat-select>
                  <mat-error *ngIf="customerForm.get('salesLeadId')?.hasError('required')">
                     <b> Sales lead name is required</b>

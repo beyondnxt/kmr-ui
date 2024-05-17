@@ -32,12 +32,12 @@ export const navBarData = {
             label: 'Role',
             menu: 'user'
         },
-        {
-            routerlink: 'admin/sales-lead',
-            icon: 'fas fa-users-cog fa-fw',
-            label: 'Sales Lead',
-            menu: 'user'
-        },
+        // {
+        //     routerlink: 'admin/sales-lead',
+        //     icon: 'fas fa-users-cog fa-fw',
+        //     label: 'Sales Lead',
+        //     menu: 'user'
+        // },
     ],
     salesNavLinks: [
         {

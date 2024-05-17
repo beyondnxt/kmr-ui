@@ -33,7 +33,7 @@ export class CustomerService {
   }
 
   getAllSalesLead(): Observable<any> {
-    return this.http.get(this.baseUrl + `/saleslead/all`);
+    return this.http.get(this.baseUrl + `/user/salesLeadName`);
   }
 
 }

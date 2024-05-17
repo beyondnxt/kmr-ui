@@ -18,7 +18,8 @@ export class UserHelper {
                 email:x.email ? x.email : '',
                 createdOn:new Date(x.createdOn).toLocaleDateString('en-GB'),
                 roleName:x.roleName,
-                roleId:x.roleId
+                roleId:x.roleId,
+                salesLeadName:x.salesLeadName
             }
         })
     }

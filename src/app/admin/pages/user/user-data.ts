@@ -10,7 +10,11 @@ export const tableHeaders = [
         name: 'User Name',
         key: 'userName',
         sort: true,
-
+    },
+    {
+        name: 'Sales Lead',
+        key: 'salesLeadName',
+        sort: true,
     },
     {
         name: 'Department',
@@ -52,130 +56,5 @@ export const tableHeaders = [
         name: 'Action',
         key: 'action',
         edit: true
-    },
-]
-
-export const tableValues = [
-    {
-        companyName: 'Leo John',
-        firstName: 'Leo',
-        lastName: 'John',
-        phoneNumber: '7401567040',
-        email: 'test@test.com',
-        roleId: 'Admin',
-        createdOn: '13-03-2022',
-        action: ''
-
-    },
-    {
-        companyName: 'Leo John',
-        firstName: 'Mark',
-        lastName: 'Antony',
-        mobile: '9443607857',
-        email: 'test@test.com',
-        role: 'Admin',
-        createdOn: '13-03-2022',
-        action: ''
-
-
-    },
-    {
-        companyName: 'Leo John',
-        firstName: 'Christine',
-        lastName: 'Sweet',
-        mobile: '8965412354',
-        email: 'test@test.com',
-        role: 'Admin',
-        createdOn: '13-03-2022',
-        action: ''
-
-    },
-    {
-        companyName: 'Leo John',
-        firstName: 'Christine',
-        lastName: 'Sweet',
-        mobile: '8965412354',
-        email: 'test@test.com',
-        role: 'Admin',
-        createdOn: '13-03-2022',
-        action: ''
-
-    },
-    {
-        companyName: 'Leo John',
-        firstName: 'Christine',
-        lastName: 'Sweet',
-        mobile: '8965412354',
-        email: 'test@test.com',
-        role: 'Admin',
-        createdOn: '13-03-2022',
-        action: ''
-
-    },
-    {
-        companyName: 'Leo John',
-        firstName: 'Christine',
-        lastName: 'Sweet',
-        mobile: '8965412354',
-        email: 'test@test.com',
-        role: 'Admin',
-        createdOn: '13-03-2022',
-        action: ''
-
-    },
-    {
-        companyName: 'Leo John',
-        firstName: 'Christine',
-        lastName: 'Sweet',
-        mobile: '8965412354',
-        email: 'test@test.com',
-        role: 'Admin',
-        createdOn: '13-03-2022',
-        action: ''
-
-    },
-    {
-        companyName: 'Leo John',
-        firstName: 'Christine',
-        lastName: 'Sweet',
-        mobile: '8965412354',
-        email: 'test@test.com',
-        role: 'Admin',
-        createdOn: '13-03-2022',
-        action: ''
-
-    },
-    {
-        companyName: 'Leo John',
-        firstName: 'Christine',
-        lastName: 'Sweet',
-        mobile: '8965412354',
-        email: 'test@test.com',
-        role: 'Admin',
-        createdOn: '13-03-2022',
-        action: ''
-
-    },
-    {
-        companyName: 'Leo John',
-        firstName: 'Christine',
-        lastName: 'Sweet',
-        mobile: '8965412354',
-        email: 'test@test.com',
-        role: 'Admin',
-        createdOn: '13-03-2022',
-        action: ''
-
-    },
-    {
-        companyName: 'Leo John',
-        firstName: 'Christine',
-        lastName: 'Sweet',
-        mobile: '8965412354',
-        email: 'test@test.com',
-        role: 'Admin',
-        createdOn: '13-03-2022',
-        action: ''
-
     },
 ]

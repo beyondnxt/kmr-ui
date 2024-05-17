@@ -16,9 +16,19 @@ export const tableHeaders = [
         key: 'matchingColor',
         sort: true,
     },
+    // {
+    //     name: 'Applicable For',
+    //     key: 'applicableFor',
+    //     sort: true,
+    // },
     {
-        name: 'Applicable For',
-        key: 'applicableFor',
+        name: 'Created on',
+        key: 'createdOn',
+        sort: true,
+    },
+    {
+        name: 'Updates on',
+        key: 'updatedOn',
         sort: true,
     },
     {
@@ -28,88 +38,9 @@ export const tableHeaders = [
     },
 ]
 
-export const tableValues = [
-    {
-        companyName: 'Red',
-        shortCode: 'COLOR23',
-        matchingColor: 'Yellow',
-        applicableFor: 'MONO',
-        action: ''
-    },
-    {
-        companyName: 'Red',
-        shortCode: 'COLOR23',
-        matchingColor: 'Yellow',
-        applicableFor: 'MONO',
-        action: ''
-    },
-    {
-        companyName: 'Red',
-        shortCode: 'COLOR23',
-        matchingColor: 'Yellow',
-        applicableFor: 'MONO',
-        action: ''
-    },
-    {
-        companyName: 'Red',
-        shortCode: 'COLOR23',
-        matchingColor: 'Yellow',
-        applicableFor: 'MONO',
-        action: ''
-    },
-    {
-        companyName: 'Red',
-        shortCode: 'COLOR23',
-        matchingColor: 'Yellow',
-        applicableFor: 'MONO',
-        action: ''
-    },
-    {
-        companyName: 'Red',
-        shortCode: 'COLOR23',
-        matchingColor: 'Yellow',
-        applicableFor: 'MONO',
-        action: ''
-    },
-    {
-        companyName: 'Red',
-        shortCode: 'COLOR23',
-        matchingColor: 'Yellow',
-        applicableFor: 'MONO',
-        action: ''
-    },
-    {
-        companyName: 'Red',
-        shortCode: 'COLOR23',
-        matchingColor: 'Yellow',
-        applicableFor: 'MONO',
-        action: ''
-    },
-    {
-        companyName: 'Red',
-        shortCode: 'COLOR23',
-        matchingColor: 'Yellow',
-        applicableFor: 'MONO',
-        action: ''
-    },
-    {
-        companyName: 'Red',
-        shortCode: 'COLOR23',
-        matchingColor: 'Yellow',
-        applicableFor: 'MONO',
-        action: ''
-    },
-    {
-        companyName: 'Red',
-        shortCode: 'COLOR23',
-        matchingColor: 'Yellow',
-        applicableFor: 'MONO',
-        action: ''
-    },
-]
 
 export const applicableFor = [
-    { name: 'MONO', checked: true },
+    { name: 'MONO', checked: false },
     { name: 'MULTI', checked: false },
     { name: '2ply Multi', checked: false },
     { name: 'Mono Multi', checked: false },
