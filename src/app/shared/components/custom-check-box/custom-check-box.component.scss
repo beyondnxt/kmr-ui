@@ -5,7 +5,8 @@
     margin: 5px;
     cursor: pointer;
     border-radius: 99em;
-    
+    width: 100%;
+    box-shadow:rgba(0, 0, 0, 0.24) 0px 1px 4px;;
     input {
       position: absolute;
       opacity: 0;
@@ -28,6 +29,7 @@
     color: rgba(0, 0, 0, 0.54);
     background-color: rgba(0, 0, 0, 0.05);
     border-radius: 99em;
+    width: 100% !important;
     
     .control:hover & {
       background-color: rgba(0, 0, 0, 0.1);
@@ -42,10 +44,14 @@
   .control input:checked ~ .control__content {
     background-color: var(--primary);
     color: white;
+    .menu-icon{
+    background-color: var(--active-bg);
+
+    }
   }
 
   .menu-icon{
-    background-color: black;
+    background-color: var(--primary);
     border-radius: 50%;
   }
   .menu-color{
@@ -55,4 +61,8 @@
 
   .fa-fw {
     width: unset;
+  }
+
+  .menuName{
+    white-space: nowrap;
   }

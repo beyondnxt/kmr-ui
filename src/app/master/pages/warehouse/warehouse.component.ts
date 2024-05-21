@@ -17,6 +17,7 @@ export class WarehouseComponent {
   tableValues: any;
   fixedTableHeader = data.fixedTableHeaders;
   totalCount = 0;
+  apiLoader = false;
   // *---------------------------------Constructor-----------------------------------//
 
   constructor(
@@ -73,8 +74,10 @@ export class WarehouseComponent {
   // *-------------------------------------API Methods------------------------------------//
 
   getWarehouseLists() {
+    this.apiLoader = true;
     this._wareHouseApiService.getWarehouseLists().subscribe({
       next: (res) => {
+        this.apiLoader = false;
         this.tableValues = res.data;
         this.totalCount = res.totalCount;
       },

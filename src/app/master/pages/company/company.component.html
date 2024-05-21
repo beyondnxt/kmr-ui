@@ -15,5 +15,5 @@
 </div>
 <div class="pt-3">
     <app-table [tableHeaders]="tableHeaders" [tableValues]="tableValues" [fixedTableHeader]="fixedTableHeader" [totalCount]="totalCount"
-        (delete)="delete($event)" (edit)="edit($event)" (pagination)="pagination($event)"></app-table>
+        (delete)="delete($event)" (edit)="edit($event)" (pagination)="pagination($event)" [apiLoader]="apiLoader"></app-table>
 </div>

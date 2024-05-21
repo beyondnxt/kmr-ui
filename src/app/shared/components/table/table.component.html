@@ -1,63 +1,70 @@
-<div class="wrapper">
-    <table class="table-scores">
-        <thead>
-            <tr>
-                <th>
-                    <div class="label">{{fixedTableHeader.name}}</div>
-                </th>
-            </tr>
-        </thead>
-        <tbody>
-            <tr *ngFor="let value of tableValues">
-                <td>
-                    <div class="label">{{value.companyName}}</div>
-                </td>
-            </tr>
-        </tbody>
-    </table>
-    <div class="table-data-wrapper">
-        <table class="table-data">
+<ng-container *ngIf="apiLoader;else other_content">
+    <app-kmr-loader></app-kmr-loader>
+    <div class="wrapper">
+    </div>
+</ng-container>
+<ng-template #other_content>
+    <div class="wrapper">
+        <table class="table-scores">
             <thead>
-                <tr cdkDropList cdkDropListOrientation="horizontal" [cdkDropListData]="tableHeaders"
-                    (cdkDragReleased)="release=true" (cdkDropListDropped)="dropCol($event)">
-                    <th *ngFor="let header of tableHeaders" cdkDrag (mousedown)="mouseDown($event)" cdkDragLockAxis="x"
-                        (cdkDragReleased)="release=true">
-                        <div class="label">{{header.name}} <i *ngIf="header.sort" class="fas fa-sort"></i></div>
+                <tr>
+                    <th>
+                        <div class="label">{{fixedTableHeader.name}}</div>
                     </th>
                 </tr>
             </thead>
             <tbody>
-                <ng-container *ngFor="let value of tableValues">
-                    <tr>
-                        <ng-container *ngFor="let key of tableHeaders">
-                            <td>
-                                <ng-container *ngIf="key.role">
-                                    <i class="fas fa-check-circle" *ngIf="value[key.key]"></i>
-                                    <i class="fas fa-times-circle" style="color: #eb0f0f;" *ngIf="!value[key.key]"></i>
-                                </ng-container>
-                                <!-- <i class="fas fa-times-circle" *ngIf="!key.role"></i> -->
-                                <ng-container *ngIf="!key.role">
-                                    <div class="score-value" [style.color]="handleStatusColor(value[key.key])"> {{
-                                        value[key.key]}} </div>
-                                    <div class="score-value" *ngIf="key.edit"> <i class="fas fa-edit"
-                                            (click)="edit.emit(value)"></i> <i class="fas fa-trash-alt ml"
-                                            (click)="delete.emit(value.id)"></i> </div>
-                                </ng-container>
-
-                            </td>
-                        </ng-container>
-                    </tr>
-                </ng-container>
-                <tr *ngIf="!tableValues?.length">
-                    <td colspan="6">
-                        <p class="noData">No data available !!</p>
+                <tr *ngFor="let value of tableValues">
+                    <td>
+                        <div class="label">{{value.companyName}}</div>
                     </td>
                 </tr>
-
             </tbody>
         </table>
+        <div class="table-data-wrapper">
+            <table class="table-data">
+                <thead>
+                    <tr cdkDropList cdkDropListOrientation="horizontal" [cdkDropListData]="tableHeaders"
+                        (cdkDragReleased)="release=true" (cdkDropListDropped)="dropCol($event)">
+                        <th *ngFor="let header of tableHeaders" cdkDrag (mousedown)="mouseDown($event)"
+                            cdkDragLockAxis="x" (cdkDragReleased)="release=true">
+                            <div class="label">{{header.name}} <i *ngIf="header.sort" class="fas fa-sort"></i></div>
+                        </th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <ng-container *ngFor="let value of tableValues">
+                        <tr>
+                            <ng-container *ngFor="let key of tableHeaders">
+                                <td>
+                                    <ng-container *ngIf="key.role">
+                                        <i class="fas fa-check-circle" *ngIf="value[key.key]"></i>
+                                        <i class="fas fa-times-circle" style="color: #eb0f0f;"
+                                            *ngIf="!value[key.key]"></i>
+                                    </ng-container>
+                                    <!-- <i class="fas fa-times-circle" *ngIf="!key.role"></i> -->
+                                    <ng-container *ngIf="!key.role">
+                                        <div class="score-value" [style.color]="handleStatusColor(value[key.key])"> {{
+                                            value[key.key]}} </div>
+                                        <div class="score-value" *ngIf="key.edit"> <i class="fas fa-edit"
+                                                (click)="edit.emit(value)"></i> <i class="fas fa-trash-alt ml"
+                                                (click)="delete.emit(value.id)"></i> </div>
+                                    </ng-container>
+
+                                </td>
+                            </ng-container>
+                        </tr>
+                    </ng-container>
+                    <tr *ngIf="!tableValues?.length && !apiLoader">
+                        <td colspan="6">
+                            <p class="noData">No data available !!</p>
+                        </td>
+                    </tr>
+                </tbody>
+            </table>
+        </div>
     </div>
-</div>
+</ng-template>
 <!-- <ng-container *ngIf="totalCount > commonService.calculatePaginationVal() "> -->
 <mat-paginator #paginator class="demo-paginator" (page)="handlePageEvent($event)" [length]="totalCount"
     [pageSize]="commonService.calculatePaginationVal()" [disabled]="disabled"

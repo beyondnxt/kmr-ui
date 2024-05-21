@@ -23,6 +23,7 @@ import { AddNewModalComponent } from './components/add-new-modal/add-new-modal.c
 import { SnackBarComponent } from './components/snack-bar/snack-bar.component';
 import { AlphabeticOnlyDirective } from './directives/alphabetic-only.directive';
 import { CustomCheckBoxComponent } from './components/custom-check-box/custom-check-box.component';
+import { KmrLoaderComponent } from './components/kmr-loader/kmr-loader.component';
 
 
 
@@ -47,7 +48,8 @@ import { CustomCheckBoxComponent } from './components/custom-check-box/custom-ch
     AddNewModalComponent,
     SnackBarComponent,
     AlphabeticOnlyDirective,
-    CustomCheckBoxComponent
+    CustomCheckBoxComponent,
+    KmrLoaderComponent
     
   ],
   imports: [
@@ -56,6 +58,6 @@ import { CustomCheckBoxComponent } from './components/custom-check-box/custom-ch
     NgApexchartsModule,
     DragDropModule
   ],
-  exports: [HeaderComponent, DashboardComponent, BodyComponent, LayoutComponent,SideBarComponent, MatModule, NgApexchartsModule,AreaChartComponent,PieChartComponent,DashboardCardComponent,BarChartComponent,KmrTableComponent,TableComponent, SearchComponent, KmrBtnComponent, FooterComponent, AlphabeticOnlyDirective, CustomCheckBoxComponent]
+  exports: [HeaderComponent, DashboardComponent, BodyComponent, LayoutComponent,SideBarComponent, MatModule, NgApexchartsModule,AreaChartComponent,PieChartComponent,DashboardCardComponent,BarChartComponent,KmrTableComponent,TableComponent, SearchComponent, KmrBtnComponent, FooterComponent, AlphabeticOnlyDirective, CustomCheckBoxComponent, KmrLoaderComponent]
 })
 export class SharedModule { }

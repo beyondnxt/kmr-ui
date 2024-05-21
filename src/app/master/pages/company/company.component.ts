@@ -18,6 +18,7 @@ export class CompanyComponent {
   tableHeaders = data.tableHeaders;
   tableValues: any;
   totalCount = 0;
+  apiLoader = false;
   fixedTableHeader = data.fixedTableHeaders;
 
   ngOnInit() {
@@ -105,8 +106,10 @@ export class CompanyComponent {
   }
 
   getCompany(query?: any,searchKey?:string) {
+    this.apiLoader = true;
     this.companyService.getCompany(query,searchKey).subscribe({
       next: (res) => {
+    this.apiLoader = false;
         this.tableValues = this.companyHelper.mapCompanyData(res.data);
         this.totalCount = res.totalCount;
         // this.commonService.showSnackbar('Data fetched successfully');

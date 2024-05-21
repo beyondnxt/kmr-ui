@@ -31,7 +31,7 @@ export class RoleComponent {
 
   delete(id: any) {
     this.dialog.open(DeleteModalComponent, {
-      width: '650px',
+      width: '700px',
       height: 'max-content',
       data: id,
       disableClose: true,

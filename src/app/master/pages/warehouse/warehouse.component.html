@@ -8,21 +8,12 @@
         <app-search></app-search>
       </div>
       <div class="col-lg-4 col-md-4">
-        <app-kmr-btn
-          [label]="'+ Add Ware House'"
-          (action)="addWareHouse()"
-        ></app-kmr-btn>
+        <app-kmr-btn [label]="'+ Add Ware House'" (action)="addWareHouse()"></app-kmr-btn>
       </div>
     </div>
   </div>
 </div>
 <div class="pt-3">
-  <app-table
-    [tableHeaders]="tableHeaders"
-    [tableValues]="tableValues"
-    [fixedTableHeader]="fixedTableHeader"
-    [totalCount]="totalCount"
-    (delete)="delete($event)"
-    (edit)="edit($event)"
-  ></app-table>
+  <app-table [tableHeaders]="tableHeaders" [tableValues]="tableValues" [fixedTableHeader]="fixedTableHeader"
+    [totalCount]="totalCount" (delete)="delete($event)" (edit)="edit($event)" [apiLoader]="apiLoader"></app-table>
 </div>

@@ -1,13 +1,17 @@
 <div class="">
+    <div class="row">
     <ng-container *ngFor="let menu of menus">
+        <div class="col-lg-4">
         <label class="control" for="{{menu.name}}">
             <input type="checkbox" name="menu" id="{{menu.name}}" (change)="selectedMenu.emit({menu:menu.name, event:$event})" [checked]="menu.checked">
             <span class="control__content">
                 <span class="menu-icon">
                 <i class="menu-color" [class]="menu.icon"></i>
             </span>
-               <span class="mx-2"> {{menu.name}}</span>
+               <span class="mx-2 menuName"> {{menu.name}}</span>
             </span>
         </label>
-    </ng-container>
+    </div>
+</ng-container>
+</div>
 </div>
