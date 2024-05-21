@@ -13,81 +13,114 @@ export class AddRoleComponent {
   constructor(private fb: FormBuilder, public dialogRef: MatDialogRef<AddRoleComponent>, @Inject(MAT_DIALOG_DATA) public dialogData: any, private roleService: RoleService, public commonService: CommonService) { }
   menus = [
     {
-      name: "Dashboard",
-      key: "dashboard",
+      name: 'Dashboard',
+      icon: 'fal fa-chart-bar',
+      value: 'dashboard',
       checked: false
     },
     {
-      name: "Admin",
-      key: "admin",
-      checked: false,
+      name: 'Admin',
+      icon: 'fas fa-user-lock',
+      value: 'company',
+      checked: false
     },
     {
-      name: "User",
-      key: "user",
-      checked: false,
+      name: 'Company',
+      icon: 'fas fa-building',
+      value: 'company',
+      checked: false
     },
     {
-      name: "Role",
-      key: "role",
-      checked: false,
+      name: 'Customer',
+      icon: 'fas fa-users',
+      value: 'customer',
+      checked: false
     },
     {
-      name: "Company",
-      key: "company",
-      checked: false,
+      name: 'Main Customer',
+      icon: 'fas fa-clipboard-user',
+      value: 'main-customer',
+      checked: false
     },
     {
-      name: "Customer",
-      key: "customer",
-      checked: false,
+      name: 'Category',
+      icon: 'fas fa-tag',
+      value: 'category',
+      checked: false
     },
     {
-      name: "Main Customer",
-      key: "mainCustomer",
-      checked: false,
+      name: 'Rope Type',
+      icon: 'fas fa-ribbon',
+      value: 'rope-type',
+      checked: false
     },
     {
-      name: "Category",
-      key: "category",
-      checked: false,
+      name: 'Warehouse',
+      icon: 'fas fa-warehouse',
+      value: 'warehouse',
+      checked: false
     },
     {
-      name: "Rope Type",
-      key: "ropeType",
-      checked: false,
+      name: 'Department',
+      icon: 'fas fa-store',
+      value: 'department',
+      checked: false
     },
     {
-      name: "Warehouse",
-      key: "warehouse",
-      checked: false,
+      name: 'Supplier',
+      icon: 'fas fa-box-check',
+      value: 'supplier',
+      checked: false
     },
     {
-      name: "Supplier",
-      key: "supplier",
-      checked: false,
+      name: 'Color',
+      icon: 'fas fa-palette fa-fw',
+      value: 'color',
+      checked: false
     },
     {
-      name: "Department",
-      key: "department",
-      checked: false,
+      name: 'Brand',
+      icon: 'fas fa-award',
+      value: 'brand',
+      checked: false
     },
     {
-      name: "Color",
-      key: "color",
-      checked: false,
+      name: 'Rope KG Length',
+      icon: 'fas fa-ruler-horizontal',
+      value: 'rope-kg-length',
+      checked: false
     },
     {
-      name: "Rope Kg Length",
-      key: "ropeKgLength",
-      checked: false,
+      name: 'Rope Grade',
+      icon: 'fas fa-award',
+      value: 'rope-grade',
+      checked: false
     },
     {
-      name: "Rope Grade",
-      key: "ropeGrade",
-      checked: false,
-    }
-  ];
+      icon: 'fas fa-tasks',
+      name: 'Rope Spec',
+      value: 'rope-specification',
+      checked: false
+    },
+    {
+      name: 'User',
+      icon: 'fal fa-user',
+      value: 'user',
+      checked: false
+    },
+    {
+      name: 'Role',
+      icon: 'fas fa-key',
+      value: 'role',
+      checked: false
+    },
+    {
+      name: 'Sales Lead',
+      icon: 'fas fa-users-cog fa-fw',
+      value: 'sales-lead',
+      checked: false
+    },
+  ]
   selectedMenus: any = [];
   roleForm = this.fb.group({
     name: ['', [Validators.required, Validators.pattern('[a-zA-Z ]*')]],
@@ -106,16 +139,25 @@ export class AddRoleComponent {
     return this.fb.array(checkboxes);
   }
 
-  selectedMenu(menu: string, event: any) {
-    if (event?.checked || event === 'patch') {
-      this.selectedMenus.push({ [menu]: event === 'patch' ? true : event?.checked });
+
+  selectedMenu(event: any, isPatch: string) {
+    console.log('reddd', event);
+
+    if (event?.event?.target?.checked || isPatch === 'patch') {
+      // Add or update the menu in the selectedMenus array
+      const existingIndex = this.selectedMenus.findIndex((item: any) => Object.keys(item)[0] === event.menu);
+      if (existingIndex !== -1) {
+        console.log('reddd1', this.selectedMenus);
+        this.selectedMenus[existingIndex][event.menu] = true;
+      } else {
+        console.log('reddd2', this.selectedMenus, existingIndex);
+        this.selectedMenus.push({ [event.menu]: true });
+      }
     } else {
-      const index = this.selectedMenus.findIndex((item: {}) => Object.keys(item)[0] === menu);
+      // Find and remove the menu from the selectedMenus array if unchecked
+      const index = this.selectedMenus.findIndex((item: any) => Object.keys(item)[0] === event.menu);
       if (index !== -1) {
-        this.selectedMenus[index][menu] = false;
-        if (!this.selectedMenus[index][menu]) {
-          this.selectedMenus.splice(index, 1);
-        }
+        this.selectedMenus.splice(index, 1);
       }
     }
   }
@@ -161,7 +203,7 @@ export class AddRoleComponent {
     if (this.dialogData) {
       this.roleForm.patchValue({ name: this.dialogData.name, description: this.dialogData.description });
       for (let data of this.dialogData.accessKeys) {
-        this.selectedMenu(data, 'patch');
+        this.selectedMenu({menu:data}, 'patch');
         console.log(data)
         const index = this.menus.findIndex(x => x.name === data);
         if (index !== -1) {

@@ -7,8 +7,18 @@ export const fixedTableHeaders =
 
 export const tableHeaders = [
     {
-        name: 'Master/Kg',
-        key: 'masterKg',
+        name: 'Meter/Kg',
+        key: 'meterKg',
+        sort: true,
+    },
+    {
+        name: 'Created on',
+        key: 'createdOn',
+        sort: true,
+    },
+    {
+        name: 'Updates on',
+        key: 'updatedOn',
         sort: true,
     },
     {
@@ -16,16 +26,4 @@ export const tableHeaders = [
         key: 'action',
         edit: true
     },
-]
-export const tableValues = [
-    {
-        companyName: 'Test',
-        masterKg:'100',
-        action:''   
-    },
-    {
-        companyName: 'Test',
-        masterKg:'100',
-        action:''   
-    }
 ]

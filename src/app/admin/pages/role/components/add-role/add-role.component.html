@@ -19,7 +19,8 @@
                 <mat-error *ngIf="roleForm.get('name')?.hasError('required')">
                     <b> Role name is required</b>
                 </mat-error>
-                <mat-error *ngIf="roleForm.get('name')?.errors?.['pattern']"><b>Only alphabets are allowed.</b></mat-error>
+                <mat-error *ngIf="roleForm.get('name')?.errors?.['pattern']"><b>Only alphabets are
+                        allowed.</b></mat-error>
             </mat-form-field>
         </div>
         <div class="col-lg-6">
@@ -34,9 +35,12 @@
         </div>
         <div class="col-lg-12" formArrayName="menuItems">
             <p class="labelName mb-0">Menu Name</p>
-            <mat-checkbox *ngFor="let menu of menus; let i = index"  [checked]="menu.checked" [formControlName]="i" (change)="selectedMenu(menu.name, $event)">
+            <!-- <mat-checkbox *ngFor="let menu of menus; let i = index"  [checked]="menu.checked" [formControlName]="i" >
                 {{ menu.name }}
-              </mat-checkbox>
+              </mat-checkbox> -->
+            <!-- <ng-container *ngFor="let menu of menus; let i = index"> -->
+                <app-custom-check-box [menus]="menus" (selectedMenu)="selectedMenu($event,'')"></app-custom-check-box>
+            <!-- </ng-container> -->
         </div>
     </div>
     <div class="row m-0 p-0">

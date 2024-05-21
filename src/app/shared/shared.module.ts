@@ -22,6 +22,7 @@ import { DeleteModalComponent } from './components/delete-modal/delete-modal.com
 import { AddNewModalComponent } from './components/add-new-modal/add-new-modal.component';
 import { SnackBarComponent } from './components/snack-bar/snack-bar.component';
 import { AlphabeticOnlyDirective } from './directives/alphabetic-only.directive';
+import { CustomCheckBoxComponent } from './components/custom-check-box/custom-check-box.component';
 
 
 
@@ -45,7 +46,8 @@ import { AlphabeticOnlyDirective } from './directives/alphabetic-only.directive'
     DeleteModalComponent,
     AddNewModalComponent,
     SnackBarComponent,
-    AlphabeticOnlyDirective
+    AlphabeticOnlyDirective,
+    CustomCheckBoxComponent
     
   ],
   imports: [
@@ -54,6 +56,6 @@ import { AlphabeticOnlyDirective } from './directives/alphabetic-only.directive'
     NgApexchartsModule,
     DragDropModule
   ],
-  exports: [HeaderComponent, DashboardComponent, BodyComponent, LayoutComponent,SideBarComponent, MatModule, NgApexchartsModule,AreaChartComponent,PieChartComponent,DashboardCardComponent,BarChartComponent,KmrTableComponent,TableComponent, SearchComponent, KmrBtnComponent, FooterComponent, AlphabeticOnlyDirective]
+  exports: [HeaderComponent, DashboardComponent, BodyComponent, LayoutComponent,SideBarComponent, MatModule, NgApexchartsModule,AreaChartComponent,PieChartComponent,DashboardCardComponent,BarChartComponent,KmrTableComponent,TableComponent, SearchComponent, KmrBtnComponent, FooterComponent, AlphabeticOnlyDirective, CustomCheckBoxComponent]
 })
 export class SharedModule { }
