@@ -132,7 +132,6 @@ export class AddNewModalComponent {
   }
   filterSelectionTypes() {
     const routerUrl = this.router.url;
-    console.log(routerUrl)
     if (routerUrl.startsWith('/kmr/master')) {
       this.selectionTypes = this.selectionTypes.filter((x: any) => x.master);
     } else if (routerUrl.startsWith('/kmr/admin')) {
@@ -142,7 +141,7 @@ export class AddNewModalComponent {
   patchSelectionType() {
     const routerUrl = this.router.url.split('/');
     if (routerUrl.length) {
-      this.type.patchValue(routerUrl[2]);
+      this.type.patchValue(routerUrl.pop());
     }
   }
   next(value: string): void {
@@ -164,7 +163,6 @@ export class AddNewModalComponent {
       'sales-lead':AddSalesAdminComponent,
       'rope-specification':AddRopeSpecificationComponent
     };
-
     if (componentMap[value]) {
       this.dialog.open(componentMap[value], {
         width: '650px',

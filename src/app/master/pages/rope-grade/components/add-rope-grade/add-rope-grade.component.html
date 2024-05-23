@@ -14,10 +14,11 @@
         <div class="col-lg-6">
             <mat-form-field class="col-lg-12">
                 <label class="labelName">Rope type</label>
-                <mat-select placeholder="Select rope type" formControlName="ropeType">
-                    <mat-option>Test</mat-option>
-                </mat-select>
-                <mat-error *ngIf="ropeGradeForm.get('ropeType')?.hasError('required')">
+                <mat-select placeholder="Select rope type" formControlName="ropeTypeId">
+                    <mat-option *ngFor="let ropeType of ropeTypes" [value]="ropeType.id">
+                        {{ ropeType.ropeTypeName }}
+                      </mat-option>                </mat-select>
+                <mat-error *ngIf="ropeGradeForm.get('ropeTypeId')?.hasError('required')">
                     <b> Rope type is required</b>
                 </mat-error>
             </mat-form-field>
@@ -25,10 +26,10 @@
         <div class="col-lg-6">
             <mat-form-field class="col-lg-12">
                 <label class="labelName">Category</label>
-                <mat-select placeholder="Select category" formControlName="category">
-                    <mat-option>Test</mat-option>
+                <mat-select placeholder="Select category" formControlName="categoryId">
+                    <mat-option value="1">Test</mat-option>
                 </mat-select>
-                <mat-error *ngIf="ropeGradeForm.get('category')?.hasError('required')">
+                <mat-error *ngIf="ropeGradeForm.get('categoryId')?.hasError('required')">
                     <b> Category is required</b>
                 </mat-error>
             </mat-form-field>
@@ -46,9 +47,9 @@
         <div class="col-lg-6">
             <mat-form-field class="col-lg-12">
                 <label class="labelName">RM COMB
-                    <input type="text" formControlName="rmcomb" matInput placeholder="Add rmcomb">
+                    <input type="text" formControlName="rmComb" matInput placeholder="Add rm comb">
                 </label>
-                <mat-error *ngIf="ropeGradeForm.get('rmcomb')?.hasError('required')">
+                <mat-error *ngIf="ropeGradeForm.get('rmComb')?.hasError('required')">
                     <b> RM COMB is required</b>
                 </mat-error>
             </mat-form-field>
@@ -57,7 +58,7 @@
     <div class="row m-0 p-0">
         <div class="btnAlign">
             <app-kmr-btn mat-dialog-close [label]="'Cancel'" [bgColor]="'#F2F4F6'" [color]="'black'"></app-kmr-btn>
-            <app-kmr-btn [label]="'Save'" (action)="save()"></app-kmr-btn>
+            <app-kmr-btn [label]="'Save'" (action)="save(dialogData ? true : false)" [apiLoader]="apiLoader"></app-kmr-btn>
         </div>
     </div>
 </div>
