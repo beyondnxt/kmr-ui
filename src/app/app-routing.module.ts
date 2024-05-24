@@ -108,6 +108,10 @@ const routes: Routes = [
           {
             path:'rope-specification',
             loadChildren: () =>import('./master/pages/rope-specification/rope-specification.module').then(m => m.RopeSpecificationModule)
+          },
+          {
+            path:'extruder',
+            loadChildren: () =>import('./master/pages/extruder-machine/extruder-machine.module').then(m => m.ExtruderMachineModule)
           }
         ]
       }

@@ -1,0 +1,102 @@
+<div class="dialog-container">
+    <div class="row">
+        <div class="col-lg-12 closeAlign">
+            <div class="head">
+                <h1>{{dialogData ? 'Edit An Extruder Machine Master': 'Create An Extruder Machine Master'}}</h1>
+            </div>
+            <div>
+                <button mat-icon-button mat-dialog-close tabindex="-1" class="close-button">
+                    <mat-icon class="closeColor">close</mat-icon></button>
+            </div>
+        </div>
+    </div>
+    <div class="row" [formGroup]="extruderForm">
+        <div class="col-lg-6">
+            <mat-form-field class="col-lg-12">
+                <label class="labelName">Machine Name
+                    <input type="text" formControlName="machineName" matInput placeholder="Add Machine name">
+                </label>
+                <mat-error *ngIf="extruderForm.get('machineName')?.hasError('required')">
+                    <b> Machine name is required</b>
+                </mat-error>
+            </mat-form-field>
+        </div>
+        <div class="col-lg-6">
+            <mat-form-field class="col-lg-12">
+                <label class="labelName">Short code
+                    <input type="text" formControlName="shortCode" matInput placeholder="Add Short code">
+                </label>
+                <mat-error *ngIf="extruderForm.get('shortCode')?.hasError('required')">
+                    <b> Short code is required</b>
+                </mat-error>
+            </mat-form-field>
+        </div>
+        <div class="col-lg-6">
+            <mat-form-field class="col-lg-12">
+                <label class="labelName">Location</label>
+                <mat-select placeholder="Select Location" formControlName="location">
+                    <mat-option>Test</mat-option>
+                </mat-select>
+                <mat-error *ngIf="extruderForm.get('location')?.hasError('required')">
+                    <b> Location is required</b>
+                </mat-error>
+            </mat-form-field>
+        </div>
+        <div class="col-lg-6">
+            <mat-form-field class="col-lg-12">
+                <label class="labelName">Code
+                    <input type="text" formControlName="code" matInput placeholder="Add Code">
+                </label>
+                <mat-error *ngIf="extruderForm.get('code')?.hasError('required')">
+                    <b> Code is required</b>
+                </mat-error>
+            </mat-form-field>
+        </div>
+        <div class="col-lg-6">
+            <mat-form-field class="col-lg-12">
+                <label class="labelName"> RPM
+                    <input type="text" formControlName="rpm" matInput placeholder="Add RPM">
+                </label>
+                <mat-error *ngIf="extruderForm.get('rpm')?.hasError('required')">
+                    <b>  RPM is required</b>
+                </mat-error>
+            </mat-form-field>
+        </div>
+        <div class="col-lg-6">
+            <mat-form-field class="col-lg-12">
+                <label class="labelName"> Target
+                    <input type="text" formControlName="target" matInput placeholder="Add Target">
+                </label>
+                <mat-error *ngIf="extruderForm.get('target')?.hasError('required')">
+                    <b>  Target is required</b>
+                </mat-error>
+            </mat-form-field>
+        </div>
+        <div class="col-lg-6">
+            <mat-form-field class="col-lg-12">
+                <label class="labelName"> Running Time
+                    <input type="text" formControlName="runningTime" matInput placeholder="Add Running Time">
+                </label>
+                <mat-error *ngIf="extruderForm.get('runningTime')?.hasError('required')">
+                    <b>  Running Time is required</b>
+                </mat-error>
+            </mat-form-field>
+        </div>
+        <div class="col-lg-6">
+            <mat-form-field class="col-lg-12">
+                <label class="labelName"> Spindle
+                    <input type="text" formControlName="spindle" matInput placeholder="Add Spindle">
+                </label>
+                <mat-error *ngIf="extruderForm.get('spindle')?.hasError('required')">
+                    <b>Spindle is required</b>
+                </mat-error>
+            </mat-form-field>
+        </div>
+    </div>
+    <div class="row m-0 p-0">
+        <div class="btnAlign">
+            <app-kmr-btn mat-dialog-close [label]="'Cancel'" [bgColor]="'#F2F4F6'" [color]="'black'"></app-kmr-btn>
+            <app-kmr-btn [label]="'Save'" (action)="save()"></app-kmr-btn>
+        </div>
+    </div>
+</div>

@@ -132,5 +132,11 @@ export const navBarData = {
             label: 'Rope Specification',
             menu: 'user'
         },
+        {
+            routerlink: 'master/extruder',
+            icon: 'fas fa-hdd',
+            label: 'Extruder',
+            menu: 'user'
+        },
     ]
 };
