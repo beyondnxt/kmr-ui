@@ -13,7 +13,7 @@ export const tableHeaders = [
     },
     {
         name: 'Location',
-        key: 'location',
+        key: 'locationName',
         sort: true,
     },
     {

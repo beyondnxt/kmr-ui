@@ -1,14 +1,18 @@
+import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { MatSnackBar } from '@angular/material/snack-bar';
+import { Observable } from 'rxjs';
 import { SnackBarComponent } from 'src/app/shared/components/snack-bar/snack-bar.component';
+import { environment } from 'src/environments/environment';
 
 @Injectable({
   providedIn: 'root'
 })
 export class CommonService {
 
-  constructor(private snackBar: MatSnackBar) { }
-  
+  constructor(private snackBar: MatSnackBar, public http: HttpClient,) { }
+  baseUrl = environment.KRM_BASE_URL;
+  locations: any = [];
   calculatePaginationVal(): any {
     const height = (window.innerHeight - 290);
     if (window.innerHeight <= 500) {
@@ -101,17 +105,31 @@ export class CommonService {
       duration: 2000,
     });
   }
-  notification(displaymsg:string, msg:string, type:string) {
+  notification(displaymsg: string, msg: string, type: string) {
     this.snackBar.openFromComponent(SnackBarComponent, {
-      data:{
-        message:displaymsg,
-        msg:msg,
-        type:type
-      
+      data: {
+        message: displaymsg,
+        msg: msg,
+        type: type
+
       },
-      duration:5000,
-      horizontalPosition:"right",
-      verticalPosition:"top",
+      duration: 5000,
+      horizontalPosition: "right",
+      verticalPosition: "top",
+    });
+  }
+
+  getLocation(): Observable<any> {
+    return this.http.get(this.baseUrl + `/company/all`);
+  }
+
+  getAllLocation() {
+    this.getLocation().subscribe({
+      next: (res) => {
+        this.locations = res.data;
+      },
+      error: (err) => {
+      },
     });
   }
 }
