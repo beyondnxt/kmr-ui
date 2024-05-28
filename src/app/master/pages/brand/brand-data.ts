@@ -8,85 +8,27 @@ export const fixedTableHeaders =
 export const tableHeaders = [
     {
         name: 'Brand Name',
-        key: 'brandName',
+        key: 'name',
         sort: true,
     },
     {
         name: 'Brand Piriority Order',
-        key: 'brandPirorityOrder',
+        key: 'brandPriorityOrder',
+        sort: true,
+    },
+    {
+        name: 'Created on',
+        key: 'createdOn',
+        sort: true,
+    },
+    {
+        name: 'Updates on',
+        key: 'updatedOn',
         sort: true,
     },
     {
         name: 'Action',
         key: 'action',
         edit: true
-    },
-]
-export const tableValues = [
-    {
-        companyName: 'Test',
-        brandName: 'Test',
-        brandPirorityOrder: 'Test',
-        action: ''
-    },
-    {
-        companyName: 'Test',
-        brandName: 'Test',
-        brandPirorityOrder: 'Test',
-        action: ''
-    },
-    {
-        companyName: 'Test',
-        brandName: 'Test',
-        brandPirorityOrder: 'Test',
-        action: ''
-    },
-    {
-        companyName: 'Test',
-        brandName: 'Test',
-        brandPirorityOrder: 'Test',
-        action: ''
-    },
-    {
-        companyName: 'Test',
-        brandName: 'Test',
-        brandPirorityOrder: 'Test',
-        action: ''
-    },
-    {
-        companyName: 'Test',
-        brandName: 'Test',
-        brandPirorityOrder: 'Test',
-        action: ''
-    },
-    {
-        companyName: 'Test',
-        brandName: 'Test',
-        brandPirorityOrder: 'Test',
-        action: ''
-    },
-    {
-        companyName: 'Test',
-        brandName: 'Test',
-        brandPirorityOrder: 'Test',
-        action: ''
-    },
-    {
-        companyName: 'Test',
-        brandName: 'Test',
-        brandPirorityOrder: 'Test',
-        action: ''
-    },
-    {
-        companyName: 'Test',
-        brandName: 'Test',
-        brandPirorityOrder: 'Test',
-        action: ''
-    },
-    {
-        companyName: 'Test',
-        brandName: 'Test',
-        brandPirorityOrder: 'Test',
-        action: ''
     },
 ]

@@ -22,7 +22,6 @@
       <mat-form-field class="col-lg-12">
         <label class="labelName" id="companyName">Company Name
           <mat-select placeholder="Select company name" formControlName="companyName">
-            <!-- <mat-option>Test</mat-option> -->
             <mat-option *ngFor="let company of companies" [value]="company.id">
               {{ company.companyName }}
             </mat-option>

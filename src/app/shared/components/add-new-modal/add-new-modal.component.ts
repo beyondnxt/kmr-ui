@@ -18,6 +18,7 @@ import { AddRopeKgLengthComponent } from 'src/app/master/pages/rope-kg-length/co
 import { AddRopeGradeComponent } from 'src/app/master/pages/rope-grade/components/add-rope-grade/add-rope-grade.component';
 import { AddSalesAdminComponent } from 'src/app/admin/pages/sales-admin/components/add-sales-admin/add-sales-admin.component';
 import { AddRopeSpecificationComponent } from 'src/app/master/pages/rope-specification/components/add-rope-specification/add-rope-specification.component';
+import { AddExtruderComponent } from 'src/app/master/pages/extruder-machine/components/add-extruder/add-extruder.component';
 
 @Component({
   selector: 'app-add-new-modal',
@@ -106,7 +107,13 @@ export class AddNewModalComponent {
       name: 'Rope Spec',
       value: 'rope-specification',
       master: true
-  },
+    },
+    {
+      icon: 'fas fa-hdd',
+      name: 'Extruder',
+      value: 'extruder',
+      master: true
+    },
     {
       name: 'User',
       icon: 'fal fa-user',
@@ -160,8 +167,9 @@ export class AddNewModalComponent {
       'brand': AddBrandComponent,
       'rope-kg-length': AddRopeKgLengthComponent,
       'rope-grade': AddRopeGradeComponent,
-      'sales-lead':AddSalesAdminComponent,
-      'rope-specification':AddRopeSpecificationComponent
+      'sales-lead': AddSalesAdminComponent,
+      'rope-specification': AddRopeSpecificationComponent,
+      'extruder':AddExtruderComponent
     };
     if (componentMap[value]) {
       this.dialog.open(componentMap[value], {

@@ -30,15 +30,15 @@ export class ExtruderMachineComponent {
       }
     })
   }
-  edit(){
+  edit() {
     this.openPopup(true);
   }
-  openPopup(edit:boolean) {
+  openPopup(edit: boolean) {
     this.dialog.open(AddExtruderComponent, {
       width: '650px',
       height: 'max-content',
       disableClose: true,
-      data:edit,
+      data: edit,
       panelClass: 'color-dialog-container',
     }).afterClosed().subscribe((res: any) => {
       if (res) {
