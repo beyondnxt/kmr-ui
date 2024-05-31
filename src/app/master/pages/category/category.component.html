@@ -1,18 +1,39 @@
 <div class="row pt-3">
     <div class="col-lg-6 col-md-6">
-        <h2>Category List(100)</h2>
+        <h2>{{activeCategory ? activeCategory :'Category'}} List({{totalCount}})</h2>
     </div>
     <div class="col-lg-6 col-md-6">
         <div class="row">
             <div class="col-lg-8 col-md-8">
-                <app-search></app-search>
+                <app-search (search)="search($event)"></app-search>
             </div>
             <div class="col-lg-4 col-md-4">
-                <app-kmr-btn [label]="'+ Add Category'" (action)="addCategory()"></app-kmr-btn>
+                <app-kmr-btn [label]="'+ Add ' + (activeCategory ? activeCategory : 'Category')"
+                    (action)="addCategory(activeCategory)"></app-kmr-btn>
             </div>
-    </div>
+        </div>
     </div>
 </div>
 <div class="pt-3">
-<app-table [tableHeaders]="tableHeaders" [tableValues]="tableValues" [fixedTableHeader]="fixedTableHeader" (delete)="delete()" (edit)="edit()"></app-table>
+    <mat-tab-group mat-stretch-tabs="false" mat-align-tabs="start" #tabGroup (selectedTabChange)="tabChanged($event)">
+        <mat-tab label="Category">
+            <app-table [tableHeaders]="tableHeaders.category" [tableValues]="tableValues"
+                [fixedTableHeader]="fixedTableHeader" (delete)="delete($event)" (edit)="edit($event)"
+                (pagination)="pagination($event)" [apiLoader]="apiLoader" [totalCount]="totalCount"></app-table>
+        </mat-tab>
+        <mat-tab label="Parent Category">
+            <app-table [tableHeaders]="tableHeaders.parentCategory" [tableValues]="tableValues.parentCategory"
+                [fixedTableHeader]="fixedTableHeader" (delete)="delete($event)" (edit)="edit($event)"
+                (pagination)="pagination($event)" [apiLoader]="apiLoader" [totalCount]="totalCount"></app-table>
+        </mat-tab>
+        <mat-tab label="Child Category"> <app-table [tableHeaders]="tableHeaders.childCategory"
+                [tableValues]="tableValues.childCategory" [fixedTableHeader]="fixedTableHeader"
+                (delete)="delete($event)" (edit)="edit($event)" (pagination)="pagination($event)"
+                [apiLoader]="apiLoader" [totalCount]="totalCount"></app-table>
+        </mat-tab>
+        <mat-tab label="Sub Category"> <app-table [tableHeaders]="tableHeaders.category" [tableValues]="tableValues"
+                [fixedTableHeader]="fixedTableHeader" (delete)="delete($event)" (edit)="edit($event)"
+                (pagination)="pagination($event)" [apiLoader]="apiLoader" [totalCount]="totalCount"></app-table>
+        </mat-tab>
+    </mat-tab-group>
 </div>
