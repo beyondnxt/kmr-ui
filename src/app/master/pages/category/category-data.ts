@@ -4,16 +4,22 @@ export const fixedTableHeaders =
     key: 'companyName',
     sort: true,
 }
+export const fixedTableHeadersforCategory =
+    {
+        name: 'Parent Category',
+        key: 'companyName',
+        sort: true,
+    }
 export const tableHeaders = {
     category: [
         {
-            name: 'Parent Category',
-            key: 'parentCategory',
+            name: 'Child Category',
+            key: 'childCategoryName',
             sort: true,
         },
         {
-            name: 'Category Code',
-            key: 'categoryCode',
+            name: 'Sub Category',
+            key: 'subCategoryName',
             sort: true,
         },
         {
@@ -28,7 +34,7 @@ export const tableHeaders = {
         },
         {
             name: 'SMS Category',
-            key: 'sms',
+            key: 'smsCategory',
             sort: true,
         },
         {
@@ -68,6 +74,38 @@ export const tableHeaders = {
         {
             name: 'Parent Category',
             key: 'parentCategoryName',
+            sort: true,
+        },
+        {
+            name: 'Created on',
+            key: 'createdOn',
+            sort: true,
+        },
+        {
+            name: 'Updates on',
+            key: 'updatedOn',
+            sort: true,
+        },
+        // {
+        //     name: 'Created By',
+        //     key: 'createdBy',
+        //     sort: true,
+        // },
+        // {
+        //     name: 'Updates By',
+        //     key: 'updatedBy',
+        //     sort: true,
+        // },
+        {
+            name: 'Action',
+            key: 'action',
+            edit: true
+        },
+    ],
+    subCategory: [
+        {
+            name: 'Child Category',
+            key: 'childCategoryName',
             sort: true,
         },
         {

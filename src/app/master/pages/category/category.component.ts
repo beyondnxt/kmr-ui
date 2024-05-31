@@ -10,6 +10,7 @@ import { AddParentCategoryComponent } from './components/add-parent-category/add
 import { CategoryService } from 'src/app/providers/category/category.service';
 import { CommonService } from 'src/app/providers/common/common.service';
 import { CategoryHelper } from './category.helper';
+
 @Component({
   selector: 'app-category',
   templateUrl: './category.component.html',
@@ -17,16 +18,21 @@ import { CategoryHelper } from './category.helper';
   providers: [CategoryHelper]
 })
 export class CategoryComponent {
-  constructor(private dialog: MatDialog, private commonService: CommonService, private categoryService: CategoryService, private categoryHelper: CategoryHelper) { }
-  tableHeaders: any = data.tableHeaders;
-  tableValues: any = data.tableValues;
-  fixedTableHeader: any = data.fixedTableHeaders;
   activeCategory = 'Category';
-  totalCount = 0;
   apiLoader = false;
-
-  ngOnInit() {
-    this.getParentCategory();
+  tableHeaders: any = data.tableHeaders;
+  tableValues: any = [];
+  fixedTableHeader: any = data.fixedTableHeaders; 
+  fixedTableHeadersforCategory: any = data.fixedTableHeadersforCategory; 
+   totalCount = 0;
+  constructor(
+    private categoryService: CategoryService,
+    private categoryHelper: CategoryHelper,
+    private commonService: CommonService,
+    private dialog: MatDialog,
+  ) { }
+  ngOnInit(){
+    this.getCategoryData();
   }
   addCategory(categoryType: string) {
     this.openPopUp('', categoryType);
@@ -42,11 +48,7 @@ export class CategoryComponent {
       panelClass: 'delete-dialog-container',
     }).afterClosed().subscribe((res: any) => {
       if (res) {
-        if (this.activeCategory === 'Child Category') {
-          this.deleteChildCategory(id);
-          return;
-        }
-        this.deleteParentCategory(id);
+      this.deleteCategory(id);
       }
     });
   }
@@ -64,85 +66,92 @@ export class CategoryComponent {
       disableClose: true,
     }).afterClosed().subscribe((res: any) => {
       if (res) {
-        if (type === 'Parent Category') {
-          this.getParentCategory();
-        } else {
-        }
+    this.getCategoryData();
       }
     });
   }
   tabChanged(tabChangeEvent: MatTabChangeEvent): void {
     this.activeCategory = tabChangeEvent.tab.textLabel;
-    if (this.activeCategory === 'Child Category') {
-      this.getChildCategory()
-    }
+    this.getCategoryData();
   }
-  pagination(pageData: any) {
-    if (this.activeCategory === 'Child Category') {
-      this.getChildCategory(pageData);
-      return;
-    }
-    this.getParentCategory(pageData);
+  pagination(pageData: any): void {
+    this.getCategoryData(pageData);
   }
-
-
-  search(key: any) {
-    if (this.activeCategory === 'Child Category') {
-      this.getChildCategory('',`&value=${key}`);
-      return;
-    }
-    this.getParentCategory('',`&value=${key}`);
+  search(key: any): void {
+    this.getCategoryData('', `&value=${key}`);
   }
-
-  getParentCategory(query?: any, searchQuery?: string) {
+   getCategoryData(query?: any, searchQuery?: string): void {
     this.apiLoader = true;
-    this.categoryService.getParentCategory(query, searchQuery).subscribe({
+    const fetchCategoryData = this.getFetchCategoryMethod(query, searchQuery);
+    fetchCategoryData.subscribe({
       next: (res) => {
-        this.tableValues.parentCategory = this.categoryHelper.mapParentCategory(res.data);
+        this.mapCategoryData(res.data);
         this.totalCount = res.totalCount;
         this.apiLoader = false;
       },
-      error: (err) => {
+      error: () => {
         this.apiLoader = false;
-        this.commonService.notification('Failed', 'Failed to get data', 'fail')
+        this.commonService.notification('Failed', 'Failed to get data', 'fail');
       },
-    })
+    });
   }
-
-  deleteParentCategory(id: string) {
-    this.categoryService.deleteParentCategory(id).subscribe({
-      next: (res) => {
-        this.getParentCategory();
-        this.commonService.notification('Success', 'Deleted Successfully', 'success')
-      }, error: (err) => {
-        this.commonService.notification('Failed', 'Failed to delete, please try again', 'fail')
-      },
-    })
+   getFetchCategoryMethod(query?: any, searchQuery?: string) {
+    switch (this.activeCategory) {
+      case 'Category':
+        return this.categoryService.getCategory(query, searchQuery);
+      case 'Child Category':
+        return this.categoryService.getChildCategory(query, searchQuery);
+      case 'Parent Category':
+        return this.categoryService.getParentCategory(query, searchQuery);
+      case 'Sub Category':
+        return this.categoryService.getSubCategory(query, searchQuery);
+      default:
+        throw new Error('Unknown category type');
+    }
   }
-
-  getChildCategory(query?: any, searchQuery?: string) {
-    this.apiLoader = true;
-    this.categoryService.getChildCategory(query, searchQuery).subscribe({
-      next: (res) => {
-        this.tableValues.childCategory = this.categoryHelper.mapChildCategory(res.data);
-        this.totalCount = res.totalCount;
-        this.apiLoader = false;
-      },
-      error: (err) => {
-        this.apiLoader = false;
-        this.commonService.notification('Failed', 'Failed to get data', 'fail')
-      },
-    })
+   mapCategoryData(data: any): void {
+    switch (this.activeCategory) {
+      case 'Category':
+        this.tableValues.category = this.categoryHelper.mapCategoryData(data);
+        break;
+      case 'Child Category':
+        this.tableValues.childCategory = this.categoryHelper.mapChildCategory(data);
+        break;
+      case 'Parent Category':
+        this.tableValues.parentCategory = this.categoryHelper.mapParentCategory(data);
+        break;
+      case 'Sub Category':
+        this.tableValues.subCategory = this.categoryHelper.mapSubCategory(data);
+        break;
+      default:
+        throw new Error('Unknown category type');
+    }
   }
-
-  deleteChildCategory(id: string) {
-    this.categoryService.deleteChildCategory(id).subscribe({
-      next: (res) => {
-        this.getChildCategory();
-        this.commonService.notification('Success', 'Deleted Successfully', 'success')
-      }, error: (err) => {
-        this.commonService.notification('Failed', 'Failed to delete, please try again', 'fail')
+  deleteCategory(id: string): void {
+    const deleteCategoryMethod = this.getDeleteCategoryMethod(id);
+    deleteCategoryMethod.subscribe({
+      next: () => {
+        this.getCategoryData();
+        this.commonService.notification('Success', 'Deleted Successfully', 'success');
       },
-    })
+      error: () => {
+        this.commonService.notification('Failed', 'Failed to delete, please try again', 'fail');
+      },
+    });
+  }
+   getDeleteCategoryMethod(id: string) {
+    switch (this.activeCategory) {
+      case 'Category':
+        return this.categoryService.deleteCategory(id);
+      case 'Child Category':
+        return this.categoryService.deleteChildCategory(id);
+      case 'Parent Category':
+        return this.categoryService.deleteParentCategory(id);
+      case 'Sub Category':
+        return this.categoryService.deleteSubCategory(id);
+      default:
+        throw new Error('Unknown category type');
+    }
   }
 }
+
