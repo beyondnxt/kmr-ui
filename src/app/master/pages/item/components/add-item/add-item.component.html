@@ -1,0 +1,220 @@
+<div class="dialog-container">
+    <div class="row">
+        <div class="col-lg-12 closeAlign">
+            <div class="head">
+                <h1>{{dialogData ? 'Edit An Item Master': 'Create An Item Master'}}</h1>
+            </div>
+            <div>
+                <button mat-icon-button mat-dialog-close tabindex="-1" class="close-button">
+                    <mat-icon class="closeColor">close</mat-icon></button>
+            </div>
+        </div>
+    </div>
+    <div class="row scrollSet" [formGroup]="itemForm">
+        <div class="col-lg-4">
+            <mat-form-field class="col-lg-12">
+                <label class="labelName">Item Type</label>
+                <mat-select placeholder="Select Item Type" formControlName="itemType">
+                    <mat-option>Test</mat-option>
+                </mat-select>
+                <mat-error *ngIf="itemForm.get('itemType')?.hasError('required')">
+                    <b> Item Type is required</b>
+                </mat-error>
+            </mat-form-field>
+        </div>
+        <div class="col-lg-4">
+            <mat-form-field class="col-lg-12">
+                <label class="labelName" id="type">Category
+                    <input type="text" formControlName="category" matInput placeholder="Add Category" id="category">
+                </label>
+                <mat-error *ngIf="itemForm.get('category')?.hasError('required')">
+                    <b> Category is required</b>
+                </mat-error>
+            </mat-form-field>
+        </div>
+        <div class="col-lg-4">
+            <mat-form-field class="col-lg-12">
+                <label class="labelName" id="itemCode">Item Code
+                    <input type="text" formControlName="itemCode" matInput placeholder="Add Item Code" id="itemCode">
+                </label>
+                <mat-error *ngIf="itemForm.get('itemCode')?.hasError('required')">
+                    <b> Item Code is required</b>
+                </mat-error>
+            </mat-form-field>
+        </div>
+        <div class="col-lg-4">
+            <mat-form-field class="col-lg-12">
+                <label class="labelName" id="type">Strand
+                    <input type="text" formControlName="strand" matInput placeholder="Add Strand" id="strand">
+                </label>
+                <mat-error *ngIf="itemForm.get('strand')?.hasError('required')">
+                    <b> Strand is required</b>
+                </mat-error>
+            </mat-form-field>
+        </div>
+        <div class="col-lg-4">
+            <mat-form-field class="col-lg-12">
+                <label class="labelName" id="type">Length
+                    <input type="text" formControlName="length" matInput placeholder="Add Length" id="type">
+                </label>
+                <mat-error *ngIf="itemForm.get('length')?.hasError('required')">
+                    <b> Length is required</b>
+                </mat-error>
+            </mat-form-field>
+        </div>
+        <div class="col-lg-4">
+            <mat-form-field class="col-lg-12">
+                <label class="labelName" id="type">No of Twist
+                    <input type="text" formControlName="noOfTwist" matInput placeholder="Add No of Twist" id="type">
+                </label>
+                <mat-error *ngIf="itemForm.get('noOfTwist')?.hasError('required')">
+                    <b> No of Twist is required</b>
+                </mat-error>
+            </mat-form-field>
+        </div>
+        <div class="col-lg-4">
+            <mat-form-field class="col-lg-12">
+                <label class="labelName">Twine Type</label>
+                <mat-select placeholder="Select twine type" formControlName="twineType">
+                    <mat-option>Test</mat-option>
+                </mat-select>
+                <mat-error *ngIf="itemForm.get('twineType')?.hasError('required')">
+                    <b> Twine Type is required</b>
+                </mat-error>
+            </mat-form-field>
+        </div>
+        <div class="col-lg-4">
+            <mat-form-field class="col-lg-12">
+                <label class="labelName">Treasure Yarn</label>
+                <mat-select placeholder="Select Treasure Yarn" formControlName="treasureYarn">
+                    <mat-option>Test</mat-option>
+                </mat-select>
+                <mat-error *ngIf="itemForm.get('treasureYarn')?.hasError('required')">
+                    <b> Treasure Yarn is required</b>
+                </mat-error>
+            </mat-form-field>
+        </div>
+        <div class="col-lg-4">
+            <mat-form-field class="col-lg-12">
+                <label class="labelName">Treasure Yarn Color</label>
+                <mat-select placeholder="Select Treasure Yarn Color" formControlName="treasureYarnColor">
+                    <mat-option>Test</mat-option>
+                </mat-select>
+                <mat-error *ngIf="itemForm.get('treasureYarnColor')?.hasError('required')">
+                    <b> Treasure Yarn Color is required</b>
+                </mat-error>
+            </mat-form-field>
+        </div>
+        <div class="col-lg-4">
+            <mat-form-field class="col-lg-12">
+                <label class="labelName" id="type">Item Name
+                    <input type="text" formControlName="itemName" matInput placeholder="Add Item Name" id="type">
+                </label>
+                <mat-error *ngIf="itemForm.get('itemName')?.hasError('required')">
+                    <b> Item Name is required</b>
+                </mat-error>
+            </mat-form-field>
+        </div>
+        <div class="col-lg-4">
+            <mat-form-field class="col-lg-12">
+                <label class="labelName">Item Unit</label>
+                <mat-select placeholder="Select Item Unit" formControlName="itemUnit">
+                    <mat-option>Test</mat-option>
+                </mat-select>
+                <mat-error *ngIf="itemForm.get('itemUnit')?.hasError('required')">
+                    <b> Item Unit is required</b>
+                </mat-error>
+            </mat-form-field>
+        </div>
+        <div class="col-lg-4">
+            <mat-form-field class="col-lg-12">
+                <label class="labelName" id="type">Reorder Qty
+                    <input type="text" formControlName="reorderQty" matInput placeholder="Add Reorder Qty" id="type">
+                </label>
+                <mat-error *ngIf="itemForm.get('reorderQty')?.hasError('required')">
+                    <b> Reorder Qty is required</b>
+                </mat-error>
+            </mat-form-field>
+        </div>
+        <div class="col-lg-4">
+            <mat-form-field class="col-lg-12">
+                <label class="labelName">Location Code</label>
+                <mat-select placeholder="Select Location Code" formControlName="locationCode">
+                    <mat-option>Test</mat-option>
+                </mat-select>
+                <mat-error *ngIf="itemForm.get('locationCode')?.hasError('required')">
+                    <b> Location Code is required</b>
+                </mat-error>
+            </mat-form-field>
+        </div>
+        <div class="col-lg-4">
+            <mat-form-field class="col-lg-12">
+                <label class="labelName" id="type">Current Stock
+                    <input type="text" formControlName="currentStock" matInput placeholder="Add Current Stock"
+                        id="type">
+                </label>
+                <mat-error *ngIf="itemForm.get('currentStock')?.hasError('required')">
+                    <b> Current Stock is required</b>
+                </mat-error>
+            </mat-form-field>
+        </div>
+        <div class="col-lg-4">
+            <mat-form-field class="col-lg-12">
+                <label class="labelName" id="type">No of lead days
+                    <input type="text" formControlName="noOfLeadDays" matInput placeholder="Add No of lead days"
+                        id="type">
+                </label>
+                <mat-error *ngIf="itemForm.get('noOfLeadDays')?.hasError('required')">
+                    <b> No of lead days is required</b>
+                </mat-error>
+            </mat-form-field>
+        </div>
+        <div class="col-lg-4">
+            <mat-form-field class="col-lg-12">
+                <label class="labelName" id="type">KPC Code
+                    <input type="text" formControlName="kpcCode" matInput placeholder="Add KPC Code" id="kpcCode">
+                </label>
+                <mat-error *ngIf="itemForm.get('kpcCode')?.hasError('required')">
+                    <b> KPC Code is required</b>
+                </mat-error>
+            </mat-form-field>
+        </div>
+        <div class="col-lg-4">
+            <mat-form-field class="col-lg-12">
+                <label class="labelName" id="type">Description
+                    <input type="text" formControlName="description" matInput placeholder="Add Description"
+                        id="description">
+                </label>
+                <mat-error *ngIf="itemForm.get('description')?.hasError('required')">
+                    <b> Description is required</b>
+                </mat-error>
+            </mat-form-field>
+        </div>
+        <div class="col-lg-12">
+            <div class="upload-files-container">
+                <div class="drag-file-area">
+                    <!-- <span class="material-icons-outlined upload-icon"> file_upload </span> -->
+                    <h3 class="dynamic-message"> Upload any file here </h3>
+                    <!-- <label class="label"> or <span class="browse-files"> <input type="file"
+                                class="default-file-input" /> <span class="browse-files-text">browse file</span>
+                            <span>from device</span> </span> </label> -->
+                </div>
+                <span class="cannot-upload-message"> <span class="material-icons-outlined">error</span> Please select a
+                    file first <span class="material-icons-outlined cancel-alert-button">cancel</span> </span>
+                <div class="file-block">
+                    <div class="file-info"> <span class="material-icons-outlined file-icon">description</span> <span
+                            class="file-name"> </span> | <span class="file-size"> </span> </div>
+                    <span class="material-icons remove-file-icon">delete</span>
+                    <div class="progress-bar"> </div>
+                </div>
+                <button type="button" class="upload-button"> Upload </button>
+            </div>
+        </div>
+    </div>
+    <div class="row m-0 p-0">
+        <div class="btnAlign">
+            <app-kmr-btn mat-dialog-close [label]="'Cancel'" [bgColor]="'#F2F4F6'" [color]="'black'"></app-kmr-btn>
+            <app-kmr-btn [label]="'Save'" (action)="save()"></app-kmr-btn>
+        </div>
+    </div>
+</div>

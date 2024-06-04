@@ -138,5 +138,11 @@ export const navBarData = {
             label: 'Extruder',
             menu: 'user'
         },
+        {
+            routerlink: 'master/item',
+            icon: 'far fa-boxes',
+            label: 'Item',
+            menu: 'user'
+        },
     ]
 };

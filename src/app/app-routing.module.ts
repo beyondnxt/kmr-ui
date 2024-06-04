@@ -112,6 +112,10 @@ const routes: Routes = [
           {
             path:'extruder',
             loadChildren: () =>import('./master/pages/extruder-machine/extruder-machine.module').then(m => m.ExtruderMachineModule)
+          },
+          {
+            path:'item',
+            loadChildren: () =>import('./master/pages/item/item.module').then(m => m.ItemModule)
           }
         ]
       }
