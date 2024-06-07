@@ -1,30 +1,28 @@
 import { Component } from '@angular/core';
-import { AddExtruderComponent } from './components/add-extruder/add-extruder.component';
-import { DeleteModalComponent } from 'src/app/shared/components/delete-modal/delete-modal.component';
 import { MatDialog } from '@angular/material/dialog';
-import * as data from './extruder.data';
-import { ExtruderService } from 'src/app/providers/extruder/extruder.service';
 import { CommonService } from 'src/app/providers/common/common.service';
-import { ExtruderHelper } from './extruder.helper';
-
+import { RopeMachineService } from 'src/app/providers/rope-machine/rope-machine.service';
+import { AddRopeMachineComponent } from './components/add-rope-machine/add-rope-machine.component';
+import { DeleteModalComponent } from 'src/app/shared/components/delete-modal/delete-modal.component';
+import * as data from './rope-machine.data';
 
 @Component({
-  selector: 'app-extruder-machine',
-  templateUrl: './extruder-machine.component.html',
-  styleUrls: ['./extruder-machine.component.scss'],
-  providers:[ExtruderHelper]
+  selector: 'app-rope-machine',
+  templateUrl: './rope-machine.component.html',
+  styleUrls: ['./rope-machine.component.scss']
 })
-export class ExtruderMachineComponent {
-  constructor(private dialog: MatDialog,public commonService: CommonService, private extruderService : ExtruderService, private extruderHelper: ExtruderHelper) { }
+export class RopeMachineComponent {
+
+  constructor(private dialog: MatDialog,public commonService: CommonService, private ropeMachineService : RopeMachineService,) { }
   tableHeaders = data.tableHeaders;
-  tableValues:any = []
+  tableValues:any = data.tableValues;
   fixedTableHeader = data.fixedTableHeaders
   apiLoader = false
   totalCount = 0;
   ngOnInit(){
-    this.getExtruder();
+    // this.getRopeMachine();
   }
-  addExtruder() {
+  addRopeMachine() {
     this.openPopup();
   }
   delete(id:string) {
@@ -35,7 +33,7 @@ export class ExtruderMachineComponent {
       panelClass: 'delete-dialog-container',
     }).afterClosed().subscribe((res: any) => {
       if (res) {
-        this.deleteExtruder(id);
+        this.deletRopeMachine(id);
       }
     })
   }
@@ -43,7 +41,7 @@ export class ExtruderMachineComponent {
     this.openPopup(value);
   }
   openPopup(edit?: any) {
-    this.dialog.open(AddExtruderComponent, {
+    this.dialog.open(AddRopeMachineComponent, {
       width: '650px',
       height: 'max-content',
       disableClose: true,
@@ -51,23 +49,23 @@ export class ExtruderMachineComponent {
       panelClass: 'color-dialog-container',
     }).afterClosed().subscribe((res: any) => {
       if (res) {
-        this.getExtruder();
+        this.getRopeMachine();
       }
     });
   }
   pagination(pageData: any) {
-    this.getExtruder(pageData);
+    this.getRopeMachine(pageData);
   }
 
   search(key: any) {
-    this.getExtruder('', `&value=${key}`)
+    this.getRopeMachine('', `&value=${key}`)
   }
 
-  getExtruder(query?: any, searchQuery?: string) {
+  getRopeMachine(query?: any, searchQuery?: string) {
     this.apiLoader = true;
-    this.extruderService.getExtruder(query, searchQuery).subscribe({
+    this.ropeMachineService.getRopeMachine(query, searchQuery).subscribe({
       next: (res) => {
-        this.tableValues = this.extruderHelper.mapExtruder(res.data);
+        // this.tableValues = this.extruderHelper.mapExtruder(res.data);
         this.totalCount = res.totalCount;
         this.apiLoader = false;
       },
@@ -78,10 +76,10 @@ export class ExtruderMachineComponent {
     })
   }
 
-  deleteExtruder(id: string) {
-    this.extruderService.deleteExtruder(id).subscribe({
+  deletRopeMachine(id: string) {
+    this.ropeMachineService.deleteRopeMachine(id).subscribe({
       next: (res) => {
-        this.getExtruder();
+        this.getRopeMachine();
         this.commonService.notification('Success','Deleted Successfully','success')
       }, error: (err) => {
         this.commonService.notification('Failed','Failed to delete, please try again','fail')

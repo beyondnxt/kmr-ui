@@ -1,0 +1,126 @@
+<div class="dialog-container">
+    <div class="row">
+        <div class="col-lg-12 closeAlign">
+            <div class="head">
+                <h1>{{dialogData ? 'Edit An Extruder Machine Master': 'Create An Extruder Machine Master'}}</h1>
+            </div>
+            <div>
+                <button mat-icon-button mat-dialog-close tabindex="-1" class="close-button">
+                    <mat-icon class="closeColor">close</mat-icon></button>
+            </div>
+        </div>
+    </div>
+    <div class="row" [formGroup]="ropeMachineForm">
+        <div class="col-lg-6">
+            <mat-form-field class="col-lg-12">
+                <label class="labelName">Location</label>
+                <mat-select placeholder="Select Location" formControlName="location">
+                    <mat-option *ngFor="let loaction of commonService.locations" [value]="loaction.id">
+                        {{ loaction.location }}
+                      </mat-option>
+                </mat-select>
+                <mat-error *ngIf="ropeMachineForm.get('location')?.hasError('required')">
+                    <b> Location is required</b>
+                </mat-error>
+            </mat-form-field>
+        </div>
+        <div class="col-lg-6">
+            <mat-form-field class="col-lg-12">
+                <label class="labelName">Machine Name
+                    <input type="text" formControlName="machineName" matInput placeholder="Add Machine Name">
+                </label>
+                <mat-error *ngIf="ropeMachineForm.get('machineName')?.hasError('required')">
+                    <b> Machine name is required</b>
+                </mat-error>
+            </mat-form-field>
+        </div>
+        <div class="col-lg-6">
+            <mat-form-field class="col-lg-12">
+                <label class="labelName">Short code
+                    <input type="text" formControlName="shortCode" matInput placeholder="Add Short code">
+                </label>
+                <mat-error *ngIf="ropeMachineForm.get('shortCode')?.hasError('required')">
+                    <b> Short code is required</b>
+                </mat-error>
+            </mat-form-field>
+        </div>
+        <div class="col-lg-6">
+            <mat-form-field class="col-lg-12">
+                <label class="labelName">Maximum Colling Head
+                    <input type="text" formControlName="maximumCoolingHead" matInput placeholder="Add Maximum colling head">
+                </label>
+                <mat-error *ngIf="ropeMachineForm.get('maximumCoolingHead')?.hasError('required')">
+                    <b> Maximum colling head is required</b>
+                </mat-error>
+            </mat-form-field>
+        </div>
+        <div class="col-lg-6">
+            <mat-form-field class="col-lg-12">
+                <label class="labelName">Short code
+                    <input type="text" formControlName="shortCode" matInput placeholder="Add Short code">
+                </label>
+                <mat-error *ngIf="ropeMachineForm.get('shortCode')?.hasError('required')">
+                    <b> Short code is required</b>
+                </mat-error>
+            </mat-form-field>
+        </div>
+        <div class="col-lg-6">
+            <mat-form-field class="col-lg-12">
+                <label class="labelName" id="noOfStrand">No Of Strand
+                    <input type="text" formControlName="noOfStrand" matInput placeholder="Add no of Strand"
+                        id="noOfStrand">
+                </label>
+                <mat-error *ngIf="ropeMachineForm.get('noOfStrand')?.hasError('required')">
+                    <b> No Of Strand is required</b>
+                </mat-error>
+            </mat-form-field>
+        </div>
+        <div class="col-lg-6">
+            <mat-form-field class="col-lg-12">
+                <label class="labelName" id="spindlePerStand">Spindle Per Strand
+                    <input type="text" formControlName="spindlePerStand" matInput placeholder="Add spindle per strand"
+                        id="spindlePerStand">
+                </label>
+                <mat-error *ngIf="ropeMachineForm.get('spindlePerStand')?.hasError('required')">
+                    <b> Spindle per strand is required</b>
+                </mat-error>
+            </mat-form-field>
+        </div>
+        <div class="col-lg-6">
+            <mat-form-field class="col-lg-12">
+                <label class="labelName" id="itemCode">Item Code
+                    <input type="text" formControlName="itemCode" matInput placeholder="Add Item Code" id="itemCode">
+                </label>
+                <mat-error *ngIf="ropeMachineForm.get('itemCode')?.hasError('required')">
+                    <b> Item Code is required</b>
+                </mat-error>
+            </mat-form-field>
+        </div>
+        <div class="col-lg-6">
+            <mat-form-field class="col-lg-12">
+                <label class="labelName" id="hoursProduction">Hours Production
+                    <input type="text" formControlName="hoursProduction" matInput placeholder="Add Hours production" id="hoursProduction">
+                </label>
+                <mat-error *ngIf="ropeMachineForm.get('hoursProduction')?.hasError('required')">
+                    <b> Hours production is required</b>
+                </mat-error>
+            </mat-form-field>
+        </div>
+        <div class="col-lg-6">
+            <mat-form-field class="col-lg-12">
+                <label class="labelName" id="RunningProduction">Running Production
+                    <input type="text" formControlName="runningProduction" matInput placeholder="Add Item Code" id="RunningProduction">
+                </label>
+                <mat-error *ngIf="ropeMachineForm.get('runningProduction')?.hasError('required')">
+                    <b> Running production is required</b>
+                </mat-error>
+            </mat-form-field>
+        </div>
+    </div>
+    <div class="row m-0 p-0">
+        <div class="btnAlign">
+            <app-kmr-btn mat-dialog-close [label]="'Cancel'" [bgColor]="'#F2F4F6'" [color]="'black'"></app-kmr-btn>
+            <app-kmr-btn [label]="'Save'" (action)="save(dialogData ? true : false)"></app-kmr-btn>
+        </div>
+    </div>
+</div>

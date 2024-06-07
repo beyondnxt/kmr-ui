@@ -116,6 +116,10 @@ const routes: Routes = [
           {
             path:'item',
             loadChildren: () =>import('./master/pages/item/item.module').then(m => m.ItemModule)
+          },
+          {
+            path:'rope-machine',
+            loadChildren: () =>import('./master/pages/rope-machine/rope-machine.module').then(m => m.RopeMachineModule)
           }
         ]
       }
