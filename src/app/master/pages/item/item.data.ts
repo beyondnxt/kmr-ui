@@ -8,7 +8,7 @@ export const fixedTableHeaders =
 export const tableHeaders = [
     {
         name: 'Category',
-        key: 'category',
+        key: 'categoryName',
         sort: true,
     },
     {
@@ -18,7 +18,7 @@ export const tableHeaders = [
     },
     {
         name: 'Color',
-        key: 'color',
+        key: 'colorName',
         sort: true,
     },
     {

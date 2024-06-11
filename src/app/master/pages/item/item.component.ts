@@ -16,19 +16,22 @@ import { ItemHelper } from './item.helper';
 export class ItemComponent {
   constructor(private dialog: MatDialog, private commonService: CommonService, private itemService: ItemService, private itemHelper: ItemHelper) { }
   tableHeaders = data.tableHeaders;
-  tableValues = data.tableValues;
+  tableValues:any = [];
   fixedTableHeader = data.fixedTableHeaders;
   apiLoader = false;
   totalCount = 0;
+  ngOnInit(){
+    this.getItem();
+  }
   addItem(){
-    this.openPopUp(false);
+    this.openPopUp();
   }
   
-  edit() {
-    this.openPopUp(true)
+  edit(value:any) {
+    this.openPopUp(value)
   }
 
-  delete() {
+  delete(id:string) {
     this.dialog.open(DeleteModalComponent, {
       width: '650px',
       height: 'max-content',
@@ -36,11 +39,11 @@ export class ItemComponent {
       panelClass: 'delete-dialog-container',
     }).afterClosed().subscribe((res: any) => {
       if (res) {
-        console.log(res)
+       this.deleteItem(id);
       }
     });
   }
-  openPopUp(edit: boolean) {
+  openPopUp(edit?: any) {
     this.dialog.open(AddItemComponent, {
       width: '950px',
       height: 'max-content',
@@ -49,14 +52,13 @@ export class ItemComponent {
       panelClass: 'rope-specification-dialog-container',
     }).afterClosed().subscribe((res: any) => {
       if (res) {
-        console.log(res)
+       this.getItem();
       }
     });
   }
   pagination(pageData: any) {
     this.getItem(pageData);
   }
-
   search(key: any) {
     this.getItem('', `&value=${key}`)
   }

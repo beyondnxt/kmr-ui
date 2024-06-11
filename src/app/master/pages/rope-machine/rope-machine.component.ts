@@ -5,22 +5,24 @@ import { RopeMachineService } from 'src/app/providers/rope-machine/rope-machine.
 import { AddRopeMachineComponent } from './components/add-rope-machine/add-rope-machine.component';
 import { DeleteModalComponent } from 'src/app/shared/components/delete-modal/delete-modal.component';
 import * as data from './rope-machine.data';
+import { RopeMachineHelper } from './rope-machine.helper';
 
 @Component({
   selector: 'app-rope-machine',
   templateUrl: './rope-machine.component.html',
-  styleUrls: ['./rope-machine.component.scss']
+  styleUrls: ['./rope-machine.component.scss'],
+  providers: [RopeMachineHelper]
 })
 export class RopeMachineComponent {
 
-  constructor(private dialog: MatDialog,public commonService: CommonService, private ropeMachineService : RopeMachineService,) { }
+  constructor(private dialog: MatDialog,public commonService: CommonService, private ropeMachineService : RopeMachineService,private ropeMachineHelper :RopeMachineHelper) { }
   tableHeaders = data.tableHeaders;
   tableValues:any = data.tableValues;
   fixedTableHeader = data.fixedTableHeaders
   apiLoader = false
   totalCount = 0;
   ngOnInit(){
-    // this.getRopeMachine();
+    this.getRopeMachine();
   }
   addRopeMachine() {
     this.openPopup();
@@ -65,7 +67,7 @@ export class RopeMachineComponent {
     this.apiLoader = true;
     this.ropeMachineService.getRopeMachine(query, searchQuery).subscribe({
       next: (res) => {
-        // this.tableValues = this.extruderHelper.mapExtruder(res.data);
+        this.tableValues = this.ropeMachineHelper.mapRopeMachine(res.data);
         this.totalCount = res.totalCount;
         this.apiLoader = false;
       },

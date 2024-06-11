@@ -11,16 +11,17 @@ import { RopeMachineService } from 'src/app/providers/rope-machine/rope-machine.
 })
 export class AddRopeMachineComponent {
   constructor(private fb: FormBuilder,public dialogRef: MatDialogRef<AddRopeMachineComponent>,@Inject(MAT_DIALOG_DATA) public dialogData: any, public commonService: CommonService, private ropeMachineService : RopeMachineService) { }
+  
   ropeMachineForm = this.fb.group({
     location: ['',[Validators.required]],
     machineName: ['',[Validators.required]],  
     shortCode:['',[Validators.required]], 
-    maximumCoolingHead: ['',[Validators.required]],
-    spindlePerStand: ['',[Validators.required]],
+    maximumCoilingHead: ['',[Validators.required]],
+    spindlePerStrand: ['',[Validators.required]],
     noOfStrand: ['',[Validators.required]],
     itemCode: ['',[Validators.required]],
-    hoursProduction: ['',[Validators.required]],
-    runningProduction: ['',[Validators.required]],
+    hourProduction: ['',[Validators.required]],
+    runningHours: ['',[Validators.required]],
 
   })
   apiLoader = false;
@@ -57,7 +58,7 @@ export class AddRopeMachineComponent {
       },
       error: (err) => {
         this.apiLoader = false;
-        this.commonService.notification('Failed', 'Failed to update, please try again', 'fail')
+        this.commonService.notification('Failed', 'Failed to save, please try again', 'fail')
       },
     })
   }

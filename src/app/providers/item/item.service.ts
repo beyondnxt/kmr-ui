@@ -27,5 +27,14 @@ export class ItemService {
   getItem(query: any, key: string | any): Observable<any> {
     return this.http.get(this.baseUrl + `/item?page=${query?.pageNo || 1}&limit=${query?.pageLimit || this.commonService.calculatePaginationVal()}${key ? key : ''}`);
   }
+  getAllCategory(): Observable<any> {
+    return this.http.get(this.baseUrl + `/category/all`);
+  }
+  getAllRopeType(): Observable<any> {
+    return this.http.get(this.baseUrl + `/ropeType/all`);
+  }
+  getAllColor(): Observable<any> {
+    return this.http.get(this.baseUrl + `/color/all`);
+  }
   
 }

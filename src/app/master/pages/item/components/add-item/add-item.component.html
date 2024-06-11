@@ -15,7 +15,9 @@
             <mat-form-field class="col-lg-12">
                 <label class="labelName">Item Type</label>
                 <mat-select placeholder="Select Item Type" formControlName="itemTypeId">
-                    <mat-option value="4">Test</mat-option>
+                    <mat-option *ngFor="let ropeType of allRopeType" [value]="ropeType.id">
+                        {{ ropeType.ropeTypeName }}
+                      </mat-option>  
                 </mat-select>
                 <mat-error *ngIf="itemForm.get('itemTypeId')?.hasError('required')">
                     <b> Item Type is required</b>
@@ -24,9 +26,12 @@
         </div>
         <div class="col-lg-4">
             <mat-form-field class="col-lg-12">
-                <label class="labelName" id="type">Category
-                    <input type="text" formControlName="categoryId" matInput placeholder="Add Category" id="category">
-                </label>
+                <label class="labelName" id="type">Category</label>
+                <mat-select placeholder="Select Category" formControlName="categoryId">
+                    <mat-option *ngFor="let category of allCategory" [value]="category.id">
+                        {{ category.categoryName }}
+                      </mat-option> 
+                </mat-select>                
                 <mat-error *ngIf="itemForm.get('categoryId')?.hasError('required')">
                     <b> Category is required</b>
                 </mat-error>
@@ -46,7 +51,9 @@
             <mat-form-field class="col-lg-12">
                 <label class="labelName">Color</label>
                 <mat-select placeholder="Select Color" formControlName="colorId">
-                    <mat-option value="4">Test</mat-option>
+                    <mat-option *ngFor="let color of allColor" [value]="color.id">
+                        {{ color.colorName }}
+                      </mat-option>
                 </mat-select>
                 <mat-error *ngIf="itemForm.get('colorId')?.hasError('required')">
                     <b> Color is required</b>
@@ -150,8 +157,10 @@
         <div class="col-lg-4">
             <mat-form-field class="col-lg-12">
                 <label class="labelName">Location Code</label>
-                <mat-select placeholder="Select Location Code" formControlName="locationCode">
-                    <mat-option value="Test">Test</mat-option>
+                <mat-select placeholder="Select Location Code" formControlName="location">
+                    <mat-option *ngFor="let location of commonService.locations" [value]="location.id">
+                        {{ location.location }}
+                      </mat-option>
                 </mat-select>
                 <mat-error *ngIf="itemForm.get('locationCode')?.hasError('required')">
                     <b> Location Code is required</b>
@@ -200,6 +209,11 @@
                     <b> Description is required</b>
                 </mat-error>
             </mat-form-field>
+        </div>
+        <div class="col-lg-6">
+            <span class="labelName mb-0">SMS</span>
+            <mat-checkbox formControlName="smsItem">
+              </mat-checkbox>
         </div>
         <div class="col-lg-12">
             <div id="drop-area" class="mb-4" (drop)="onDrop($event)" (dragover)="onDragOver($event)"

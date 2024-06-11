@@ -10,32 +10,40 @@ import { ItemService } from 'src/app/providers/item/item.service';
   styleUrls: ['./add-item.component.scss']
 })
 export class AddItemComponent {
-  constructor(private fb: FormBuilder, public dialogRef: MatDialogRef<AddItemComponent>, @Inject(MAT_DIALOG_DATA) public dialogData: any,private commonService: CommonService, private itemService: ItemService) { }
+  constructor(private fb: FormBuilder, public dialogRef: MatDialogRef<AddItemComponent>, @Inject(MAT_DIALOG_DATA) public dialogData: any, public commonService: CommonService, private itemService: ItemService) { }
   apiLoader = false;
-  previewImageUrl :any |undefined;
-  selectedFile :any;
+  previewImageUrl: any | undefined;
+  allCategory: any = [];
+  allColor: any = [];
+  allRopeType: any = [];
+  selectedFile: any;
   itemForm = this.fb.group({
-    itemTypeId:['4',[Validators.required]],
-    categoryId:['4',[Validators.required]],
-    itemCode:['',[Validators.required]],
-    colorId:['4',[Validators.required]],
-    strand:['',[Validators.required]],
-    length:['',[Validators.required]],
-    noOfTwist:['',[Validators.required]],
-    twineType:['',[Validators.required]],
-    treasureYarn:['',[Validators.required]],
-    treasureYarnColorId:['',[Validators.required]],
-    itemName:['',[Validators.required]],
-    itemUnit:['',[Validators.required]],
-    reorderQty:['',[Validators.required]],
-    locationCode:['',[Validators.required]],
-    currentStock:['',[Validators.required]],
-    noOfLeadDays:['',[Validators.required]],
-    kpcCode:['',[Validators.required]],
-    description:['',[Validators.required]],
+    itemTypeId: ['', [Validators.required]],
+    categoryId: ['', [Validators.required]],
+    itemCode: ['', [Validators.required]],
+    colorId: ['', [Validators.required]],
+    strand: ['', [Validators.required]],
+    length: ['', [Validators.required]],
+    noOfTwist: ['', [Validators.required]],
+    twineType: ['', [Validators.required]],
+    treasureYarn: ['', [Validators.required]],
+    treasureYarnColorId: ['', [Validators.required]],
+    itemName: ['', [Validators.required]],
+    itemUnit: ['', [Validators.required]],
+    reorderQty: ['', [Validators.required]],
+    location: ['', [Validators.required]],
+    currentStock: ['', [Validators.required]],
+    noOfLeadDays: ['', [Validators.required]],
+    kpcCode: ['', [Validators.required]],
+    description: ['', [Validators.required]],
+    smsItem:['']
   })
   ngOnInit() {
     this.patchItem();
+    this.getAllCategory();
+    this.getAllColor();
+    this.getAllRopeType();
+    this.commonService.getAllLocation();
   }
 
   save(isEdit: boolean) {
@@ -57,7 +65,7 @@ export class AddItemComponent {
   }
 
   createItem(payload: any) {
-    let finalPayload:any = payload;
+    let finalPayload: any = payload;
     finalPayload.itemImage = this.previewImageUrl ? this.previewImageUrl : '';
     this.apiLoader = true;
     this.itemService.createItem(finalPayload).subscribe({
@@ -74,7 +82,7 @@ export class AddItemComponent {
   }
 
   updateItem(payload: any, id: string) {
-    let finalPayload:any = payload;
+    let finalPayload: any = payload;
     finalPayload.itemImage = this.previewImageUrl ? this.previewImageUrl : '';
     this.apiLoader = true;
     this.itemService.updateItem(finalPayload, id).subscribe({
@@ -110,9 +118,9 @@ export class AddItemComponent {
 
 
   isImage(): boolean {
-    
+
     return this.dialogData ? true : this.selectedFile?.type?.startsWith('image/');
-    
+
   }
 
   onDrop(event: any): void {
@@ -147,11 +155,11 @@ export class AddItemComponent {
       if (validImageTypes.includes(file.type)) {
         this.previewImage(file);
       } else {
-        
+
         console.error('Invalid file type. Please select an image (JPEG, PNG, GIF).');
       }
     }
-    
+
   }
 
   previewImage(file: File): void {
@@ -159,7 +167,7 @@ export class AddItemComponent {
     const reader = new FileReader();
 
     reader.onload = (e: any) => {
-       const imageUrl = e.target.result;
+      const imageUrl = e.target.result;
       this.previewImageUrl = e.target.result;
       // this.itemForm.get('image')?.setValue(this.previewImageUrl);
     };
@@ -167,9 +175,43 @@ export class AddItemComponent {
     reader.readAsDataURL(file);
   }
 
-  hideImage(){
-   this.selectedFile = null;
-   this.previewImageUrl = '';
-  //  this.itemForm.get('image')?.setValue('');
+  hideImage() {
+    this.selectedFile = null;
+    this.previewImageUrl = '';
+    //  this.itemForm.get('image')?.setValue('');
   }
+  fetchDropDownData(serviceMethod:any, successCallback:any, errorMessage:any) {
+    serviceMethod().subscribe({
+      next: (res:any) => {
+        successCallback(res.data);
+      },
+      error: (err:any) => {
+        this.commonService.notification('Failed', errorMessage, 'fail');
+      },
+    });
+  }
+  
+  getAllCategory() {
+    this.fetchDropDownData(
+      () => this.itemService.getAllCategory(),
+      (data:any) => { this.allCategory = data; },
+      'Failed to get category'
+    );
+  }
+  
+  getAllColor() {
+    this.fetchDropDownData(
+      () => this.itemService.getAllColor(),
+      (data:any) => { this.allColor = data; },
+      'Failed to get color'
+    );
+  }
+  getAllRopeType() {
+    this.fetchDropDownData(
+      () => this.itemService.getAllRopeType(),
+      (data:any) => { this.allRopeType = data; },
+      'Failed to get rope type'
+    );
+  }
+  
 }

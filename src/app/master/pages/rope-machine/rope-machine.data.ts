@@ -12,18 +12,13 @@ export const tableHeaders = [
         sort: true,
     },
     {
-        name: 'Code',
-        key: 'code',
-        sort: true,
-    },
-    {
         name: 'Machine Name',
         key: 'machineName',
         sort: true,
     },
     {
         name: 'Spindle Per Stand',
-        key: 'spindlePerStand',
+        key: 'spindlePerStrand',
         sort: true,
     },
     {
@@ -33,12 +28,12 @@ export const tableHeaders = [
     },
     {
         name: 'Hours Production',
-        key: 'hoursProduction',
+        key: 'hourProduction',
         sort: true,
     },
     {
-        name: 'Running Production',
-        key: 'runningProduction',
+        name: 'Running Hours',
+        key: 'runningHours',
         sort: true,
     },
     {

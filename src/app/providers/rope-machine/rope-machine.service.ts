@@ -13,19 +13,19 @@ export class RopeMachineService {
   baseUrl = environment.KRM_BASE_URL;
 
   createRopeMachine(payload: any): Observable<any> {
-    return this.http.post(this.baseUrl + '/rope-machine', payload);
+    return this.http.post(this.baseUrl + '/ropeMachine', payload);
   }
 
   updateRopeMachine(payload: any, id: string): Observable<any> {
-    return this.http.put(this.baseUrl + `/rope-machine/${id}`, payload);
+    return this.http.put(this.baseUrl + `/ropeMachine/${id}`, payload);
   }
 
   deleteRopeMachine(id: string): Observable<any> {
-    return this.http.delete(this.baseUrl + `/rope-machine/${id}`);
+    return this.http.delete(this.baseUrl + `/ropeMachine/${id}`);
   }
 
   getRopeMachine(query: any, key: string | any): Observable<any> {
-    return this.http.get(this.baseUrl + `/rope-machine?page=${query?.pageNo || 1}&limit=${query?.pageLimit || this.commonService.calculatePaginationVal()}${key ? key : ''}`);
+    return this.http.get(this.baseUrl + `/ropeMachine?page=${query?.pageNo || 1}&limit=${query?.pageLimit || this.commonService.calculatePaginationVal()}${key ? key : ''}`);
   }
   
 }
