@@ -49,10 +49,12 @@
         <div class="col-lg-3">
             <mat-form-field class="col-lg-12">
                 <label class="labelName">Color</label>
-                <mat-select placeholder="Select color" formControlName="color">
-                    <mat-option>Test</mat-option>
+                <mat-select placeholder="Select color" formControlName="colorId">
+                    <mat-option *ngFor="let color of allColor" [value]="color.id">
+                        {{ color.colorName }}
+                      </mat-option>
                 </mat-select>
-                <mat-error *ngIf="ropeSpecificationForm.get('color')?.hasError('required')">
+                <mat-error *ngIf="ropeSpecificationForm.get('colorId')?.hasError('required')">
                     <b> Color is required</b>
                 </mat-error>
             </mat-form-field>
@@ -93,10 +95,12 @@
         <div class="col-lg-3">
             <mat-form-field class="col-lg-12">
                 <label class="labelName">Grade</label>
-                <mat-select placeholder="Select grade" formControlName="grade">
-                    <mat-option>Test</mat-option>
+                <mat-select placeholder="Select grade" formControlName="ropeGradeId">
+                    <mat-option *ngFor="let grade of allRopeGrade" [value]="grade.id">
+                        {{ grade.grade }}
+                      </mat-option>
                 </mat-select>
-                <mat-error *ngIf="ropeSpecificationForm.get('grade')?.hasError('required')">
+                <mat-error *ngIf="ropeSpecificationForm.get('ropeGradeId')?.hasError('required')">
                     <b> Grade is required</b>
                 </mat-error>
             </mat-form-field>
@@ -104,10 +108,12 @@
         <div class="col-lg-3">
             <mat-form-field class="col-lg-12">
                 <label class="labelName">EX. No</label>
-                <mat-select placeholder="Select EX. No" formControlName="exNo">
-                    <mat-option>Test</mat-option>
+                <mat-select placeholder="Select EX. No" formControlName="extruderId">
+                    <mat-option *ngFor="let extruder of allExtruder" [value]="extruder.id">
+                        {{ extruder.name }}
+                      </mat-option>
                 </mat-select>
-                <mat-error *ngIf="ropeSpecificationForm.get('exNo')?.hasError('required')">
+                <mat-error *ngIf="ropeSpecificationForm.get('extruderId')?.hasError('required')">
                     <b> EX. No is required</b>
                 </mat-error>
             </mat-form-field>
@@ -338,7 +344,7 @@
     <div class="row m-0 p-0">
         <div class="btnAlign">
             <app-kmr-btn mat-dialog-close [label]="'Cancel'" [bgColor]="'#F2F4F6'" [color]="'black'"></app-kmr-btn>
-            <app-kmr-btn [label]="'Save'"  (action)="save()"></app-kmr-btn>
+            <app-kmr-btn [label]="'Save'"  (action)="save(dialogData ? true : false)" [apiLoader]="apiLoader"></app-kmr-btn>
         </div>
     </div>
 </div>

@@ -62,7 +62,6 @@ export class AddRopeMachineComponent {
       },
     })
   }
-
   updateRopeMachine(payload: any, id: string) {
     this.apiLoader = true;
     this.ropeMachineService.updateRopeMachine(payload, id).subscribe({

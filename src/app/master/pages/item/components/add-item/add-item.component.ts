@@ -36,7 +36,7 @@ export class AddItemComponent {
     noOfLeadDays: ['', [Validators.required]],
     kpcCode: ['', [Validators.required]],
     description: ['', [Validators.required]],
-    smsItem:['']
+    smsItem: ['']
   })
   ngOnInit() {
     this.patchItem();
@@ -104,7 +104,6 @@ export class AddItemComponent {
       this.previewFile();
     }
   }
-
   previewFile(): void {
     const reader = new FileReader();
     reader.onload = (e: any) => {
@@ -114,38 +113,28 @@ export class AddItemComponent {
     };
     reader.readAsDataURL(this.selectedFile);
   }
-
-
-
   isImage(): boolean {
-
     return this.dialogData ? true : this.selectedFile?.type?.startsWith('image/');
-
   }
-
   onDrop(event: any): void {
     console.log(event.dataTransfer.files);
     event.preventDefault();
     this.handleFiles(event.dataTransfer.files);
   }
-
   onDragOver(event: any): void {
     event.preventDefault();
     event.stopPropagation();
   }
-
   onDragEnter(event: any): void {
     event.preventDefault();
     event.stopPropagation();
     event.currentTarget.classList.add('dragover');
   }
-
   onDragLeave(event: any): void {
     event.preventDefault();
     event.stopPropagation();
     event.currentTarget.classList.remove('dragover');
   }
-
   handleFiles(files: FileList): void {
     const validImageTypes = ['image/jpeg', 'image/png', 'image/gif'];
 
@@ -161,7 +150,6 @@ export class AddItemComponent {
     }
 
   }
-
   previewImage(file: File): void {
     this.selectedFile = file;
     const reader = new FileReader();
@@ -174,44 +162,43 @@ export class AddItemComponent {
 
     reader.readAsDataURL(file);
   }
-
   hideImage() {
     this.selectedFile = null;
     this.previewImageUrl = '';
     //  this.itemForm.get('image')?.setValue('');
   }
-  fetchDropDownData(serviceMethod:any, successCallback:any, errorMessage:any) {
+  fetchDropDownData(serviceMethod: any, successCallback: any, errorMessage: any) {
     serviceMethod().subscribe({
-      next: (res:any) => {
+      next: (res: any) => {
         successCallback(res.data);
       },
-      error: (err:any) => {
+      error: (err: any) => {
         this.commonService.notification('Failed', errorMessage, 'fail');
       },
     });
   }
-  
+
   getAllCategory() {
     this.fetchDropDownData(
       () => this.itemService.getAllCategory(),
-      (data:any) => { this.allCategory = data; },
+      (data: any) => { this.allCategory = data; },
       'Failed to get category'
     );
   }
-  
+
   getAllColor() {
     this.fetchDropDownData(
       () => this.itemService.getAllColor(),
-      (data:any) => { this.allColor = data; },
+      (data: any) => { this.allColor = data; },
       'Failed to get color'
     );
   }
   getAllRopeType() {
     this.fetchDropDownData(
       () => this.itemService.getAllRopeType(),
-      (data:any) => { this.allRopeType = data; },
+      (data: any) => { this.allRopeType = data; },
       'Failed to get rope type'
     );
   }
-  
+
 }
