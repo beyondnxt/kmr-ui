@@ -21,6 +21,7 @@ export class AddUserComponent {
     this.getDepartment();
     this.updateValidationField();
     this.getRole();
+    this.commonService.getAllLocation();
   }
 
   userForm = this.fb.group({

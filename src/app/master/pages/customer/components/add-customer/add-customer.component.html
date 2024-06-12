@@ -27,7 +27,7 @@
                 <label class="labelName">Name
                     <input type="text" matInput placeholder="Add Name" formControlName="name">
                 </label>
-                <mat-error *ngIf="customerForm.get('name')?.errors?.['pattern']"><b>Only alphabets are allowed.</b></mat-error>
+                <!-- <mat-error *ngIf="customerForm.get('name')?.errors?.['pattern']"><b>Only alphabets are allowed.</b></mat-error> -->
                     <mat-error *ngIf="customerForm.get('name')?.hasError('required')">
                         <b> Name is required</b>
                     </mat-error> 

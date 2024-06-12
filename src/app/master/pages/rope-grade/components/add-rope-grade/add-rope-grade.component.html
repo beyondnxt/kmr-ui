@@ -25,12 +25,11 @@
         </div>
         <div class="col-lg-6">
             <mat-form-field class="col-lg-12">
-                <label class="labelName">Category</label>
-                <mat-select placeholder="Select category" formControlName="categoryId">
-                    <mat-option value="1">Test</mat-option>
-                </mat-select>
-                <mat-error *ngIf="ropeGradeForm.get('categoryId')?.hasError('required')">
-                    <b> Category is required</b>
+                <label class="labelName">Category grade
+                <input type="text" formControlName="categoryGrade" matInput placeholder="Add category grade">
+            </label>
+                <mat-error *ngIf="ropeGradeForm.get('categoryGrade')?.hasError('required')">
+                    <b> Category grade is required</b>
                 </mat-error>
             </mat-form-field>
         </div>

@@ -19,8 +19,6 @@
                 <mat-error *ngIf="colorForm.get('colorName')?.hasError('required')">
                     <b> Color name is required</b>
                 </mat-error>
-                <mat-error *ngIf="colorForm.get('colorName')?.errors?.['pattern']"><b>Only alphabets are
-                        allowed.</b></mat-error>
             </mat-form-field>
         </div>
         <div class="col-lg-6">
@@ -36,10 +34,7 @@
         <div class="col-lg-6">
             <mat-form-field class="col-lg-12">
                 <label class="labelName">Matching Color</label>
-                <mat-select placeholder="Select matching color" formControlName="matchingColor">
-                    <mat-option value="Red">Red</mat-option>
-                    <mat-option value="White">White</mat-option>
-                </mat-select>
+                <input type="text" formControlName="matchingColor" matInput placeholder="Add matching color">
                 <mat-error *ngIf="colorForm.get('matchingColor')?.hasError('required')">
                     <b> Matching color is required</b>
                 </mat-error>

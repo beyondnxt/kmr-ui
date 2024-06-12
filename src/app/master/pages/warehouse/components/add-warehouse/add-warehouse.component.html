@@ -3,11 +3,7 @@
     <div class="col-lg-12 closeAlign">
       <div class="head">
         <h1>
-          {{
-          dialogData.edit
-          ? "Edit An Warehouse Master"
-          : "Create An Warehouse Master"
-          }}
+          {{dialogData.edit ? "Edit An Warehouse Master": "Create An Warehouse Master"}}
         </h1>
       </div>
       <div>
@@ -23,7 +19,7 @@
         <label class="labelName" id="companyName">Company Name
           <mat-select placeholder="Select company name" formControlName="companyName">
             <mat-option *ngFor="let company of companies" [value]="company.id">
-              {{ company.companyName }}
+              {{ company.code }}
             </mat-option>
           </mat-select>
         </label>

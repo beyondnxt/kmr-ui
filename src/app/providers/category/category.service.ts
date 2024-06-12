@@ -74,4 +74,10 @@ export class CategoryService {
   getAllSubCategory(): Observable<any> {
     return this.http.get(this.baseUrl + `/subcategory/all`);
   }
+  getAllRopeGrade(): Observable<any> {
+    return this.http.get(this.baseUrl + `/ropeGrade/all`);
+  }
+  getAllRopeType(): Observable<any> {
+    return this.http.get(this.baseUrl + `/ropeType/all`);
+  }
 }

@@ -13,7 +13,7 @@ export class AddRopeGradeComponent {
   constructor(private fb: FormBuilder,public dialogRef: MatDialogRef<AddRopeGradeComponent>,@Inject(MAT_DIALOG_DATA) public dialogData: any,  private commonService: CommonService, private ropeGradeService: RopeGradeService) { }
   ropeGradeForm = this.fb.group({
     ropeTypeId: ['',[Validators.required]],
-    categoryId: ['',[Validators.required]],
+    categoryGrade: ['',[Validators.required]],
     grade: ['',[Validators.required]],
     rmComb: ['',[Validators.required]],
   })

@@ -18,7 +18,7 @@ export class AddColorComponent {
   selectedApplicableFor: any = [];
   apiLoader = false
   colorForm = this.fb.group({
-    colorName: ['', [Validators.required, Validators.pattern('[a-zA-Z ]*')]],
+    colorName: ['', [Validators.required]],
     shortCode: ['', [Validators.required]],
     matchingColor: ['', [Validators.required]],
     applicableFor: this.buildCheckboxes(),

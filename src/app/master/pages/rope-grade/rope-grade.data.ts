@@ -7,8 +7,8 @@ export const fixedTableHeaders =
 
 export const tableHeaders = [
     {
-        name: 'Category',
-        key: 'categoryName',
+        name: 'Category grade',
+        key: 'categoryGrade',
         sort: true,
     },
     {

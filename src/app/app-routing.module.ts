@@ -120,6 +120,10 @@ const routes: Routes = [
           {
             path:'rope-machine',
             loadChildren: () =>import('./master/pages/rope-machine/rope-machine.module').then(m => m.RopeMachineModule)
+          },
+          {
+            path:'raw-material-type',
+            loadChildren: () =>import('./master/pages/raw-material-type/raw-material-type.module').then(m => m.RawMaterialTypeModule)
           }
         ]
       }

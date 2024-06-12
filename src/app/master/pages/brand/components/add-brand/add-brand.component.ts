@@ -12,7 +12,7 @@ import { CommonService } from 'src/app/providers/common/common.service';
 export class AddBrandComponent {
   constructor(private fb: FormBuilder, public dialogRef: MatDialogRef<AddBrandComponent>, @Inject(MAT_DIALOG_DATA) public dialogData: any, private brandService: BrandService, public commonService: CommonService) { }
   brandForm = this.fb.group({
-    name: ['', [Validators.required, Validators.pattern('[a-zA-Z ]*')]],
+    name: ['', [Validators.required]],
     rawMaterialTypeId: ['', [Validators.required]],
     brandPriorityOrder: ['', [Validators.required]],
   })

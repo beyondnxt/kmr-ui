@@ -10,10 +10,11 @@ import { DepartmentService } from 'src/app/providers/department/department.servi
   styleUrls: ['./add-department.component.scss']
 })
 export class AddDepartmentComponent {
-  constructor(private fb: FormBuilder, public dialogRef: MatDialogRef<AddDepartmentComponent>, @Inject(MAT_DIALOG_DATA) public dialogData: any, private departmentService: DepartmentService, private commonService: CommonService) { }
+  constructor(private fb: FormBuilder, public dialogRef: MatDialogRef<AddDepartmentComponent>, @Inject(MAT_DIALOG_DATA) public dialogData: any, private departmentService: DepartmentService, public commonService: CommonService) { }
   types = [{ name: 'Mono Filament', checked: true }, { name: 'Multi Filament', checked: false }, { name: 'Knitting', checked: false }, { name: 'Processing', checked: false }];
   locations = [{ name: 'Test', value: 'Test' }];
-  selectedTypes: any = []
+  selectedTypes: any = [];
+  apiLoader = false;
   departMentForm = this.fb.group({
     departmentName: ['', [Validators.required]],
     location: ['', [Validators.required]],
@@ -22,6 +23,7 @@ export class AddDepartmentComponent {
 
   ngOnInit() {
     this.patchDepartment();
+    this.commonService.getAllLocation();
   }
 
   get checkboxesArray() {
@@ -82,20 +84,25 @@ export class AddDepartmentComponent {
   }
 
   createMainCustomer(payload: any) {
+    this.apiLoader = true;
     this.departmentService.createDepartment(payload).subscribe({
       next: (res) => {
+        this.apiLoader = false;
         this.commonService.notification('Success', 'Department created successfully', 'success')
         this.dialogRef.close(true);
       },
       error: (err) => {
+        this.apiLoader = false;
         this.commonService.notification('Failed', 'Failed to create, please try again', 'fail')
       },
     })
   }
 
   updateMainCustomer(payload: any, id: string) {
+    this.apiLoader = true;
     this.departmentService.updateDepartment(payload, id).subscribe({
       next: (res) => {
+        this.apiLoader = false;
         this.commonService.notification('Success', 'Department updated successfully', 'success')
         this.dialogRef.close(true);
       },

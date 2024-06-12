@@ -14,6 +14,8 @@ export class AddCategoryComponent {
   apiLoader = false;
   childCategories: any = [];
   parentCategories:any = [];
+  allRopeGrade:any = [];
+  allRopeType:any = [];
   subCategories:any = [];
   categoryForm  = this.fb.group({
     parentCategoryId:['',[Validators.required]],
@@ -28,6 +30,8 @@ export class AddCategoryComponent {
     this.getAllChildCategory();
     this.getAllSubCategory();
     this.getAllParentCategory();
+    this.getAllRopeGrade();
+    this.getAllRopeType();
   }
   save(isEdit: boolean) {
     this.categoryForm.markAllAsTouched();
@@ -99,5 +103,29 @@ export class AddCategoryComponent {
       error: (err) => {
       },
     });
+  }
+  fetchDropDownData(serviceMethod: any, successCallback: any, errorMessage: any) {
+    serviceMethod().subscribe({
+      next: (res: any) => {
+        successCallback(res.data);
+      },
+      error: (err: any) => {
+        this.commonService.notification('Failed', errorMessage, 'fail');
+      },
+    });
+  }
+  getAllRopeGrade() {
+    this.fetchDropDownData(
+      () => this.categoryService.getAllRopeGrade(),
+      (data: any) => { this.allRopeGrade = data; },
+      'Failed to get rope grade'
+    );
+  }
+  getAllRopeType() {
+    this.fetchDropDownData(
+      () => this.categoryService.getAllRopeType(),
+      (data: any) => { this.allRopeType = data; },
+      'Failed to get rope type'
+    );
   }
 }

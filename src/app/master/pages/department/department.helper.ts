@@ -7,8 +7,8 @@ export class DepartmentHelper {
     mapDepartmentData(serviceData: any) {
         return serviceData.map((x: any) => {
             return {
-                companyName:x.location,
                 location:x.location,
+                companyName:x.locationName,
                 type:x.type,
                 departmentName:x.departmentName,
                 createdOn:new Date(x.createdOn).toLocaleDateString('en-GB'),

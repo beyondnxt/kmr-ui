@@ -105,7 +105,8 @@
             <mat-form-field class="col-lg-12">
                 <label class="labelName">Treasure Yarn</label>
                 <mat-select placeholder="Select Treasure Yarn" formControlName="treasureYarn">
-                    <mat-option value="Test">Test</mat-option>
+                    <mat-option value="Yes"> Yes</mat-option>
+                    <mat-option value="No">No</mat-option>
                 </mat-select>
                 <mat-error *ngIf="itemForm.get('treasureYarn')?.hasError('required')">
                     <b> Treasure Yarn is required</b>
@@ -116,7 +117,9 @@
             <mat-form-field class="col-lg-12">
                 <label class="labelName">Treasure Yarn Color</label>
                 <mat-select placeholder="Select Treasure Yarn Color" formControlName="treasureYarnColorId">
-                    <mat-option value="4">Test</mat-option>
+                    <mat-option *ngFor="let color of allColor" [value]="color.id">
+                        {{ color.colorName }}
+                      </mat-option>
                 </mat-select>
                 <mat-error *ngIf="itemForm.get('treasureYarnColorId')?.hasError('required')">
                     <b> Treasure Yarn Color is required</b>
@@ -159,7 +162,7 @@
                 <label class="labelName">Location Code</label>
                 <mat-select placeholder="Select Location Code" formControlName="location">
                     <mat-option *ngFor="let location of commonService.locations" [value]="location.id">
-                        {{ location.location }}
+                        {{ location.code }}
                       </mat-option>
                 </mat-select>
                 <mat-error *ngIf="itemForm.get('locationCode')?.hasError('required')">

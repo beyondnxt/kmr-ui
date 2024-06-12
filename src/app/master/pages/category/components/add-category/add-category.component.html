@@ -57,8 +57,9 @@
             <mat-form-field class="col-lg-12">
                 <label class="Add type">Type</label>
                 <mat-select placeholder="Select Type" formControlName="type">
-                    <mat-option value="Test">Test</mat-option>
-                  </mat-select>
+                    <mat-option *ngFor="let ropeType of allRopeType" [value]="ropeType.id">
+                        {{ ropeType.ropeTypeName }}
+                      </mat-option>                   </mat-select>
                   <mat-error *ngIf="categoryForm.get('type')?.hasError('required')">
                     <b> Type is required</b>
                 </mat-error>
@@ -68,8 +69,9 @@
             <mat-form-field class="col-lg-12">
                 <label class="Add type">Grade</label>
                 <mat-select placeholder="Select grade" formControlName="grade">
-                    <mat-option value="Test">Test</mat-option>
-                  </mat-select>
+                    <mat-option *ngFor="let grade of allRopeGrade" [value]="grade.id">
+                        {{ grade.grade }}
+                      </mat-option>                  </mat-select>
                   <mat-error *ngIf="categoryForm.get('grade')?.hasError('required')">
                     <b> Grade is required</b>
                 </mat-error>

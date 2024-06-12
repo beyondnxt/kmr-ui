@@ -36,7 +36,7 @@
                 <label class="labelName">Location</label>
                 <mat-select placeholder="Select Location" formControlName="location">
                     <mat-option *ngFor="let loaction of commonService.locations" [value]="loaction.id">
-                        {{ loaction.location }}
+                        {{ loaction.code }}
                       </mat-option>
                 </mat-select>
                 <mat-error *ngIf="extruderForm.get('location')?.hasError('required')">

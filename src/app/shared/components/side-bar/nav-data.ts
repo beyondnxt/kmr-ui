@@ -146,8 +146,14 @@ export const navBarData = {
         },
         {
             routerlink: 'master/rope-machine',
-            icon: 'far fa-boxes',
+            icon: 'fas fa-cogs',
             label: 'Rope Machine',
+            menu: 'user'
+        },
+        {
+            routerlink: 'master/raw-material-type',
+            icon: 'fas fa-cogs',
+            label: 'Raw Material Type',
             menu: 'user'
         },
     ]
