@@ -129,7 +129,7 @@
         <div class="col-lg-4">
             <mat-form-field class="col-lg-12">
                 <label class="labelName" id="type">Item Name
-                    <input type="text" formControlName="itemName" matInput placeholder="Add Item Name" id="type">
+                    <input type="text" formControlName="itemName" matInput placeholder="Add Item Name" id="type" readonly>
                 </label>
                 <mat-error *ngIf="itemForm.get('itemName')?.hasError('required')">
                     <b> Item Name is required</b>
@@ -195,7 +195,7 @@
         <div class="col-lg-4">
             <mat-form-field class="col-lg-12">
                 <label class="labelName" id="type">KPC Code
-                    <input type="text" formControlName="kpcCode" matInput placeholder="Add KPC Code" id="kpcCode">
+                    <input type="text" formControlName="kpcCode" matInput placeholder="Add KPC Code" id="kpcCode" readonly>
                 </label>
                 <mat-error *ngIf="itemForm.get('kpcCode')?.hasError('required')">
                     <b> KPC Code is required</b>

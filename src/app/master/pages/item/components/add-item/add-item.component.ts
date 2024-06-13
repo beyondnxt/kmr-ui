@@ -25,7 +25,7 @@ export class AddItemComponent {
     strand: ['', [Validators.required]],
     length: ['', [Validators.required]],
     noOfTwist: ['', [Validators.required]],
-    twineType: ['', [Validators.required]],
+    twineType: [''],
     treasureYarn: ['', [Validators.required]],
     treasureYarnColorId: ['', [Validators.required]],
     itemName: ['', [Validators.required]],
@@ -219,6 +219,7 @@ export class AddItemComponent {
       // Find item type and color
       const findItemType = this.allRopeType.find((item:any) => item.id === itemTypeId?.value);
       const treasureYarnColor = this.allColor.find((item:any) => item.id === treasureYarnColorId?.value)?.colorName;
+      const colorName = this.allColor.find((item:any) => item.id === colorId?.value);
   
       // Construct item name components
       const itemTypeShortCode = findItemType?.shortCode || '';
@@ -230,7 +231,7 @@ export class AddItemComponent {
       const treasureYarnValue = treasureYarn?.value;
   
       // Generate item name
-      let itemNameValue = `${itemCodeValue}.00MM-${itemTypeShortCode}-${strandValue}ST-${noOfTwistValue}T-${colorValue}-${lengthValue}MTR`;
+      let itemNameValue = `${itemCodeValue}.00MM-${itemTypeShortCode}-${strandValue}ST-${noOfTwistValue}T-${colorName.colorName}-${lengthValue}MTR`;
       if (treasureYarnValue === 'Yes' && treasureYarnColor) {
           itemNameValue += `-${treasureYarnColor}-SF`;
       }
@@ -245,10 +246,9 @@ export class AddItemComponent {
     const findSubCategory = this.allCategory.find((item: any) => item.id === categoryId.value);
     const itemTypeShortCode = findItemType?.shortCode || '';
     const itemCodeValue = itemCode?.value || '';
-    const generatedKpcCode = `${findSubCategory?.subCategory}${itemTypeShortCode}${itemCodeValue}${this.generateRandomNumber(3)}`;
+    const generatedKpcCode = `${findSubCategory?.subCategory || ''}${itemTypeShortCode}${itemCodeValue}${this.generateRandomNumber(3)}`;
     kpcCode.setValue(generatedKpcCode);
   }
-  
   generateRandomNumber(length: number): string {
     const characters = '0123456789';
     const charactersLength = characters.length;
@@ -257,7 +257,6 @@ export class AddItemComponent {
     for (let i = 0; i < length; i++) {
       result += characters.charAt(Math.floor(Math.random() * charactersLength));
     }
-  
     return result.padStart(length, '0');
   }
 }
