@@ -201,4 +201,63 @@ export class AddItemComponent {
     );
   }
 
+    //itemcode + MM + itemtypeshortcode + strand + ST + no of twist + T + Color + length + MTR
+    createItemName() {
+      // Destructuring itemForm for cleaner access
+      const {
+          itemCode,
+          itemTypeId,
+          strand,
+          noOfTwist,
+          colorId,
+          length,
+          treasureYarn,
+          treasureYarnColorId,
+          itemName
+      } = this.itemForm.controls;
+  
+      // Find item type and color
+      const findItemType = this.allRopeType.find((item:any) => item.id === itemTypeId?.value);
+      const treasureYarnColor = this.allColor.find((item:any) => item.id === treasureYarnColorId?.value)?.colorName;
+  
+      // Construct item name components
+      const itemTypeShortCode = findItemType?.shortCode || '';
+      const itemCodeValue = itemCode?.value || '';
+      const strandValue = strand?.value || '';
+      const noOfTwistValue = noOfTwist?.value || '';
+      const colorValue = colorId?.value || '';
+      const lengthValue = length?.value || '';
+      const treasureYarnValue = treasureYarn?.value;
+  
+      // Generate item name
+      let itemNameValue = `${itemCodeValue}.00MM-${itemTypeShortCode}-${strandValue}ST-${noOfTwistValue}T-${colorValue}-${lengthValue}MTR`;
+      if (treasureYarnValue === 'Yes' && treasureYarnColor) {
+          itemNameValue += `-${treasureYarnColor}-SF`;
+      }
+  
+      // Set item name in the form
+      itemName?.setValue(itemNameValue);
+  }
+  generateKpcCode() {
+    this.createItemName();
+    const { itemTypeId, categoryId, itemCode, kpcCode } = this.itemForm.controls;
+    const findItemType = this.allRopeType.find((item: any) => item.id === itemTypeId?.value);
+    const findSubCategory = this.allCategory.find((item: any) => item.id === categoryId.value);
+    const itemTypeShortCode = findItemType?.shortCode || '';
+    const itemCodeValue = itemCode?.value || '';
+    const generatedKpcCode = `${findSubCategory?.subCategory}${itemTypeShortCode}${itemCodeValue}${this.generateRandomNumber(3)}`;
+    kpcCode.setValue(generatedKpcCode);
+  }
+  
+  generateRandomNumber(length: number): string {
+    const characters = '0123456789';
+    const charactersLength = characters.length;
+  
+    let result = '';
+    for (let i = 0; i < length; i++) {
+      result += characters.charAt(Math.floor(Math.random() * charactersLength));
+    }
+  
+    return result.padStart(length, '0');
+  }
 }

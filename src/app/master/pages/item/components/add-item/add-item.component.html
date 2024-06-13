@@ -117,7 +117,7 @@
             <mat-form-field class="col-lg-12">
                 <label class="labelName">Treasure Yarn Color</label>
                 <mat-select placeholder="Select Treasure Yarn Color" formControlName="treasureYarnColorId">
-                    <mat-option *ngFor="let color of allColor" [value]="color.id">
+                    <mat-option *ngFor="let color of allColor" [value]="color.id" >
                         {{ color.colorName }}
                       </mat-option>
                 </mat-select>
@@ -201,6 +201,7 @@
                     <b> KPC Code is required</b>
                 </mat-error>
             </mat-form-field>
+            <p class="m-0 cp" (click)="generateKpcCode()">Generate Code</p>
         </div>
         <div class="col-lg-4">
             <mat-form-field class="col-lg-12">
